@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programajánlók</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #111;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        .header h2 {
+            font-size: 26px;
+            margin-top: 5px;
+        }
+
+        .month {
+            color: #ffeb00;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0 10px;
+            font-size: 18px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            margin-bottom: 20px;
+        }
+
+        .card img {
+            width: 100%;
+            display: block;
+        }
+
+        .card-content {
+            padding: 15px;
+            color: #000;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1db954;
+            margin-bottom: 6px;
+        }
+
+        .card-location {
+            font-size: 14px;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .card-button {
+            display: inline-block;
+            background: #1db954;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 6px;
+        }
+
+        .card-button:hover {
+            background: #17a84a;
+        }
+
+        .no-ticket {
+            display: inline-block;
+            background: grey;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .divider {
+            text-align: center;
+            color: red;
+            font-weight: bold;
+            margin: 10px 0 15px;
+        }
+
+        /* ÉVES PROGRAMAJÁNLÓ */
+        .yearly-wrapper {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+
+        .yearly-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #1e90ff, #4aa3ff);
+            color: #fff;
+            padding: 16px 30px;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+        }
+
+        .yearly-button:hover {
+            background: linear-gradient(135deg, #187bcd, #3a8dde);
+        }
+
+        .yearly-text {
+            color: #fff;
+            font-size: 13px;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        /* ❌ BEZÁRÓ X */
+.close-btn {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    color: white;
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: 600;
+    z-index: 1000;
+    opacity: 0.85;
+}
+
+.close-btn:hover {
+    opacity: 1;
+}
+
+/* MOBIL */
+@media (max-width: 768px) {
+    .slider {
+        height: 35vh;
+        max-height: 300px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .buttons a {
+        width: 90%;
+        font-size: 16px;
+    }
+
+    .close-btn {
+        font-size: 28px;
+        top: 12px;
+        right: 14px;
+    }
+}
+    </style>
+</head>
+
+<body>
+<a href="index.html" class="close-btn">✕</a>
+<div class="container">
+
+    <div class="header">
+        <h1>PROGRAMAJÁNLÓK</h1>
+        <h2>2026. tavasz</h2>
+    </div>
+ <!-- MÁRCIUS–ÁPRILIS -->
+    <div class="month">2026. március – április</div>
+
+    <div class="card">
+        <img src="koldus.jpg" alt="">
+        <div class="card-content">
+            <div class="card-title">KOLDUS ÉS KIRÁLYFI</div>
+            <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+             <div class="card-location" style="text-align: justify;">A londoni utcák nyomorában élő koldusfiú és a paloták aranyfényében nevelkedő trónörökös egy napon egymás tükörképére ismer – és helyet cserélnek. A rongyok között megtapasztalt szabadság, a selymek mögött rejtőző magány, az utcák lármája és a palota hideg pompája mind új arcát mutatja meg számukra. Ahogy a két fiú belekóstol a másik életébe, megtanulják, mit ér a hatalom, és mit ér az ember, ha nincs benne emberség.
+
+Mark Twain klasszikus történetének zenés színpadi változata humort és felfedezést hoz – de legfőképp megértést és együttérzést. Egy színpadra vitt kaland, amely megmutatja: az emberi értékek túlmutatnak a társadalmi különbségeken.</div>
+            <a href="https://magyarszinhaz.hu/programok/koldus-es-kiralyfi/" class="card-button">További részletek...</a>  <br><br>             
+<a href="https://www.jegy.hu/program/koldus-es-kiralyfi-178172" class="card-button">Jegyvásárlás</a>
+        </div>
+    </div>
+
+    <div class="divider">VAGY</div>
+
+    <div class="card">
+        <img src="valahol.jpg" alt="">
+        <div class="card-content">
+            <div class="card-title">VALAHOL EURÓPÁBAN</div>
+            <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+            <div class="card-location" style="text-align: justify;">A háború mindent elvett tőlük – az otthonukat, a családjukat, a gyermekkorukat. Bandába verődve, éhesen és fázva járják az utcákat, hogy valahogy túléljenek. Mégis kapaszkodnak az életbe. Egy idős zenész romos kastélyában menedékre lelnek, ahol nemcsak falak, hanem dallamok és remény öleli körül őket. Itt, a romok között születik meg valami, amit már rég elfelejtettek: bizalom, barátság és emberség.
+
+De a világ odakint továbbra is kegyetlen: üldözőik közelebb járnak, mint gondolnák. Elbújni, vagy kiállni egymásért? A döntés mindannyiuk sorsát megpecsételheti. Barátság, bátorság, összetartás – egy felemelő musical a szeretet erejéről, amely még a háború legsötétebb árnyékában is utat mutat.</div>
+            <a href="https://magyarszinhaz.hu/programok/valahol-europaban/" class="card-button">További részletek...</a>       <br><br>     
+<a href="https://www.jegy.hu/program/valahol-europaban-178170" class="card-button">Jegyvásárlás</a>
+        </div>
+    </div>
+
+    <div class="divider">VAGY</div>
+
+    <div class="card">
+        <img src="indul.jpg" alt="">
+        <div class="card-content">
+            <div class="card-title">INDUL A BAKTERHÁZ</div>
+                        <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+            <div class="card-location" style="text-align: justify;">Ha én egyszer kinyitom a számat…” – és Regős Bendegúz tényleg ki is nyitja. A nagyszájú kamasz kimarad az iskolából, így kerül tehénpásztornak a vasút mellé, a harapós természetű bakter és a még harapósabb anyósa, a rettegett Büdös Banya mellé.
+
+De Bendegúzt nem olyan fából faragták, hogy megijedjen pár felnőttől. Csínyt űz, bosszút forral, és közben alaposan felforgatja az egész tanyavilágot. A történet Rideg Sándor 1939-es regényén és a 1979-es kultikus filmen alapul, most pedig a Magyar Színház színpadán kel újra életre.</b></div>
+             <a href="https://magyarszinhaz.hu/programok/indul-a-bakterhaz/" class="card-button">További részletek...</a>    <br><br>           
+<a href="https://www.jegy.hu/program/indul-a-bakterhaz-181286" class="card-button">Jegyvásárlás</a>
+        </div>
+    </div>
+    <div class="yearly-wrapper">
+        <a href="evesprogramajanlo.html" class="yearly-button">ÉVES PROGRAMAJÁNLÓK</a>
+        <div class="yearly-text">
+            <b><i>Érdemes az egész éves programajánlót átolvasni a hatalmas érdeklődés miatt.</i></b>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

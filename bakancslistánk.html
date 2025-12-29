@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakancslistánk</title>
+
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .keptar {
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .keptar img {
+            width: 100%;
+            aspect-ratio: 10 / 3; /* kb. 50 cm x 15 cm arány */
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 15px auto; /* középre igazítás */
+            border-radius: 8px;
+        }
+               /* ❌ BEZÁRÓ X */
+.close-btn {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    color: white;
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: 600;
+    z-index: 1000;
+    opacity: 0.85;
+}
+
+.close-btn:hover {
+    opacity: 1;
+}
+
+/* MOBIL */
+@media (max-width: 768px) {
+    .close-btn {
+        font-size: 28px;
+        top: 12px;
+        right: 14px;
+    }
+}
+    </style>
+</head>
+<body>
+<a href="index.html" class="close-btn">✕</a>
+    <h1>Bakancslistánk <br>2026</h1>
+
+    <div class="keptar">
+        <img src="Dia4.JPG" alt="Kép 1">
+        <img src="Dia5.JPG" alt="Kép 2">
+        <img src="Dia6.JPG" alt="Kép 3">
+        <img src="Dia7.JPG" alt="Kép 4">
+        <img src="Dia8.JPG" alt="Kép 5">
+        <img src="Dia9.JPG" alt="Kép 6">
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Családi programjaink</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital@1&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ======================
+   ALAP / LAPTOP LAYOUT
+   ====================== */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 10px 12px;
+}
+
+/* laptop méret */
+@media (min-width: 769px) {
+    .wrapper {
+        max-width: 50cm;
+        min-height: 25cm;
+        margin: 0 auto;
+    }
+}
+
+/* FEJLÉC */
+.header {
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin: 4px 0;
+}
+
+.quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: #cfd8e3;
+    margin: 2px 0;
+}
+
+.family-title {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin: 2px 0 6px 0;
+}
+
+/* SLIDER */
+.slider {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 14px;
+    background-color: #000;
+}
+
+.slide {
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+.slide img {
+    width: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+/* PÖTTYÖK */
+.dots {
+    margin: 4px 0;
+    text-align: center;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 3px;
+    background: #555;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.active {
+    background: white;
+}
+
+/* GOMBOK */
+.buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.buttons a {
+    background-color: #0b2a4a;
+    color: white;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 180px;
+    text-align: center;
+}
+
+/* ======================
+   📱 MOBIL – TELJES KÉPERNYŐ
+   ====================== */
+@media (max-width: 768px) {
+
+    /* TELJES KÉPERNYŐ MAGASSÁG */
+    .wrapper {
+        min-height: 100svh; /* 👈 mobilbarát */
+    }
+
+    /* nagyobb felső szöveg */
+    .header h1 {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    .quote {
+        font-size: 17px;
+        line-height: 1.4;
+    }
+
+    .family-title {
+        font-size: 24px;
+        letter-spacing: 4px;
+        margin-bottom: 10px;
+    }
+
+    /* kép + pöttyök középen */
+    .slider,
+    .dots {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .slider {
+        width: 95vw;
+    }
+
+    /* gombok közvetlenül alatta */
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 6px;
+        padding-bottom: 12px;
+        width: 100%;
+    }
+
+    .buttons a {
+        width: 95%;
+        font-size: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="header">
+        <h1>CSALÁDI PROGRAMJAINK</h1>
+        <div class="quote">„Az együtt töltött idő a legszebb ajándék.”</div>
+        <div class="family-title">Orosz Család</div> 
+    </div> <br>
+<div class="slider">
+    <div class="slide active">
+        <a href="#">
+            <img src="koldusfooldal.jpg" alt="">
+        </a>
+    </div>
+    <div class="slide">
+        <a href="#">
+            <img src="valaholfooldal.jpg" alt="">
+        </a>
+    </div>
+    <div class="slide">
+        <a href="#">
+            <img src="indulfooldal.jpg" alt="">
+        </a>
+    </div>
+</div>
+
+    <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div> <br>
+
+    <div class="buttons">
+        <a href="#">PROGRAMJAINK</a>
+        <a href="bakancslistánk.html">Bakancslistánk</a>
+        <a href="programajanlok.html">Ajánlók</a>
+        <a href="ilyenvolt.html">Ilyen volt...</a>
+    </div>
+
+</div>
+
+<script>
+let index = 0;
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+
+function showSlide(i) {
+    slides.forEach(s => s.classList.remove("active"));
+    dots.forEach(d => d.classList.remove("active"));
+
+    index = (i + slides.length) % slides.length;
+    slides[index].classList.add("active");
+    dots[index].classList.add("active");
+}
+
+setInterval(() => showSlide(index + 1), 5000);
+</script>
+
+</body>
+</html>

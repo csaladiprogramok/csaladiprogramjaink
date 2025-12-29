@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éves programajánlók</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #111;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        /* FEJLÉC */
+        .header {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        .header h2 {
+            font-size: 26px;
+            margin-top: 5px;
+        }
+
+        /* HÓNAP */
+        .month {
+            color: #ffeb00;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0 10px;
+            font-size: 18px;
+        }
+
+        /* KÁRTYA */
+        .card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            margin-bottom: 20px;
+        }
+
+        .card img {
+            width: 100%;
+            display: block;
+        }
+
+        .card-content {
+            padding: 15px;
+            color: #000;
+        }
+
+        /* 👉 SÁRGA CÍM */
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1db954;
+            margin-bottom: 6px;
+        }
+
+        .card-location {
+            font-size: 14px;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        /* 👉 LINKES GOMB */
+        .card-button {
+            display: inline-block;
+            background: #1db954;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+                .no-ticket {
+            display: inline-block;
+            background:grey;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .card-button:hover {
+            background: #17a84a;
+        }
+
+        .divider {
+            text-align: center;
+            color: red;
+            font-weight: bold;
+            margin: 10px 0 15px;
+        }
+               /* ❌ BEZÁRÓ X */
+.close-btn {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    color: white;
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: 600;
+    z-index: 1000;
+    opacity: 0.85;
+}
+
+.close-btn:hover {
+    opacity: 1;
+}
+
+        /* MOBIL */
+@media (max-width: 768px) {
+    .slider {
+        height: 35vh;
+        max-height: 300px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .buttons a {
+        width: 90%;
+        font-size: 16px;
+    }
+
+    .close-btn {
+        font-size: 28px;
+        top: 12px;
+        right: 14px;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+<a href="index.html" class="close-btn">✕</a>
+    <div class="header">
+        <h1>EGÉSZ ÉVES PROGRAMAJÁNLÓK</h1>
+        <h2>2026</h2>
+    </div>
+
+    <!-- MÁRCIUS–ÁPRILIS -->
+    <div class="month">2026. március – április</div>
+
+    <div class="card">
+        <img src="koldus.jpg" alt="">
+        <div class="card-content">
+            <div class="card-title">KOLDUS ÉS KIRÁLYFI</div>
+            <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+             <div class="card-location" style="text-align: justify;">A londoni utcák nyomorában élő koldusfiú és a paloták aranyfényében nevelkedő trónörökös egy napon egymás tükörképére ismer – és helyet cserélnek. A rongyok között megtapasztalt szabadság, a selymek mögött rejtőző magány, az utcák lármája és a palota hideg pompája mind új arcát mutatja meg számukra. Ahogy a két fiú belekóstol a másik életébe, megtanulják, mit ér a hatalom, és mit ér az ember, ha nincs benne emberség.
+
+Mark Twain klasszikus történetének zenés színpadi változata humort és felfedezést hoz – de legfőképp megértést és együttérzést. Egy színpadra vitt kaland, amely megmutatja: az emberi értékek túlmutatnak a társadalmi különbségeken.</div>
+            <a href="https://magyarszinhaz.hu/programok/koldus-es-kiralyfi/" class="card-button">További részletek...</a>            
+<a href="https://www.jegy.hu/program/koldus-es-kiralyfi-178172" class="card-button">Jegyvásárlás</a>
+        </div>
+    </div>
+
+    <div class="divider">VAGY</div>
+
+    <div class="card">
+        <img src="valahol.jpg" alt="">
+        <div class="card-content">
+            <div class="card-title">VALAHOL EURÓPÁBAN</div>
+            <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+            <div class="card-location" style="text-align: justify;">A háború mindent elvett tőlük – az otthonukat, a családjukat, a gyermekkorukat. Bandába verődve, éhesen és fázva járják az utcákat, hogy valahogy túléljenek. Mégis kapaszkodnak az életbe. Egy idős zenész romos kastélyában menedékre lelnek, ahol nemcsak falak, hanem dallamok és remény öleli körül őket. Itt, a romok között születik meg valami, amit már rég elfelejtettek: bizalom, barátság és emberség.
+
+De a világ odakint továbbra is kegyetlen: üldözőik közelebb járnak, mint gondolnák. Elbújni, vagy kiállni egymásért? A döntés mindannyiuk sorsát megpecsételheti. Barátság, bátorság, összetartás – egy felemelő musical a szeretet erejéről, amely még a háború legsötétebb árnyékában is utat mutat.</div>
+            <a href="https://magyarszinhaz.hu/programok/valahol-europaban/" class="card-button">További részletek...</a>            
+<a href="https://www.jegy.hu/program/valahol-europaban-178170" class="card-button">Jegyvásárlás</a>
+        </div>
+    </div>
+
+    <div class="divider">VAGY</div>
+
+    <div class="card">
+        <img src="indul.jpg" alt="">
+        <div class="card-content">
+            <div class="card-title">INDUL A BAKTERHÁZ</div>
+                        <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+            <div class="card-location" style="text-align: justify;">Ha én egyszer kinyitom a számat…” – és Regős Bendegúz tényleg ki is nyitja. A nagyszájú kamasz kimarad az iskolából, így kerül tehénpásztornak a vasút mellé, a harapós természetű bakter és a még harapósabb anyósa, a rettegett Büdös Banya mellé.
+
+De Bendegúzt nem olyan fából faragták, hogy megijedjen pár felnőttől. Csínyt űz, bosszút forral, és közben alaposan felforgatja az egész tanyavilágot. A történet Rideg Sándor 1939-es regényén és a 1979-es kultikus filmen alapul, most pedig a Magyar Színház színpadán kel újra életre.</b></div>
+             <a href="https://magyarszinhaz.hu/programok/indul-a-bakterhaz/" class="card-button">További részletek...</a>            
+<a href="https://www.jegy.hu/program/indul-a-bakterhaz-181286" class="card-button">Jegyvásárlás</a>
+        </div>
+    </div>
+
+    <!-- JÚNIUS–JÚLIUS -->
+    <div class="month">2026. június – július</div>
+
+
+        <div class="card">
+        <img src="koldus.jpg" alt="">
+        <div class="card-content">
+            <div class="card-title">KOLDUS ÉS KIRÁLYFI</div>
+            <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+             <div class="card-location" style="text-align: justify;">A londoni utcák nyomorában élő koldusfiú és a paloták aranyfényében nevelkedő trónörökös egy napon egymás tükörképére ismer – és helyet cserélnek. A rongyok között megtapasztalt szabadság, a selymek mögött rejtőző magány, az utcák lármája és a palota hideg pompája mind új arcát mutatja meg számukra. Ahogy a két fiú belekóstol a másik életébe, megtanulják, mit ér a hatalom, és mit ér az ember, ha nincs benne emberség.
+
+Mark Twain klasszikus történetének zenés színpadi változata humort és felfedezést hoz – de legfőképp megértést és együttérzést. Egy színpadra vitt kaland, amely megmutatja: az emberi értékek túlmutatnak a társadalmi különbségeken.</div>
+           <a href="https://magyarszinhaz.hu/programok/koldus-es-kiralyfi/" class="card-button">További részletek...</a>            
+<a href="https://www.jegy.hu/program/koldus-es-kiralyfi-178172" class="card-button">Jegyvásárlás</a>
+        </div>
+    </div>
+
+ <div class="divider">VAGY</div>
+
+    <div class="card">
+        <img src="hogyan.jpg" alt="">
+        <div class="card-content">
+            <div class="card-title">HOGYAN TUDNÉK ÉLNI NÉLKÜLED</div>
+            <div class="card-location"><b>Erkel Színház, Budapest</b></div>
+            <div class="card-location" style="text-align: justify;">Marics Peti jókora késéssel érkezett egy megbeszélésre az Erkel Színházba, s mire odaért, már senki sem várta. Az üres irodában azonban talált valamit, ami felkeltette az érdeklődését: egy „TOP SECRET” feliratú dossziét.
+
+A dokumentum nem volt más, mint a februárban érkező Hogyan tudnék élni nélküled? musical titkos szövegkönyve és még titkosabb szereposztása. Bár az előadásról már hónapok óta tudni lehet, hogy Szente Vajk rendezi, a színészek neveit eddig homály fedte. „Ha egyetlen színházi előadást kellene ajánlanom azoknak, akik még soha nem jártak színházban, akkor a Hogyan tudnék élni nélküled? lenne az. Egy filmrajongóknak is ismerős történet, zenés színházi formában, ami remek első lépés a fiatal közönség számára, hogy elkezdjék felfedezni a színház világát” – mondta az előadás rendezője.</div>
+                        <a href="https://erkelszinhaz.hu/" class="card-button">További részletek...</a>            
+<a href="https://www.jegy.hu/program/hogyan-tudnek-elni-nelkuled-184904?q=hogyan+tudn%c3%a9k+%c3%a9lni+n%c3%a9lk%c3%bcled%3f&sgtype=pfprogram" class="card-button">Jegyvásárlás</a>
+        </div>
+    </div>
+
+     <div class="divider">VAGY</div>
+
+        <div class="card">
+        <img src="valahol.jpg" alt="">
+        <div class="card-content">
+            <div class="card-title">VALAHOL EURÓPÁBAN</div>
+            <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+            <div class="card-location" style="text-align: justify;">A háború mindent elvett tőlük – az otthonukat, a családjukat, a gyermekkorukat. Bandába verődve, éhesen és fázva járják az utcákat, hogy valahogy túléljenek. Mégis kapaszkodnak az életbe. Egy idős zenész romos kastélyában menedékre lelnek, ahol nemcsak falak, hanem dallamok és remény öleli körül őket. Itt, a romok között születik meg valami, amit már rég elfelejtettek: bizalom, barátság és emberség.
+
+De a világ odakint továbbra is kegyetlen: üldözőik közelebb járnak, mint gondolnák. Elbújni, vagy kiállni egymásért? A döntés mindannyiuk sorsát megpecsételheti. Barátság, bátorság, összetartás – egy felemelő musical a szeretet erejéről, amely még a háború legsötétebb árnyékában is utat mutat.</div>
+     <a href="https://magyarszinhaz.hu/programok/valahol-europaban/" class="card-button">További részletek...</a>            
+<a href="https://www.jegy.hu/program/valahol-europaban-178170" class="card-button">Jegyvásárlás</a>        
+</div>
+    </div>
+
+    <!-- OKTÓBER–NOVEMBER -->
+    <div class="month">2026. október – november</div>
+
+    <div class="card">
+        <img src="andrei.jpg" alt="">
+        <div class="card-content">
+            <div class="card-title">ANDREI RUEI 2026</div>
+            <div class="card-location"><b>MVM DOME, Budapest</b></div>
+            <div class="card-location" style="text-align: justify;">Az elmúlt évek óriási sikerei után a világhírű hegedűművész és karmester, André Rieu ismét visszatér az MVM Dome színpadára! 2026-ban a közönség ismét egy varázslatos és sokszínű koncertprogramra számíthat, amelyben opera, slágerek, musicalrészletek, filmzenék, örökzöld klasszikusok, és természetesen felejthetetlen keringők is helyet kapnak. Rieu koncertjei nemcsak a magával ragadó zenéjükkel bűvölik el a közönséget, hanem humoros, közvetlen színpadi jelenlétével is. A gyönyörű jelmezek, a lenyűgöző díszletek és a látványos fénytechnikák minden korosztály számára különleges élményt nyújtanak.</b></div>
+            <a href="https://www.andrerieu.com/en" class="card-button">További részletek...</a>            
+<a href="https://www.jegy.hu/program/andre-rieu-2026-180882" class="card-button">Jegyvásárlás</a>
+        </div>
+    </div>
+         <div class="divider">ÉS</div>
+
+        <div class="card">
+        <img src="hogyan.jpg" alt="">
+        <div class="card-content">
+            <div class="card-title">HOGYAN TUDNÉK ÉLNI NÉLKÜLED</div>
+                        <div class="card-location"><b>Erkel Színház, Budapest</b></div>
+            <div class="card-location" style="text-align: justify;">Marics Peti jókora késéssel érkezett egy megbeszélésre az Erkel Színházba, s mire odaért, már senki sem várta. Az üres irodában azonban talált valamit, ami felkeltette az érdeklődését: egy „TOP SECRET” feliratú dossziét.
+
+A dokumentum nem volt más, mint a februárban érkező Hogyan tudnék élni nélküled? musical titkos szövegkönyve és még titkosabb szereposztása. Bár az előadásról már hónapok óta tudni lehet, hogy Szente Vajk rendezi, a színészek neveit eddig homály fedte. „Ha egyetlen színházi előadást kellene ajánlanom azoknak, akik még soha nem jártak színházban, akkor a Hogyan tudnék élni nélküled? lenne az. Egy filmrajongóknak is ismerős történet, zenés színházi formában, ami remek első lépés a fiatal közönség számára, hogy elkezdjék felfedezni a színház világát” – mondta az előadás rendezője.</div>
+            <a href="https://erkelszinhaz.hu/" class="card-button">További részletek...</a>            
+<a href="https://www.jegy.hu/program/hogyan-tudnek-elni-nelkuled-184904?q=hogyan+tudn%c3%a9k+%c3%a9lni+n%c3%a9lk%c3%bcled%3f&sgtype=pfprogram" class="card-button">Jegyvásárlás</a>
+        </div>
+    </div>
+
+    
+     <div class="divider">VAGY</div>
+
+        <div class="card">
+        <img src="valahol.jpg" alt="">
+        <div class="card-content">
+              <div class="card-title">VALAHOL EURÓPÁBAN</div>
+            <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+            <div class="card-location" style="text-align: justify;">A háború mindent elvett tőlük – az otthonukat, a családjukat, a gyermekkorukat. Bandába verődve, éhesen és fázva járják az utcákat, hogy valahogy túléljenek. Mégis kapaszkodnak az életbe. Egy idős zenész romos kastélyában menedékre lelnek, ahol nemcsak falak, hanem dallamok és remény öleli körül őket. Itt, a romok között születik meg valami, amit már rég elfelejtettek: bizalom, barátság és emberség.
+
+De a világ odakint továbbra is kegyetlen: üldözőik közelebb járnak, mint gondolnák. Elbújni, vagy kiállni egymásért? A döntés mindannyiuk sorsát megpecsételheti. Barátság, bátorság, összetartás – egy felemelő musical a szeretet erejéről, amely még a háború legsötétebb árnyékában is utat mutat.</div>
+             <a href="https://magyarszinhaz.hu/programok/valahol-europaban/" class="card-button">További részletek...</a>            
+<a href="https://www.jegy.hu/program/valahol-europaban-178170" class="card-button">Jegyvásárlás</a>
+        </div>
+    </div>
+
+
+    <!-- DECEMBER -->
+    <div class="month">2026. december <br> Karácsony alkalmából...</div>
+
+    <div class="card">
+        <img src="igazabol.jpg" alt="">
+        <div class="card-content">
+            <div class="card-title">IGAZÁBÓL KARÁCSONY 2026</div>
+            <div class="card-location"><b>MVM DOME, Budapest</b></div>
+             <div class="card-location" style="text-align: justify;">A Budafoki Dohnányi Zenekar ikonikus karácsonyi koncertshow-ja az idei évben is grandiózus látvánnyal, elsöprő zenei élménnyel várja a látogatókat. A klasszikus zene, a pop, a jazz, a tánc, a néptánc, a légtornászat és a minőségi show-műsorok kedvelőit várjuk szeretettel az MVM Dome-ba!</div>
+            <a href="https://bdz.hu/" class="card-button">További részletek...</a>            
+<a href="#" class="no-ticket">Jegyvásárlás</a>
+        </div>
+    </div>
+
+    <div class="divider">VAGY</div>
+    <div class="card">
+        <img src="indul.jpg" alt="">
+        <div class="card-content">
+            <div class="card-title">INDUL A BAKTERHÁZ</div>
+            <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+            <div class="card-location" style="text-align: justify;">Ha én egyszer kinyitom a számat…” – és Regős Bendegúz tényleg ki is nyitja. A nagyszájú kamasz kimarad az iskolából, így kerül tehénpásztornak a vasút mellé, a harapós természetű bakter és a még harapósabb anyósa, a rettegett Büdös Banya mellé.
+
+De Bendegúzt nem olyan fából faragták, hogy megijedjen pár felnőttől. Csínyt űz, bosszút forral, és közben alaposan felforgatja az egész tanyavilágot. A történet Rideg Sándor 1939-es regényén és a 1979-es kultikus filmen alapul, most pedig a Magyar Színház színpadán kel újra életre.</b></div>
+             <a href="https://magyarszinhaz.hu/programok/indul-a-bakterhaz/" class="card-button">További részletek...</a>            
+<a href="https://www.jegy.hu/program/indul-a-bakterhaz-181286" class="card-button">Jegyvásárlás</a>
+        </div>
+    </div>
+    <div class="divider">VAGY</div>
+ <div class="card">
+        <img src="koldus.jpg" alt="">
+        <div class="card-content">
+            <div class="card-title">KOLDUS ÉS KIRÁLYFI</div>
+            <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+             <div class="card-location" style="text-align: justify;">A londoni utcák nyomorában élő koldusfiú és a paloták aranyfényében nevelkedő trónörökös egy napon egymás tükörképére ismer – és helyet cserélnek. A rongyok között megtapasztalt szabadság, a selymek mögött rejtőző magány, az utcák lármája és a palota hideg pompája mind új arcát mutatja meg számukra. Ahogy a két fiú belekóstol a másik életébe, megtanulják, mit ér a hatalom, és mit ér az ember, ha nincs benne emberség.
+
+Mark Twain klasszikus történetének zenés színpadi változata humort és felfedezést hoz – de legfőképp megértést és együttérzést. Egy színpadra vitt kaland, amely megmutatja: az emberi értékek túlmutatnak a társadalmi különbségeken.</div>
+<a href="https://magyarszinhaz.hu/programok/koldus-es-kiralyfi/" class="card-button">További részletek...</a>            
+<a href="https://www.jegy.hu/program/koldus-es-kiralyfi-178172" class="card-button">Jegyvásárlás</a>
+        </div>
+    </div>
+
+</div>
+
+     
+     
+
+</body>
+</html>
