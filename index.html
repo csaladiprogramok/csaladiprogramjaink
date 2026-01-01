@@ -15,18 +15,20 @@
 }
 
 html, body {
-    height: 100%;
+    min-height: 100%;
 }
 
 body {
     background: radial-gradient(circle at top, #0b2a4a, #000);
     color: #fff;
     font-family: 'Montserrat', sans-serif;
-    overflow: hidden; /* 👈 nincs görgetés */
+
+    overflow-y: auto;    /* görgethető */
+    overflow-x: hidden; /* nincs oldalirány */
 }
 
 /* ======================
-   KÖZLEMÉNY – LASSÚ
+   KÖZLEMÉNY
    ====================== */
 .notice-bar {
     position: fixed;
@@ -47,23 +49,25 @@ body {
     padding-left: 100%;
     animation: noticeMove 80s linear infinite;
 }
+
 @keyframes noticeMove {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-220%); }
+    0%   { transform: translateX(0); }
+    70%  { transform: translateX(-220%); }
+    100% { transform: translateX(-220%); }
 }
 
 /* ======================
    TELJES KÉPERNYŐ
    ====================== */
 .wrapper {
-    height: 100svh;
+    min-height: 100svh;
     padding-top: 42px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* ===== IDÉZET BLOKK ===== */
+/* ===== FEJLÉC ===== */
 .header {
     text-align: center;
     margin-bottom: 16px;
@@ -154,43 +158,12 @@ body {
     text-align: center;
 }
 
-/* MOBIL FINOMÍTÁS */
+/* MOBIL */
 @media (max-width: 600px) {
     .pin-btn {
         width: 72px;
         height: 72px;
         font-size: 24px;
-    }
-}
-@keyframes noticeMove {
-    /* kívül, jobb oldalon vár */
-    0% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-
-    /* lassan beúszik */
-    20% {
-        transform: translateX(-40%);
-        opacity: 1;
-    }
-
-    /* teljesen bent */
-    50% {
-        transform: translateX(-120%);
-        opacity: 1;
-    }
-
-    /* kiment balra */
-    70% {
-        transform: translateX(-220%);
-        opacity: 1;
-    }
-
-    /* SZÜNET – nincs mozgás */
-    100% {
-        transform: translateX(-220%);
-        opacity: 1;
     }
 }
 </style>
@@ -201,16 +174,13 @@ body {
 <!-- KÖZLEMÉNY -->
 <div class="notice-bar">
     <div class="notice-text">
-        📢 KÖZLEMÉNY - A rendszerünk fejlesztés alatt áll, legkésőbb ma (01.01) 19:00 - től újra elérhető lesz! Köszönjük a megértést!
-    <!--
-       📢 KÖZLEMÉNY - A felhasználóélmény javítása érdekében az újévtől összeolvadt a CSALÁDI PROGRAMJAINK és a VAKÁCIÓVÁGYÓ rendszere! Egy kattintással elérhető mindkettő weboldalunk egy PIN - kód segítségével. <span style="color: blue;"> A belépési PIN - kód mindenkinek a saját születési éve!</span> A korábbi bejelentkezési módszerek megszűntek!
-    --->
+        📢 KÖZLEMÉNY – A rendszer fejlesztés alatt áll, ma (01.01) 19:00-től újra elérhető!
     </div>
 </div>
 
 <div class="wrapper">
 
-    <!-- IDÉZET BLOKK -->
+    <!-- FEJLÉC -->
     <div class="header">
         <h1>CSALÁDI PROGRAMJAINK</h1>
         <div class="quote">„Az együtt töltött idő a legszebb ajándék.”</div>
@@ -220,7 +190,7 @@ body {
     <!-- PIN -->
     <div class="pin-screen">
 
-        <div class="pin-dots" id="dots">
+        <div class="pin-dots">
             <div class="dot"></div>
             <div class="dot"></div>
             <div class="dot"></div>
@@ -245,16 +215,18 @@ body {
 </div>
 
 <script>
-/*
-const validPins = ["1966", "1971", "2004", "2011"];
 let pin = "";
-*/
+
 const dots = document.querySelectorAll(".dot");
 const error = document.getElementById("error");
 
+/* 🔐 ELTOLÁSOS VÉDELEM
+   Valódi PIN-ek: 1966, 1971, 2004, 2011
+   Mindegyikhez +137 */
+const encodedPins = [2103, 2108, 2141, 2148];
+
 document.querySelectorAll(".pin-btn").forEach(btn => {
     btn.addEventListener("click", () => {
-
         if (pin.length >= 4) return;
 
         pin += btn.textContent;
@@ -267,7 +239,9 @@ document.querySelectorAll(".pin-btn").forEach(btn => {
 });
 
 function checkPin() {
-    if (validPins.includes(pin)) {
+    const encodedInput = parseInt(pin) + 137;
+
+    if (encodedPins.includes(encodedInput)) {
         window.location.href = "fooldal.html";
     } else {
         error.style.display = "block";
@@ -278,6 +252,7 @@ function checkPin() {
 function resetPin() {
     pin = "";
     dots.forEach(d => d.classList.remove("filled"));
+    error.style.display = "none";
 }
 </script>
 
