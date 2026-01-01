@@ -45,7 +45,7 @@ body {
     font-weight: 600;
     white-space: nowrap;
     padding-left: 100%;
-    animation: noticeMove 120s linear infinite;
+    animation: noticeMove 80s linear infinite;
 }
 @keyframes noticeMove {
     from { transform: translateX(0); }
@@ -201,7 +201,10 @@ body {
 <!-- KÖZLEMÉNY -->
 <div class="notice-bar">
     <div class="notice-text">
+        📢 KÖZLEMÉNY - A rendszerünk fejlesztés alatt áll, legkésőbb ma (01.01) 19:00 - től újra elérhető lesz! Köszönjük a megértést!
+    <!--
        📢 KÖZLEMÉNY - A felhasználóélmény javítása érdekében az újévtől összeolvadt a CSALÁDI PROGRAMJAINK és a VAKÁCIÓVÁGYÓ rendszere! Egy kattintással elérhető mindkettő weboldalunk egy PIN - kód segítségével. <span style="color: blue;"> A belépési PIN - kód mindenkinek a saját születési éve!</span> A korábbi bejelentkezési módszerek megszűntek!
+    --->
     </div>
 </div>
 
@@ -242,9 +245,10 @@ body {
 </div>
 
 <script>
+/*
 const validPins = ["1966", "1971", "2004", "2011"];
 let pin = "";
-
+*/
 const dots = document.querySelectorAll(".dot");
 const error = document.getElementById("error");
 
