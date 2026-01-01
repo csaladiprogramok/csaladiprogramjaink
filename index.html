@@ -46,15 +46,19 @@ body {
     color: red;
     font-weight: 600;
     white-space: nowrap;
-    padding-left: 100%;
-    animation: noticeMove 80s linear infinite;
+    animation: noticeMove 35s linear infinite;
 }
 
 @keyframes noticeMove {
-    0%   { transform: translateX(0); }
-    70%  { transform: translateX(-220%); }
-    100% { transform: translateX(-220%); }
+    0% {
+        transform: translateX(100vw);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
+
+
 
 /* ======================
    TELJES KÉPERNYŐ
@@ -174,7 +178,8 @@ body {
 <!-- KÖZLEMÉNY -->
 <div class="notice-bar">
     <div class="notice-text">
-        📢 KÖZLEMÉNY – A rendszer fejlesztés alatt áll, ma (01.01) 19:00-től újra elérhető!
+        📢 KÖZLEMÉNY – A rendszerünk fejlesztés alatt áll, legkésőbb ma (01.01.) 23:59-től újra elérhető lesz! Köszönjük a megértést!
+    <!-- 📢 KÖZLEMÉNY - A felhasználóélmény javítása érdekében az újévtől összeolvadt a CSALÁDI PROGRAMJAINK és a VAKÁCIÓVÁGYÓ rendszere! Egy kattintással elérhető mindkettő weboldalunk egy PIN - kód segítségével. <span style="color: blue;"> A belépési PIN - kód mindenkinek a saját születési éve!</span> A korábbi bejelentkezési módszerek megszűntek! --->
     </div>
 </div>
 
