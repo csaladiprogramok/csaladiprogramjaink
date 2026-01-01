@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,7 +77,7 @@
         .modal {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0, 0, 0, 0.9);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -89,7 +90,72 @@
             border-radius: 20px;
             width: 300px;
             text-align: center;
-            box-shadow: 0 0 25px rgba(0,255,255,0.2);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+        }
+
+        /* ACCORDION */
+        .accordion {
+            background: #e6e6e6;
+            border-radius: 10px;
+            color: #000;
+            margin-top: 30px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            width: 100%;
+            background: #d9d9d9;
+            border: none;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .acc-text h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .acc-sub {
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        .acc-status {
+            margin-top: 5px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .acc-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            background: #f2f2f2;
+            transition: max-height 0.35s ease;
+            padding: 0 15px;
+        }
+
+        .accordion-content p {
+            color: #000;
+            font-size: 0.95rem;
+            padding: 15px 0;
+        }
+
+        /* NYITOTT ÁLLAPOT */
+        .accordion.active .accordion-content {
+            max-height: 300px;
+        }
+
+        .accordion.active .acc-arrow {
+            transform: rotate(180deg);
         }
 
         #pinInput {
@@ -116,7 +182,7 @@
             font-size: 18px;
             border-radius: 50%;
             border: none;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             color: white;
             cursor: pointer;
         }
@@ -126,101 +192,135 @@
             margin-top: 12px;
             display: none;
         }
+        a {
+            text-decoration: none;
+            color: blue;
+        }
     </style>
 </head>
 
 <body class="locked">
 
-<a href="fooldal.html" class="close-btn">✕</a>
+    <a href="fooldal.html" class="close-btn">✕</a>
 
-<div class="tartalom">
-    <h1>JEGYEINK</h1>
-    <p><b><i>Jelenleg nincsenek elérhető, megvásárolt jegyeink!<br>Térj vissza később!</i></b></p>
-</div>
-
-<!-- MODAL -->
-<div id="pinModal" class="modal">
-    <div class="modal-box">
-        <h2>JEGYEINK</h2>
-        <p class="alcim"><b><i>Jelszóval védett tartalom</i></b></p>
-        
-
-        <input type="password" id="pinInput" readonly>
-
-        <div class="keypad">
-            <button onclick="addPin(1)">1</button>
-            <button onclick="addPin(2)">2</button>
-            <button onclick="addPin(3)">3</button>
-            <button onclick="addPin(4)">4</button>
-            <button onclick="addPin(5)">5</button>
-            <button onclick="addPin(6)">6</button>
-            <button onclick="addPin(7)">7</button>
-            <button onclick="addPin(8)">8</button>
-            <button onclick="addPin(9)">9</button>
-            <div></div>
-            <button onclick="addPin(0)">0</button>
-            <div></div>
-        </div>
-
-        <p id="pinError">Hibás PIN - kód! Próbáld újra!</p>
+    <div class="tartalom">
+        <h1>JEGYEINK</h1>
+        <p><b><i>Jelenleg nincsenek elérhető, megvásárolt jegyeink!<br>Térj vissza később!</i></b></p>
     </div>
-</div>
 
-<script>
-let pin = "";
-let errorTimeout = null;
+    <!-- MODAL -->
+    <div id="pinModal" class="modal">
+        <div class="modal-box">
+            <h2>JEGYEINK</h2>
+            <p class="alcim"><b><i>Jelszóval védett tartalom</i></b></p>
 
-/* Obfuszkált ellenőrzés – CSAK 2009 */
-const requiredLength = 4;
-const requiredSum = 11;
 
-function addPin(num) {
-    if (pin.length >= requiredLength) return;
+            <input type="password" id="pinInput" readonly>
 
-    pin += num;
-    document.getElementById("pinInput").value = "*".repeat(pin.length);
+            <div class="keypad">
+                <button onclick="addPin(1)">1</button>
+                <button onclick="addPin(2)">2</button>
+                <button onclick="addPin(3)">3</button>
+                <button onclick="addPin(4)">4</button>
+                <button onclick="addPin(5)">5</button>
+                <button onclick="addPin(6)">6</button>
+                <button onclick="addPin(7)">7</button>
+                <button onclick="addPin(8)">8</button>
+                <button onclick="addPin(9)">9</button>
+                <div></div>
+                <button onclick="addPin(0)">0</button>
+                <div></div>
+            </div>
 
-    if (pin.length === requiredLength) {
-        checkPin();
-    }
-}
+            <p id="pinError">Hibás PIN - kód! Próbáld újra!</p>
+        </div>
+    </div>
 
-function checkPin() {
-    const digits = pin.split("").map(Number);
-    const sum = digits.reduce((a, b) => a + b, 0);
+    <div class="accordion">
+        <button class="accordion-header">
+            <div class="acc-text">
+                <h3>MAGYAR SZÍNHÁZ - KOLDUS ÉS KIRÁLYFI - TESZTJEGY</h3>
+                <div class="acc-sub"><b>2026. március 01.</b></div>
+                <div class="acc-status" style="color: green;">ELÉRHETŐ</div>
+            </div>
+            <span class="acc-arrow">▲</span>
+        </button>
 
-    const valid =
-        digits[0] === 2 &&
-        digits[1] === 0 &&
-        digits[2] === 0 &&
-        digits[3] === 9 &&
-        sum === requiredSum &&
-        pin.length === requiredLength;
+        <div class="accordion-content">
+            <p>
+                <b>JEGYEINK</b> <br>
+                <a href=""><b><i>1.) 1. SOR 1. SZÉK  </b></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⬇️ Letöltés</a> <br>
+                <a href=""><b><i>2.) 1. SOR 2. SZÉK  </b></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⬇️ Letöltés</a> <br>
+                <a href=""><b><i>3.) 1. SOR 3. SZÉK  </b></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⬇️ Letöltés</a> <br>
+                <a href=""><b><i>4.) 1. SOR 4. SZÉK </b></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⬇️ Letöltés</a> <br>
+            </p>
+        </div>
+    </div>
 
-    if (valid) {
-        document.getElementById("pinModal").style.display = "none";
-        document.body.classList.remove("locked");
-    } else {
-        showError();
-        resetPin();
-    }
-}
 
-function resetPin() {
-    pin = "";
-    document.getElementById("pinInput").value = "";
-}
+    <script>
+        let pin = "";
+        let errorTimeout = null;
 
-function showError() {
-    const error = document.getElementById("pinError");
-    error.style.display = "block";
+        /* Obfuszkált ellenőrzés – CSAK 2009 */
+        const requiredLength = 4;
+        const requiredSum = 11;
 
-    if (errorTimeout) clearTimeout(errorTimeout);
-    errorTimeout = setTimeout(() => {
-        error.style.display = "none";
-    }, 2500);
-}
-</script>
+        function addPin(num) {
+            if (pin.length >= requiredLength) return;
+
+            pin += num;
+            document.getElementById("pinInput").value = "*".repeat(pin.length);
+
+            if (pin.length === requiredLength) {
+                checkPin();
+            }
+        }
+
+        function checkPin() {
+            const digits = pin.split("").map(Number);
+            const sum = digits.reduce((a, b) => a + b, 0);
+
+            const valid =
+                digits[0] === 2 &&
+                digits[1] === 0 &&
+                digits[2] === 0 &&
+                digits[3] === 9 &&
+                sum === requiredSum &&
+                pin.length === requiredLength;
+
+            if (valid) {
+                document.getElementById("pinModal").style.display = "none";
+                document.body.classList.remove("locked");
+            } else {
+                showError();
+                resetPin();
+            }
+        }
+
+        function resetPin() {
+            pin = "";
+            document.getElementById("pinInput").value = "";
+        }
+
+        function showError() {
+            const error = document.getElementById("pinError");
+            error.style.display = "block";
+
+            if (errorTimeout) clearTimeout(errorTimeout);
+            errorTimeout = setTimeout(() => {
+                error.style.display = "none";
+            }, 2500);
+        }
+    </script>
+    <script>
+        document.querySelectorAll(".accordion-header").forEach(btn => {
+            btn.addEventListener("click", () => {
+                btn.parentElement.classList.toggle("active");
+            });
+        });
+    </script>
 
 </body>
+
 </html>
