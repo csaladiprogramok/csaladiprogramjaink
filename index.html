@@ -3,182 +3,194 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Családi programjaink</title>
+<title>Belépés</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital@1&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Playfair+Display:ital@1&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 * {
     box-sizing: border-box;
-}
-
-html, body {
     margin: 0;
     padding: 0;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
-    background-color: #000;
+    background: radial-gradient(circle at top, #0b2a4a, #000);
     color: #fff;
     font-family: 'Montserrat', sans-serif;
+    overflow: hidden; /* 👈 nincs görgetés */
 }
 
 /* ======================
-   ALAP / LAPTOP LAYOUT
+   KÖZLEMÉNY – LASSÚ
+   ====================== */
+.notice-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 32px;
+    background: #fff;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+}
+
+.notice-text {
+    color: red;
+    font-weight: 600;
+    white-space: nowrap;
+    padding-left: 100%;
+    animation: noticeMove 120s linear infinite;
+}
+@keyframes noticeMove {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-220%); }
+}
+
+/* ======================
+   TELJES KÉPERNYŐ
    ====================== */
 .wrapper {
+    height: 100svh;
+    padding-top: 42px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
-    padding: 10px 12px;
 }
 
-/* laptop méret */
-@media (min-width: 769px) {
-    .wrapper {
-        max-width: 50cm;
-        min-height: 25cm;
-        margin: 0 auto;
-    }
-}
-
-/* FEJLÉC */
+/* ===== IDÉZET BLOKK ===== */
 .header {
     text-align: center;
+    margin-bottom: 16px;
 }
 
 .header h1 {
-    font-size: 22px;
+    font-size: 26px;
     letter-spacing: 2px;
-    margin: 4px 0;
 }
 
 .quote {
     font-family: 'Playfair Display', serif;
-    font-size: 13px;
+    font-size: 16px;
     color: #cfd8e3;
-    margin: 2px 0;
 }
 
 .family-title {
     font-family: 'Cinzel', serif;
     font-size: 18px;
     letter-spacing: 3px;
-    margin: 2px 0 6px 0;
-}
-
-/* SLIDER */
-.slider {
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    border-radius: 14px;
-    background-color: #000;
-}
-
-.slide {
-    display: none;
-}
-
-.slide.active {
-    display: block;
-}
-
-.slide img {
-    width: 100%;
-    display: block;
-    object-fit: contain;
-}
-
-/* PÖTTYÖK */
-.dots {
-    margin: 4px 0;
-    text-align: center;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    margin: 0 3px;
-    background: #555;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.dot.active {
-    background: white;
-}
-
-/* GOMBOK */
-.buttons {
-    display: flex;
-    gap: 8px;
-    margin-top: 4px;
-}
-
-.buttons a {
-    background-color: #0b2a4a;
-    color: white;
-    text-decoration: none;
-    padding: 12px 22px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    min-width: 180px;
-    text-align: center;
+    margin-top: 6px;
 }
 
 /* ======================
-   📱 MOBIL – TELJES KÉPERNYŐ
+   PIN KÉPERNYŐ
    ====================== */
-@media (max-width: 768px) {
+.pin-screen {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-    /* TELJES KÉPERNYŐ MAGASSÁG */
-    .wrapper {
-        min-height: 100svh; /* 👈 mobilbarát */
-    }
+/* PIN DOTOK */
+.pin-dots {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 26px;
+}
 
-    /* nagyobb felső szöveg */
-    .header h1 {
-        font-size: 32px;
-        line-height: 1.2;
-    }
+.dot {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #7fbfff;
+    border-radius: 50%;
+}
 
-    .quote {
-        font-size: 17px;
-        line-height: 1.4;
-    }
+.dot.filled {
+    background: #7fbfff;
+}
 
-    .family-title {
+/* PIN PAD */
+.pin-pad {
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    gap: 14px;
+}
+
+/* GOMB */
+.pin-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    border: none;
+    backdrop-filter: blur(6px);
+}
+
+.pin-btn:active {
+    background: rgba(127,191,255,0.4);
+}
+
+/* 0 KÖZÉPEN */
+.pin-btn.zero {
+    grid-column: 2;
+}
+
+/* HIBA */
+.error {
+    color: #ff6666;
+    margin-top: 14px;
+    display: none;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* MOBIL FINOMÍTÁS */
+@media (max-width: 600px) {
+    .pin-btn {
+        width: 72px;
+        height: 72px;
         font-size: 24px;
-        letter-spacing: 4px;
-        margin-bottom: 10px;
+    }
+}
+@keyframes noticeMove {
+    /* kívül, jobb oldalon vár */
+    0% {
+        transform: translateX(0);
+        opacity: 1;
     }
 
-    /* kép + pöttyök középen */
-    .slider,
-    .dots {
-        margin-left: auto;
-        margin-right: auto;
+    /* lassan beúszik */
+    20% {
+        transform: translateX(-40%);
+        opacity: 1;
     }
 
-    .slider {
-        width: 95vw;
+    /* teljesen bent */
+    50% {
+        transform: translateX(-120%);
+        opacity: 1;
     }
 
-    /* gombok közvetlenül alatta */
-    .buttons {
-        flex-direction: column;
-        align-items: center;
-        margin-top: 6px;
-        padding-bottom: 12px;
-        width: 100%;
+    /* kiment balra */
+    70% {
+        transform: translateX(-220%);
+        opacity: 1;
     }
 
-    .buttons a {
-        width: 95%;
-        font-size: 15px;
+    /* SZÜNET – nincs mozgás */
+    100% {
+        transform: translateX(-220%);
+        opacity: 1;
     }
 }
 </style>
@@ -186,75 +198,83 @@ body {
 
 <body>
 
+<!-- KÖZLEMÉNY -->
+<div class="notice-bar">
+    <div class="notice-text">
+       📢 KÖZLEMÉNY - A felhasználóélmény javítása érdekében az újévtől összeolvadt a CSALÁDI PROGRAMJAINK és a VAKÁCIÓVÁGYÓ rendszere! Egy kattintással elérhető mindkettő weboldalunk egy PIN - kód segítségével. <span style="color: blue;"> A belépési PIN - kód mindenkinek a saját születési éve!</span> A korábbi bejelentkezési módszerek megszűntek!
+    </div>
+</div>
+
 <div class="wrapper">
 
+    <!-- IDÉZET BLOKK -->
     <div class="header">
         <h1>CSALÁDI PROGRAMJAINK</h1>
         <div class="quote">„Az együtt töltött idő a legszebb ajándék.”</div>
-        <div class="family-title">Orosz Család</div> 
-    </div> <br>
-<div class="slider">
-    <div class="slide active">
-        <a href="#">
-            <img src="koldusfooldal.jpg" alt="">
-        </a>
-    </div>
-        <div class="slide">
-        <a href="#">
-            <img src="javaslat.jpg" alt="">
-        </a>
-    </div>
-    <div class="slide">
-        <a href="#">
-            <img src="valaholfooldal.jpg" alt="">
-        </a>
+        <div class="family-title">Orosz Család</div>
     </div>
 
-    <div class="slide">
-        <a href="#">
-            <img src="indulfooldal.jpg" alt="">
-        </a>
+    <!-- PIN -->
+    <div class="pin-screen">
+
+        <div class="pin-dots" id="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <div class="pin-pad">
+            <button class="pin-btn">1</button>
+            <button class="pin-btn">2</button>
+            <button class="pin-btn">3</button>
+            <button class="pin-btn">4</button>
+            <button class="pin-btn">5</button>
+            <button class="pin-btn">6</button>
+            <button class="pin-btn">7</button>
+            <button class="pin-btn">8</button>
+            <button class="pin-btn">9</button>
+            <button class="pin-btn zero">0</button>
+        </div>
+
+        <div class="error" id="error">Hibás PIN-kód! Próbáld újra!</div>
     </div>
-
-            <div class="slide">
-        <a href="#">
-            <img src="kozostaktika.jpg" alt="">
-        </a>
-    </div>
-</div>
-
-    <div class="dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-    </div> <br>
-
-    <div class="buttons">
-        <a href="programjaink.html">PROGRAMJAINK</a>
-        <a href="bakancslistánk.html">Bakancslistánk</a>
-        <a href="programajanlok.html">Ajánlók</a>
-        <a href="ilyenvolt.html">Ilyen volt...</a>
-    </div>
-
 </div>
 
 <script>
-let index = 0;
-const slides = document.querySelectorAll(".slide");
+const validPins = ["1966", "1971", "2004", "2011"];
+let pin = "";
+
 const dots = document.querySelectorAll(".dot");
+const error = document.getElementById("error");
 
-function showSlide(i) {
-    slides.forEach(s => s.classList.remove("active"));
-    dots.forEach(d => d.classList.remove("active"));
+document.querySelectorAll(".pin-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
 
-    index = (i + slides.length) % slides.length;
-    slides[index].classList.add("active");
-    dots[index].classList.add("active");
+        if (pin.length >= 4) return;
+
+        pin += btn.textContent;
+        dots[pin.length - 1].classList.add("filled");
+
+        if (pin.length === 4) {
+            setTimeout(checkPin, 200);
+        }
+    });
+});
+
+function checkPin() {
+    if (validPins.includes(pin)) {
+        window.location.href = "fooldal.html";
+    } else {
+        error.style.display = "block";
+        setTimeout(resetPin, 1200);
+    }
 }
 
-setInterval(() => showSlide(index + 1), 5000);
+function resetPin() {
+    pin = "";
+    dots.forEach(d => d.classList.remove("filled"));
+}
 </script>
 
 </body>
