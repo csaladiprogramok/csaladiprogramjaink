@@ -142,7 +142,8 @@
 <div id="pinModal" class="modal">
     <div class="modal-box">
         <h2>JEGYEINK</h2>
-        <p class="alcim"><i>Jelszóval védett tartalom</i></p>
+        <p class="alcim"><b>Jelszóval védett tartalom</b></p>
+        <p class="alcim"><i>A jelszó Csimbi kutyánk születési éve!</i></p>
 
         <input type="password" id="pinInput" readonly>
 
@@ -169,9 +170,9 @@
 let pin = "";
 let errorTimeout = null;
 
-
-const requiredLength = 2;
-const requiredSum = 5;
+/* Obfuszkált ellenőrzés – CSAK 2009 */
+const requiredLength = 4;
+const requiredSum = 11;
 
 function addPin(num) {
     if (pin.length >= requiredLength) return;
@@ -188,7 +189,15 @@ function checkPin() {
     const digits = pin.split("").map(Number);
     const sum = digits.reduce((a, b) => a + b, 0);
 
-    if (pin.length === requiredLength && sum === requiredSum) {
+    const valid =
+        digits[0] === 2 &&
+        digits[1] === 0 &&
+        digits[2] === 0 &&
+        digits[3] === 9 &&
+        sum === requiredSum &&
+        pin.length === requiredLength;
+
+    if (valid) {
         document.getElementById("pinModal").style.display = "none";
         document.body.classList.remove("locked");
     } else {
