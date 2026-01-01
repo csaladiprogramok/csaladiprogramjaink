@@ -9,29 +9,28 @@
         body {
             margin: 0;
             padding: 0;
-             background: radial-gradient(circle at top, #0b2a4a, #000);
+            background: radial-gradient(circle at top, #0b2a4a, #000);
             color: #ffffff;
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        body {
-    margin: 0;
-    padding: 0;
-    color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
-}
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at top, #0b2a4a, #000);
+            z-index: -1;
+        }
 
-/* FIX HÁTTÉR */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: radial-gradient(circle at top, #0b2a4a, #000);
-    z-index: -1;
-}
+        /* ZÁROLT ÁLLAPOT */
+        body.locked {
+            overflow: hidden;
+        }
+
+        body.locked .tartalom,
+        body.locked .close-btn {
+            display: none;
+        }
 
         .tartalom {
             max-width: 600px;
@@ -50,43 +49,169 @@ body::before {
             line-height: 1.6;
             color: #dddddd;
         }
-                       /* ❌ BEZÁRÓ X */
-.close-btn {
-    position: fixed;
-    top: 14px;
-    right: 16px;
-    color: white;
-    text-decoration: none;
-    font-size: 26px;
-    font-weight: 600;
-    z-index: 1000;
-    opacity: 0.85;
-}
 
-.close-btn:hover {
-    opacity: 1;
-}
+        .close-btn {
+            position: fixed;
+            top: 14px;
+            right: 16px;
+            color: white;
+            text-decoration: none;
+            font-size: 26px;
+            font-weight: 600;
+            z-index: 1000;
+            opacity: 0.85;
+        }
 
-/* MOBIL */
-@media (max-width: 768px) {
-    .close-btn {
-        font-size: 28px;
-        top: 12px;
-        right: 14px;
-    }
-}
+        .close-btn:hover {
+            opacity: 1;
+        }
+
+        .alcim {
+            font-size: 0.95rem;
+            color: #bbbbbb;
+            margin-bottom: 15px;
+        }
+
+        /* MODAL */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .modal-box {
+            background: linear-gradient(145deg, #0b2a4a, #000);
+            padding: 30px 25px;
+            border-radius: 20px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(0,255,255,0.2);
+        }
+
+        #pinInput {
+            width: 100%;
+            padding: 12px;
+            font-size: 22px;
+            text-align: center;
+            letter-spacing: 6px;
+            border-radius: 10px;
+            border: none;
+            margin-bottom: 20px;
+            background: #111;
+            color: #0ff;
+        }
+
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .keypad button {
+            padding: 16px;
+            font-size: 18px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            cursor: pointer;
+        }
+
+        #pinError {
+            color: #ff6666;
+            margin-top: 12px;
+            display: none;
+        }
     </style>
 </head>
-<body>
-<a href="fooldal.html" class="close-btn">✕</a>
-    <div class="tartalom">
-        <h1>JEGYEINK</h1>
 
-        <p >
-            <b><i>Jelenleg nincsenek elérhető, megvásárolt jegyek! <br> Térj vissza később!</i></b>
-            
-        </p>
+<body class="locked">
+
+<a href="fooldal.html" class="close-btn">✕</a>
+
+<div class="tartalom">
+    <h1>JEGYEINK</h1>
+    <p><b><i>Jelenleg nincsenek elérhető, megvásárolt jegyeink!<br>Térj vissza később!</i></b></p>
+</div>
+
+<!-- MODAL -->
+<div id="pinModal" class="modal">
+    <div class="modal-box">
+        <h2>JEGYEINK</h2>
+        <p class="alcim"><i>Jelszóval védett tartalom</i></p>
+
+        <input type="password" id="pinInput" readonly>
+
+        <div class="keypad">
+            <button onclick="addPin(1)">1</button>
+            <button onclick="addPin(2)">2</button>
+            <button onclick="addPin(3)">3</button>
+            <button onclick="addPin(4)">4</button>
+            <button onclick="addPin(5)">5</button>
+            <button onclick="addPin(6)">6</button>
+            <button onclick="addPin(7)">7</button>
+            <button onclick="addPin(8)">8</button>
+            <button onclick="addPin(9)">9</button>
+            <div></div>
+            <button onclick="addPin(0)">0</button>
+            <div></div>
+        </div>
+
+        <p id="pinError">Hibás PIN - kód! Próbáld újra!</p>
     </div>
+</div>
+
+<script>
+let pin = "";
+let errorTimeout = null;
+
+
+const requiredLength = 2;
+const requiredSum = 5;
+
+function addPin(num) {
+    if (pin.length >= requiredLength) return;
+
+    pin += num;
+    document.getElementById("pinInput").value = "*".repeat(pin.length);
+
+    if (pin.length === requiredLength) {
+        checkPin();
+    }
+}
+
+function checkPin() {
+    const digits = pin.split("").map(Number);
+    const sum = digits.reduce((a, b) => a + b, 0);
+
+    if (pin.length === requiredLength && sum === requiredSum) {
+        document.getElementById("pinModal").style.display = "none";
+        document.body.classList.remove("locked");
+    } else {
+        showError();
+        resetPin();
+    }
+}
+
+function resetPin() {
+    pin = "";
+    document.getElementById("pinInput").value = "";
+}
+
+function showError() {
+    const error = document.getElementById("pinError");
+    error.style.display = "block";
+
+    if (errorTimeout) clearTimeout(errorTimeout);
+    errorTimeout = setTimeout(() => {
+        error.style.display = "none";
+    }, 2500);
+}
+</script>
 
 </body>
 </html>
