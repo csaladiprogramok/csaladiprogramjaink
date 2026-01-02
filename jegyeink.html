@@ -316,7 +316,6 @@ body.locked {
 
     function _lock(){
         const e = document.getElementById("pinError");
-        e.textContent = "Túl sok próbálkozás! Várj 30 másodpercet.";
         e.style.display = "block";
         document.querySelectorAll(".pinBtn").forEach(b => b.disabled = true);
 
