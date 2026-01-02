@@ -1,47 +1,109 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programjaink 2026</title>
+    <title>Éves programajánlók</title>
 
     <style>
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-             background: radial-gradient(circle at top, #0b2a4a, #000);
-            color: #ffffff;
             font-family: Arial, Helvetica, sans-serif;
         }
-body {
-    margin: 0;
-    padding: 0;
-    color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
-}
 
-/* FIX HÁTTÉR */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: radial-gradient(circle at top, #0b2a4a, #000);
-    z-index: -1;
-}
-
-        .tartalom {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
+        body {
+            background: radial-gradient(circle at top, #0b2a4a, #000);
+            padding: 20px;
         }
 
-        h1 {
-            font-size: 2rem;
+        .container {
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        /* FEJLÉC */
+        .header {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        .header h2 {
+            font-size: 26px;
+            margin-top: 5px;
+        }
+
+        /* HÓNAP */
+        .month {
+            color: #ffeb00;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0 10px;
+            font-size: 18px;
+        }
+
+        /* KÁRTYA */
+        .card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
             margin-bottom: 20px;
+        }
+
+        .card img {
+            width: 100%;
+            display: block;
+        }
+
+        .card-content {
+            padding: 15px;
+            color: #000;
+        }
+
+        /* 👉 SÁRGA CÍM */
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1db954;
+            margin-bottom: 6px;
+        }
+
+        .card-location {
+            font-size: 14px;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        /* 👉 LINKES GOMB */
+        .card-button {
+            display: inline-block;
+            background: black;
+            color: red;
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .no-ticket {
+            display: inline-block;
+            background: grey;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
         }
 
         p {
@@ -49,43 +111,225 @@ body::before {
             line-height: 1.6;
             color: #dddddd;
         }
-                       /* ❌ BEZÁRÓ X */
-.close-btn {
-    position: fixed;
-    top: 14px;
-    right: 16px;
-    color: white;
-    text-decoration: none;
-    font-size: 26px;
-    font-weight: 600;
-    z-index: 1000;
-    opacity: 0.85;
-}
 
-.close-btn:hover {
-    opacity: 1;
-}
+        .card-button:hover {
+            background: #17a84a;
+        }
 
-/* MOBIL */
-@media (max-width: 768px) {
-    .close-btn {
-        font-size: 28px;
-        top: 12px;
-        right: 14px;
-    }
-}
+        .divider {
+            text-align: center;
+            color: blue;
+            font-weight: bold;
+            margin: 10px 0 15px;
+        }
+
+        /* ❌ BEZÁRÓ X */
+        .close-btn {
+            position: fixed;
+            top: 14px;
+            right: 16px;
+            color: white;
+            text-decoration: none;
+            font-size: 26px;
+            font-weight: 600;
+            z-index: 1000;
+            opacity: 0.85;
+        }
+
+        .close-btn:hover {
+            opacity: 1;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: space-between;
+            background: #111;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 15px 0;
+        }
+
+        .time-box {
+            text-align: center;
+            flex: 1;
+            border-right: 1px solid RED;
+        }
+
+        .time-box:last-child {
+            border-right: none;
+        }
+
+        .number {
+            display: block;
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .label {
+            font-size: 11px;
+            color: RED;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: white;
+        }
+
+        /* MOBIL */
+        @media (max-width: 768px) {
+            p {
+                text-align: center;
+            }
+            .slider {
+                height: 35vh;
+                max-height: 300px;
+            }
+
+            .buttons {
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+            }
+
+            .buttons a {
+                width: 90%;
+                font-size: 16px;
+            }
+
+            .close-btn {
+                font-size: 28px;
+                top: 12px;
+                right: 14px;
+            }
+        }
     </style>
 </head>
-<body>
-<a href="fooldal.html" class="close-btn">✕</a>
-    <div class="tartalom">
-        <h1>PROGRAMJAINK <br> 2026</h1>
 
-        <p >
-            <b><i>Jelenleg nincsenek kiválasztott programjaink!</i></b>
-            
-        </p>
-    </div>
+<body>
+
+    <div class="container">
+        <a href="fooldal.html" class="close-btn">✕</a>
+
+        <h1>Programjaink</h1>
+        <h1>2026</h1>
+
+        <p><b><i>Jelenleg nincsenek kiválasztott programjaink!</i></b></p>
+
+        <br><br>
+        <div class="card" style="text-align: center;">
+            <img src="koldus.jpg" alt="">
+            <div class="card-content">
+                <div class="countdown" data-date="2026-05-01T15:30:00">
+                    <div class="time-box">
+                        <span class="number days">00</span>
+                        <span class="label">NAP</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number hours">00</span>
+                        <span class="label">ÓRA</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number minutes">00</span>
+                        <span class="label">PERC</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number seconds">00</span>
+                        <span class="label">MÁSODPERC</span>
+                    </div>
+                </div>
+                <div style="text-align: center; font-size: 18px;">
+                    <b>2026. MÁRCIUS 01. 15:30</b> 
+                </div> <br>
+                <div class="card-title">KOLDUS ÉS KIRÁLYFI</div>
+                <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+                <div class="card-location">A londoni utcák nyomorában élő koldusfiú és a
+                    paloták aranyfényében nevelkedő trónörökös egy napon egymás tükörképére ismer – és helyet cserélnek.
+                    A rongyok között megtapasztalt szabadság, a selymek mögött rejtőző magány, az utcák lármája és a
+                    palota hideg pompája mind új arcát mutatja meg számukra. Ahogy a két fiú belekóstol a másik életébe,
+                    megtanulják, mit ér a hatalom, és mit ér az ember, ha nincs benne emberség.
+
+                    Mark Twain klasszikus történetének zenés színpadi változata humort és felfedezést hoz – de legfőképp
+                    megértést és együttérzést. Egy színpadra vitt kaland, amely megmutatja: az emberi értékek
+                    túlmutatnak a társadalmi különbségeken.</div> <br>
+                <a href="#" class="card-button">RÉSZLETEK</a> <br> <br>
+                <a href="jegyeink.html" class="card-button">MEGVÁSÁROLT JEGYEINK</a>
+            </div>
+        </div>
+
+          <div class="card" style="text-align: center;">
+            <img src="koldus.jpg" alt="">
+            <div class="card-content">
+                <div class="countdown" data-date="2026-12-01T19:30:00">
+                    <div class="time-box">
+                        <span class="number days">00</span>
+                        <span class="label">NAP</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number hours">00</span>
+                        <span class="label">ÓRA</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number minutes">00</span>
+                        <span class="label">PERC</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number seconds">00</span>
+                        <span class="label">MÁSODPERC</span>
+                    </div>
+                </div>
+                <div style="text-align: center; font-size: 18px;">
+                    <b>2026. DECEMBER 01. 19:30</b> 
+                </div> <br>
+                <div class="card-title">KOLDUS ÉS KIRÁLYFI</div>
+                <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+                <div class="card-location">A londoni utcák nyomorában élő koldusfiú és a
+                    paloták aranyfényében nevelkedő trónörökös egy napon egymás tükörképére ismer – és helyet cserélnek.
+                    A rongyok között megtapasztalt szabadság, a selymek mögött rejtőző magány, az utcák lármája és a
+                    palota hideg pompája mind új arcát mutatja meg számukra. Ahogy a két fiú belekóstol a másik életébe,
+                    megtanulják, mit ér a hatalom, és mit ér az ember, ha nincs benne emberség.
+
+                    Mark Twain klasszikus történetének zenés színpadi változata humort és felfedezést hoz – de legfőképp
+                    megértést és együttérzést. Egy színpadra vitt kaland, amely megmutatja: az emberi értékek
+                    túlmutatnak a társadalmi különbségeken.</div> <br>
+                <a href="#" class="card-button">RÉSZLETEK</a> <br> <br>
+                <a href="jegyeink.html" class="card-button">MEGVÁSÁROLT JEGYEINK</a>
+            </div>
+        </div>
+        <script>
+            function startCountdowns() {
+                const countdowns = document.querySelectorAll(".countdown");
+
+                countdowns.forEach(cd => {
+                    const targetDate = new Date(cd.dataset.date).getTime();
+
+                    setInterval(() => {
+                        const now = new Date().getTime();
+                        const diff = targetDate - now;
+
+                        if (diff <= 0) {
+                            cd.innerHTML = "<b style='color:#ff3b3b'>ELKEZDŐDÖTT</b>";
+                            return;
+                        }
+
+                        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                        const seconds = Math.floor((diff / 1000) % 60);
+
+                        cd.querySelector(".days").textContent = days.toString().padStart(2, "0");
+                        cd.querySelector(".hours").textContent = hours.toString().padStart(2, "0");
+                        cd.querySelector(".minutes").textContent = minutes.toString().padStart(2, "0");
+                        cd.querySelector(".seconds").textContent = seconds.toString().padStart(2, "0");
+                    }, 1000);
+                });
+            }
+
+            startCountdowns();
+        </script>
 
 </body>
+
 </html>
