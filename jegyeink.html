@@ -284,65 +284,70 @@ body.locked {
         <a href="archivum.html">Archívum</a>
     </footer>
 </div>
-    <script>
-        let pin = "";
-        let errorTimeout = null;
+<script>
+(function(){
+    let _p = "";
+    let _tries = 0;
+    const _len = 4;
+    const _max = 3;
 
-        /* Obfuszkált ellenőrzés – CSAK 2009 */
-        const requiredLength = 4;
-        const requiredSum = 11;
-
-        function addPin(num) {
-            if (pin.length >= requiredLength) return;
-
-            pin += num;
-            document.getElementById("pinInput").value = "*".repeat(pin.length);
-
-            if (pin.length === requiredLength) {
-                checkPin();
-            }
+    function _h(s){
+        let x = 5381;
+        for(let i=0;i<s.length;i++){
+            x = ((x << 5) + x) + s.charCodeAt(i);
         }
+        return x >>> 0;
+    }
 
-        function checkPin() {
-            const digits = pin.split("").map(Number);
-            const sum = digits.reduce((a, b) => a + b, 0);
+   
+    const _K = 2088324368;
 
-            const valid =
-                digits[0] === 2 &&
-                digits[1] === 0 &&
-                digits[2] === 0 &&
-                digits[3] === 9 &&
-                sum === requiredSum &&
-                pin.length === requiredLength;
-
-            if (valid) {
-                document.getElementById("pinModal").style.display = "none";
-                document.body.classList.remove("locked");
-            } else {
-                showError();
-                resetPin();
-            }
+    function _check(){
+        if(_h(_p) === _K){
+            document.getElementById("pinModal").style.display = "none";
+            document.body.classList.remove("locked");
+        } else {
+            _tries++;
+            _showErr();
+            _reset();
+            if(_tries >= _max) _lock();
         }
+    }
 
-        function resetPin() {
-            pin = "";
-            document.getElementById("pinInput").value = "";
-        }
+    function _lock(){
+        const e = document.getElementById("pinError");
+        e.textContent = "Túl sok próbálkozás! Várj 30 másodpercet.";
+        e.style.display = "block";
+        document.querySelectorAll(".pinBtn").forEach(b => b.disabled = true);
 
-        function showError() {
-            const error = document.getElementById("pinError");
-            error.style.display = "block";
+        setTimeout(()=>{
+            _tries = 0;
+            e.style.display = "none";
+            document.querySelectorAll(".pinBtn").forEach(b => b.disabled = false);
+        }, 30000);
+    }
 
-            if (errorTimeout) clearTimeout(errorTimeout);
-            errorTimeout = setTimeout(() => {
-                error.style.display = "none";
-            }, 2500);
-        }
-    </script>
+    function _reset(){
+        _p = "";
+        document.getElementById("pinInput").value = "";
+    }
 
+    function _showErr(){
+        const e = document.getElementById("pinError");
+        e.style.display = "block";
+        setTimeout(()=>e.style.display="none",2000);
+    }
 
+    window.addPin = function(n){
+        if(_p.length >= _len) return;
+        _p += n;
+        document.getElementById("pinInput").value = "*".repeat(_p.length);
+        if(_p.length === _len) _check();
+    };
+})();
+</script>
 
-    <script>
+ <script>
         document.querySelectorAll(".accordion-header").forEach(btn => {
             btn.addEventListener("click", () => {
                 btn.parentElement.classList.toggle("active");
