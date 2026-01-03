@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jegyeink</title>
+    <title>Archívum</title>
 
     <style>
         body.locked {
-            background: #000;
+            background: radial-gradient(circle at top, #0b2a4a, #000);;
         }
 
         body {
@@ -28,13 +28,15 @@
         }
 
         /* ZÁROLT ÁLLAPOT */
-     body.locked .protected {
-    display: none;
-}
+        body.locked {
+            overflow: hidden;
+        }
 
-body.locked {
-    overflow: hidden;
-}
+        body.locked .tartalom,
+        body.locked .close-btn,
+        body.locked footer {
+            display: none;
+        }
 
         .tartalom {
             max-width: 600px;
@@ -64,7 +66,6 @@ body.locked {
             font-weight: 600;
             z-index: 1000;
             opacity: 0.85;
-            margin-top: 30px;
         }
 
         .close-btn:hover {
@@ -175,7 +176,6 @@ body.locked {
             color: #0ff;
         }
 
-
         .keypad {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -200,103 +200,28 @@ body.locked {
 
         a {
             text-decoration: none;
-            color: blue;
+            color:red;
         }
 
         footer {
-            position: fixed;
-            bottom: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.9rem;
-            z-index: 500;
-        }
-
-        footer a {
+            text-align: center;
+            padding: 25px 0;
             color: #888;
-            text-decoration: none;
+            font-size: 0.9rem;
         }
-
-        footer a:hover {
-            color: #0ff;
-        }
- .notice-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 32px;
-    background: #fff;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    z-index: 10000; /* MODAL FÖLÖTT */
-}
-
-.notice-text {
-    color: red;
-    font-weight: 600;
-    white-space: nowrap;
-    animation: noticeMove 35s linear infinite;
-}
-
-@keyframes noticeMove {
-    0% {
-        transform: translateX(100vw);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
     </style>
 </head>
 
-<!-- KÖZLEMÉNY -->
+<body >
 
+    <a href="fooldal.html" class="close-btn">✕</a>
 
-<body class="locked">
-<div class="notice-bar">
-    <div class="notice-text">
-    
-     🔑 <span style="color: green;">JELSZÓ -</span> CSIMBI KUTYÁNK SZÜLETÉSI ÉVE! - TARTSD TITOKBAN! :)</div>
-
-    </div>
- 
-    <!-- MODAL -->
-    <div id="pinModal" class="modal">
-        <div class="modal-box">
-            <h2>JEGYEINK</h2>
-            <p class="alcim"><b><i>Jelszóval védett tartalom</i></b></p>
-
-            <input type="password" id="pinInput" readonly>
-
-            <div class="keypad">
-                <button onclick="addPin(1)">1</button>
-                <button onclick="addPin(2)">2</button>
-                <button onclick="addPin(3)">3</button>
-                <button onclick="addPin(4)">4</button>
-                <button onclick="addPin(5)">5</button>
-                <button onclick="addPin(6)">6</button>
-                <button onclick="addPin(7)">7</button>
-                <button onclick="addPin(8)">8</button>
-                <button onclick="addPin(9)">9</button>
-                <div></div>
-                <button onclick="addPin(0)">0</button>
-                <div></div>
-            </div>
-
-            <p id="pinError">Hibás PIN - kód! Próbáld újra!</p>
-        </div>
+    <div class="tartalom">
+        <h1>ARCHÍV JEGYEK</h1>
+        <p><b><i>Jelenleg nem állnak rendelkezésre, megvásárolt archív jegyek!<br>Térj vissza később!</i></b></p>
     </div>
 
-    <div class="protected"> 
-           <a href="fooldal.html" class="close-btn">✕</a>
- <div class="tartalom">
-        <h1>JEGYEINK</h1>
-        <p><b><i>Jelenleg nincsenek elérhető, megvásárolt jegyeink!<br>Térj vissza később!</i></b></p>
-    </div>
-    <!-----
+<!------
     <div class="accordion">
         <button class="accordion-header">
             <div class="acc-text">
@@ -318,80 +243,13 @@ body.locked {
         </div>
     </div>
 
----------->
-    <footer>
-        <a href="archivjegyek.html">Archívum</a>
-    </footer>
-</div>
-<script>
-(function(){
-    let _p = "";
-    let _tries = 0;
-    const _len = 4;
-    const _max = 3;
-
-    function _h(s){
-        let x = 5381;
-        for(let i=0;i<s.length;i++){
-            x = ((x << 5) + x) + s.charCodeAt(i);
-        }
-        return x >>> 0;
-    }
-
-   
-    const _K = 2088324368;
-
-    function _check(){
-        if(_h(_p) === _K){
-            document.getElementById("pinModal").style.display = "none";
-            document.body.classList.remove("locked");
-        } else {
-            _tries++;
-            _showErr();
-            _reset();
-            if(_tries >= _max) _lock();
-        }
-    }
-
-    function _lock(){
-        const e = document.getElementById("pinError");
-        e.style.display = "block";
-        document.querySelectorAll(".pinBtn").forEach(b => b.disabled = true);
-
-        setTimeout(()=>{
-            _tries = 0;
-            e.style.display = "none";
-            document.querySelectorAll(".pinBtn").forEach(b => b.disabled = false);
-        }, 30000);
-    }
-
-    function _reset(){
-        _p = "";
-        document.getElementById("pinInput").value = "";
-    }
-
-    function _showErr(){
-        const e = document.getElementById("pinError");
-        e.style.display = "block";
-        setTimeout(()=>e.style.display="none",2000);
-    }
-
-    window.addPin = function(n){
-        if(_p.length >= _len) return;
-        _p += n;
-        document.getElementById("pinInput").value = "*".repeat(_p.length);
-        if(_p.length === _len) _check();
-    };
-})();
-</script>
-
- <script>
+-------->
+    <script>
         document.querySelectorAll(".accordion-header").forEach(btn => {
             btn.addEventListener("click", () => {
                 btn.parentElement.classList.toggle("active");
             });
         });
     </script>
-
 </body>
 </html>
