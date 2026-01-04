@@ -161,6 +161,60 @@ body {
     font-size: 14px;
     text-align: center;
 }
+.uzenet-container {
+    font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+    text-align: center;
+    margin: 16px 0;
+}
+
+/* fő szöveg */
+#uzenet {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* különlegesebb szöveg */
+.szoveg {
+    font-family: "Poppins", "Segoe UI", sans-serif;
+}
+
+/* emoji */
+.emoji {
+    font-size: 1.4rem;
+}
+
+/* dátum-idő */
+#datumIdo {
+    margin-top: 6px;
+    color: #b0b0b0;
+    font-style: italic;
+    font-size: 0.8rem;
+}
+
+/* 💻 Laptop / desktop */
+@media (min-width: 769px) {
+    .uzenet-container {
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        text-align: right;
+        margin: 0;
+        z-index: 1000;
+    }
+}
+
+/* 📱 Mobil – azonnal látszik, de nem letapad */
+@media (max-width: 768px) {
+    .uzenet-container {
+        position: sticky;
+        top: 0;
+        background: transparent;
+        padding-top: 12px;
+        z-index: 10;
+    }
+}
 
 /* MOBIL */
 @media (max-width: 600px) {
@@ -179,10 +233,10 @@ body {
 <!-- KÖZLEMÉNY -->
 <div class="notice-bar">
     <div class="notice-text">
-    <!----- 📢 KÖZLEMÉNY – A rendszerünk fejlesztés alatt áll, legkésőbb ma (01.01.) 23:59-től újra elérhető lesz! Köszönjük a megértést! 
+    <!-----📢 KÖZLEMÉNY – A rendszerünk fejlesztés alatt áll, legkésőbb ma (01.01.) 23:59-től újra elérhető lesz! Köszönjük a megértést! 
      📢 <span style="color: green;">KÖZLEMÉNY -</span> <i>A felhasználóélmény javítása érdekében az újévtől összeolvadt a CSALÁDI PROGRAMJAINK és a VAKÁCIÓVÁGYÓ rendszere! Egy kattintással elérhető mindkettő weboldalunk egyetlen egy PIN - kód segítségével. <span style="color: blue;"> A belépési PIN - kód mindenkinek a saját születési éve!</span> A korábbi bejelentkezési módszerek megszűntek!</i></div>
------->
-      🔑 <span style="color: green;">JELSZAVAD - </span>A SAJÁT SZÜLETÉSI ÉVED - TARTSD TITOKBAN! :)</span></div>
+------->
+      🔑 <span style="color: green;">JELSZAVAD - </span>A SAJÁT SZÜLETÉSI ÉVED! :)</span></div>
     </div>
 
 <div class="wrapper">
@@ -219,6 +273,15 @@ body {
 
         <div class="error" id="error">Hibás PIN-kód! Próbáld újra!</div>
     </div>
+    <div class="uzenet-container">
+    <div id="uzenet"></div>
+    <div id="datumIdo"></div>
+</div>
+
+<div class="uzenet-container">
+    <div id="uzenet"></div>
+    <div id="datumIdo"></div>
+</div>
 </div>
 
 <script>
@@ -260,6 +323,58 @@ function resetPin() {
     error.style.display = "none";
 }
 </script>
+
+
+<script>
+function frissitUzenet() {
+    const most = new Date();
+    const ora = most.getHours();
+    const perc = most.getMinutes().toString().padStart(2, "0");
+    const mp = most.getSeconds().toString().padStart(2, "0");
+
+    let szoveg = "";
+    let emoji = "";
+
+    if (ora >= 6 && ora < 10) {
+        szoveg = "Legyen csodás reggeled!";
+        emoji = "🌅";
+    } else if (ora >= 10 && ora < 17) {
+        szoveg = "Legyen csodás napod!";
+        emoji = "☀️";
+    } else if (ora >= 17 && ora < 22) {
+        szoveg = "Legyen csodás estéd!";
+        emoji = "🌇";
+    } else {
+        szoveg = "Legyen csodás éjszakád!";
+        emoji = "🌙";
+    }
+
+    document.getElementById("uzenet").innerHTML =
+        `<span class="szoveg">${szoveg}</span><span class="emoji"> ${emoji}</span>`;
+
+    const honapok = [
+        "január","február","március","április","május","június",
+        "július","augusztus","szeptember","október","november","december"
+    ];
+
+    const napok = [
+        "vasárnap","hétfő","kedd","szerda",
+        "csütörtök","péntek","szombat"
+    ];
+
+    const datumSzoveg =
+        `${most.getFullYear()}. ${honapok[most.getMonth()]} ` +
+        `${most.getDate().toString().padStart(2, "0")}.` +
+        `, ${napok[most.getDay()]} ` +
+        `${ora}:${perc}:${mp}`;
+
+    document.getElementById("datumIdo").textContent = datumSzoveg;
+}
+
+frissitUzenet();
+setInterval(frissitUzenet, 1000);
+</script>
+
 
 </body>
 </html>
