@@ -17,9 +17,9 @@
         body {
             background: radial-gradient(circle at top, #0b2a4a, #000);
             padding: 20px;
-              background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
         }
 
         .container {
@@ -181,72 +181,107 @@
             color: white;
         }
 
-footer {
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: #bbbbbb;
-}
+        footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #bbbbbb;
+        }
 
-footer a {
-    color: grey;
-    text-decoration: none;
-}
+        footer a {
+            color: grey;
+            text-decoration: none;
+        }
 
 
-.filter-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 18px 0 28px;
-}
+        .filter-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 18px 0 28px;
+        }
 
-.filter-box label {
-    font-size: 12px;
-    letter-spacing: 1px;
-    color: #999;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-}
+        .filter-box label {
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
 
-.filter-box select {
-    background: transparent;
-    color: #ffeb00;
-    border: 1px solid rgba(255, 235, 0, 0.6);
-    border-radius: 22px;
-    padding: 6px 14px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    outline: none;
-    appearance: none;
-    text-align: center;
-    min-width: 210px;
-}
+        .filter-box select {
+            background: transparent;
+            color: #ffeb00;
+            border: 1px solid rgba(255, 235, 0, 0.6);
+            border-radius: 22px;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            appearance: none;
+            text-align: center;
+            min-width: 210px;
+        }
 
-.filter-box select:hover {
-    background: rgba(255, 235, 0, 0.08);
-}
+        .filter-box select:hover {
+            background: rgba(255, 235, 0, 0.08);
+        }
 
-.filter-box select:focus {
-    border-color: #ffeb00;
-}
+        .filter-box select:focus {
+            border-color: #ffeb00;
+        }
 
-.filter-box select option {
-    background: #111;
-    color: #ffeb00;
-    font-weight: 500;
-}
+        .filter-box select option {
+            background: #111;
+            color: #ffeb00;
+            font-weight: 500;
+        }
 
-h2 {
-    text-align: center;
-    color: white;
-}
+        .no-results {
+            display: none;
+            text-align: center;
+            margin: 60px 0;
+            font-size: 14px;
+            color: #aaa;
+            font-style: italic;
+        }
+
+
+        h2 {
+            text-align: center;
+            color: white;
+        }
+
+        .event-soon {
+            text-align: center;
+            font-size: 18px;
+            color: black;
+            animation: softGlow 5s ease-in-out infinite;
+        }
+
+        @keyframes softGlow {
+            0% {
+                opacity: 0.6;
+                text-shadow: none;
+            }
+
+            50% {
+                opacity: 1;
+                text-shadow: 0 0 10px rgb(196, 0, 0);
+            }
+
+            100% {
+                opacity: 0.6;
+                text-shadow: none;
+            }
+        }
 
         /* MOBIL */
         @media (max-width: 768px) {
             p {
                 text-align: center;
             }
+
             .slider {
                 height: 35vh;
                 max-height: 300px;
@@ -279,121 +314,174 @@ h2 {
 
 
         <h1>PROGRAMJAINK</h1>
-<footer style="text-align: center;">
-    <a href="archivprogramok.html">Archívum</a>
-</footer>
-    
-        <div class="filter-box">
-    <label for="monthFilter" style="color: #0ff;">Szűrés hónap szerint</label>
-    <select id="monthFilter">
-        <option value="all">Összes program</option>
-        <option value="2026-01">2026. január</option>
-        <option value="2026-02">2026. február</option>
-        <option value="2026-03">2026. március</option>
-        <option value="2026-04">2026. április</option>
-        <option value="2026-05">2026. május</option>
-        <option value="2026-06">2026. június</option>
-        <option value="2026-07">2026. július</option>
-        <option value="2026-08">2026. augusztus</option>
-        <option value="2026-09">2026. szeptember</option>
-        <option value="2026-10">2026. október</option>
-        <option value="2026-11">2026. november</option>
-        <option value="2026-12">2026. december</option>
-    </select>
-</div>
+        <footer style="text-align: center;">
+            <a href="archivprogramok.html">Archívum</a>
+        </footer>
 
+        <div class="filter-box">
+            <label for="monthFilter" style="color: #0ff;">Szűrés hónap szerint</label>
+            <select id="monthFilter">
+                <option value="all">ÖSSZES PROGRAM</option>
+                <option value="2026-01">2026. JANUÁR</option>
+                <option value="2026-02">2026. FEBRUÁR</option>
+                <option value="2026-03">2026. MÁRCIUS</option>
+                <option value="2026-04">2026. ÁPRILIS</option>
+                <option value="2026-05">2026. MÁJUS</option>
+                <option value="2026-06">2026. JÚNIUS</option>
+                <option value="2026-07">2026. JÚLIUS</option>
+                <option value="2026-08">2026. AUGUSZTUS</option>
+                <option value="2026-09">2026. SZEPTEMBER</option>
+                <option value="2026-10">2026. OKTÓBER</option>
+                <option value="2026-11">2026. NOVEMBER</option>
+                <option value="2026-12">2026. DECEMBER</option>
+            </select>
+        </div>
+
+        <p id="noResults" class="no-results">
+            Ebben a hónapban jelenleg nincs előre tervezett családi programunk!
+        </p>
+        <!------
 <div style="text-align: center;">
 <p><b><i>Jelenleg nincsenek elérhető, előre lefoglalt családi programjaink!<br>Térj vissza később!</i></b></p>
 </div>
-<!-------
-
-<h2 class="month-title" data-month="2026-03">2026. MÁRCIUS</h2>
-<br>
-        <div class="card" data-month="2026-03">
-
-            <img src="koldus.jpg" alt="">
-            <div class="card-content">
-                <div class="countdown" data-date="2026-05-01T15:30:00">
-                    <div class="time-box">
-                        <span class="number days">00</span>
-                        <span class="label">NAP</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="number hours">00</span>
-                        <span class="label">ÓRA</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="number minutes">00</span>
-                        <span class="label">PERC</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="number seconds">00</span>
-                        <span class="label">MÁSODPERC</span>
-                    </div>
-                </div>
-                <div style="text-align: center; font-size: 18px;">
-                    <b>2026. MÁRCIUS 01. 15:30</b> 
-                </div> <br>
-                <div class="card-title">KOLDUS ÉS KIRÁLYFI</div>
-                <div class="card-location"><b>Magyar Színház, Budapest</b></div>
-                <div class="card-location">A londoni utcák nyomorában élő koldusfiú és a
-                    paloták aranyfényében nevelkedő trónörökös egy napon egymás tükörképére ismer – és helyet cserélnek.
-                    A rongyok között megtapasztalt szabadság, a selymek mögött rejtőző magány, az utcák lármája és a
-                    palota hideg pompája mind új arcát mutatja meg számukra. Ahogy a két fiú belekóstol a másik életébe,
-                    megtanulják, mit ér a hatalom, és mit ér az ember, ha nincs benne emberség.
-
-                    Mark Twain klasszikus történetének zenés színpadi változata humort és felfedezést hoz – de legfőképp
-                    megértést és együttérzést. Egy színpadra vitt kaland, amely megmutatja: az emberi értékek
-                    túlmutatnak a társadalmi különbségeken.</div> <br>
-                <a href="#" class="card-button">RÉSZLETEK</a> <br> <br>
-                <a href="jegyeink.html" class="card-button">MEGVÁSÁROLT JEGYEINK</a>
-            </div>
-        </div>
-
-                <br><br>
-        <div class="card">
-
-            <img src="koldus.jpg" alt="">
-            <div class="card-content">
-                <div class="countdown" data-date="2026-05-01T15:30:00">
-                    <div class="time-box">
-                        <span class="number days">00</span>
-                        <span class="label">NAP</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="number hours">00</span>
-                        <span class="label">ÓRA</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="number minutes">00</span>
-                        <span class="label">PERC</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="number seconds">00</span>
-                        <span class="label">MÁSODPERC</span>
-                    </div>
-                </div>
-                <div style="text-align: center; font-size: 18px;">
-                    <b>2026. MÁRCIUS 01. 15:30</b> 
-                </div> <br>
-                <div class="card-title">KOLDUS ÉS KIRÁLYFI</div>
-                <div class="card-location"><b>Magyar Színház, Budapest</b></div>
-                <div class="card-location">A londoni utcák nyomorában élő koldusfiú és a
-                    paloták aranyfényében nevelkedő trónörökös egy napon egymás tükörképére ismer – és helyet cserélnek.
-                    A rongyok között megtapasztalt szabadság, a selymek mögött rejtőző magány, az utcák lármája és a
-                    palota hideg pompája mind új arcát mutatja meg számukra. Ahogy a két fiú belekóstol a másik életébe,
-                    megtanulják, mit ér a hatalom, és mit ér az ember, ha nincs benne emberség.
-
-                    Mark Twain klasszikus történetének zenés színpadi változata humort és felfedezést hoz – de legfőképp
-                    megértést és együttérzést. Egy színpadra vitt kaland, amely megmutatja: az emberi értékek
-                    túlmutatnak a társadalmi különbségeken.</div> <br>
-                <a href="#" class="card-button">RÉSZLETEK</a> <br> <br>
-                <a href="jegyeink.html" class="card-button">MEGVÁSÁROLT JEGYEINK</a>
-            </div>
-        </div>
-
-
 -------->
+        <div class="month-group" data-month="2026-05">
+            <h2 class="month-title">2026. MÁJUS</h2> <br>
+            <div class="card" data-month="2026-05">
+
+                <img src="bermalkozas.jpg" alt="">
+
+                <div class="card-content">
+                    <!-----
+                <div class="countdown" data-date="2026-05-01T15:30:00">
+                    <div class="time-box">
+                        <span class="number days">00</span>
+                        <span class="label">NAP</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number hours">00</span>
+                        <span class="label">ÓRA</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number minutes">00</span>
+                        <span class="label">PERC</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number seconds">00</span>
+                        <span class="label">MÁSODPERC</span>
+                    </div>
+                </div>
+                -------> <br>
+                    <div class="event-soon">
+                        <b>IDŐPONT <br>Hamarosan...</b>
+                    </div>
+                    <br>
+                    <div class="card-title" style="text-align: center;">BÉRMÁLKOZÁS - DORKA</div>
+                    <div class="card-location" style="text-align: center;"><b>Szerencs</b></div>
+                    <div class="card-location" style="text-align: center;">A bérmálkozás egy különleges lelki esemény,
+                        amely a hitben való megerősödést jelképezi. Ez a nap az elköteleződésről, a
+                        felelősségvállalásról és a belső fejlődésről szól. A szertartás segít elmélyíteni a kapcsolatot
+                        a közösséggel és a hittel. Meghitt pillanatokkal, csendes elmélyüléssel és ünnepélyes
+                        hangulattal jár együtt. A bérmálkozás egy olyan állomás, amely hosszú távon is irányt mutathat.
+                        Családi körben még személyesebb és emlékezetesebb élménnyé válik.</div> <br>
+                    <!------
+                <a href="#" class="card-button">RÉSZLETEK</a> <br> <br>
+                <a href="jegyeink.html" class="card-button">MEGVÁSÁROLT JEGYEINK</a>
+            ---->
+                </div>
+            </div>
+
+            <div class="card" data-month="2026-05">
+
+
+                <img src="bankett.jpg" alt="">
+
+                <div class="card-content">
+                    <!-----
+                <div class="countdown" data-date="2026-05-01T15:30:00">
+                    <div class="time-box">
+                        <span class="number days">00</span>
+                        <span class="label">NAP</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number hours">00</span>
+                        <span class="label">ÓRA</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number minutes">00</span>
+                        <span class="label">PERC</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number seconds">00</span>
+                        <span class="label">MÁSODPERC</span>
+                    </div>
+                </div>
+                -------> <br>
+                    <div class="event-soon">
+                        <b>IDŐPONT <br>Hamarosan...</b>
+                    </div> <br>
+                    <div class="card-title" style="text-align: center;">BANKETT - DORKA</div>
+                    <div class="card-location" style="text-align: center;"><b>Szerencs</b></div>
+                    <div class="card-location" style="text-align: center;">A bankett az általános iskolai évek
+                        lezárásának közös ünneplése. Lehetőség nyílik arra, hogy együtt ünnepeljük meg ezt a fontos
+                        eseményt egy finom vacsora mellett. Ez az alkalom a közösségről, az összetartozásról és a közös
+                        élményekről szól. A bankett során mindenki felszabadultan élvezheti az estét. Egy méltó, vidám
+                        lezárása az ünnepi napnak.</div> <br>
+                    <!------
+                <a href="#" class="card-button">RÉSZLETEK</a> <br> <br>
+                <a href="jegyeink.html" class="card-button">MEGVÁSÁROLT JEGYEINK</a>
+            ---->
+                </div>
+            </div>
+        </div>
+        <div class="month-group" data-month="2026-06">
+            <h2 class="month-title">2026. JÚNIUS</h2> <br>
+
+            <div class="card" data-month="2026-06">
+
+                <img src="ballagas.jpg" alt="">
+
+                <div class="card-content">
+                    <!-----
+                <div class="countdown" data-date="2026-05-01T15:30:00">
+                    <div class="time-box">
+                        <span class="number days">00</span>
+                        <span class="label">NAP</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number hours">00</span>
+                        <span class="label">ÓRA</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number minutes">00</span>
+                        <span class="label">PERC</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number seconds">00</span>
+                        <span class="label">MÁSODPERC</span>
+                    </div>
+                </div>
+                -------> <br>
+                    <div class="event-soon">
+                        <b>IDŐPONT <br>Hamarosan...</b>
+                    </div><br>
+                    <div class="card-title" style="text-align: center;">BALLAGÁS - DORKA</div>
+                    <div class="card-location" style="text-align: center;"><b>Szerencs</b></div>
+                    <div class="card-location" style="text-align: center;">A ballagás egy fontos mérföldkő, ahol lezárul
+                        egy hosszú tanulási időszak, és új fejezet kezdődik az életben. Ez a nap a búcsúról, az
+                        emlékekről és az együtt megélt pillanatokról szól. Ilyenkor visszagondolunk a közös élményekre,
+                        sikerekre és kihívásokra is. A ballagás nemcsak az elválásról, hanem az előrelépésről és a
+                        jövőbe vetett reményről is szól. Jó alkalom arra, hogy megálljunk egy pillanatra és büszkék
+                        legyünk az eddig megtett útra. Az ünnepség közös emlékké válik mindannyiunk számára.</div> <br>
+                    <!------
+                <a href="#" class="card-button">RÉSZLETEK</a> <br> <br>
+                <a href="jegyeink.html" class="card-button">MEGVÁSÁROLT JEGYEINK</a>
+            ---->
+                </div>
+            </div>
+
+        </div> <br><br>
+
         <script>
             function startCountdowns() {
                 const countdowns = document.querySelectorAll(".countdown");
@@ -425,35 +513,35 @@ h2 {
 
             startCountdowns();
         </script>
-<script>
-    const filter = document.getElementById("monthFilter");
-    const cards = document.querySelectorAll(".card");
-    const monthTitles = document.querySelectorAll(".month-title");
+        <script>
+            const filter = document.getElementById("monthFilter");
+            const monthGroups = document.querySelectorAll(".month-group");
+            const noResults = document.getElementById("noResults");
 
-    filter.addEventListener("change", () => {
-        const selected = filter.value;
+            function updateView() {
+                const selected = filter.value;
+                let visibleGroups = 0;
 
-        // Kártyák szűrése
-        cards.forEach(card => {
-            const cardMonth = card.dataset.month;
+                monthGroups.forEach(group => {
+                    const groupMonth = group.dataset.month;
+                    const visible = selected === "all" || groupMonth === selected;
 
-            card.style.display =
-                selected === "all" || cardMonth === selected
-                    ? "block"
-                    : "none";
-        });
+                    group.style.display = visible ? "block" : "none";
+                    if (visible) visibleGroups++;
+                });
 
-        // Hónap címek szűrése
-        monthTitles.forEach(title => {
-            const titleMonth = title.dataset.month;
+                // Üres hónap üzenet CSAK konkrét hónapnál
+                if (selected !== "all" && visibleGroups === 0) {
+                    noResults.style.display = "block";
+                } else {
+                    noResults.style.display = "none";
+                }
+            }
 
-            title.style.display =
-                selected === "all" || titleMonth === selected
-                    ? "block"
-                    : "none";
-        });
-    });
-</script>
+            updateView();
+            filter.addEventListener("change", updateView);
+        </script>
+
 
 
 
