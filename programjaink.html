@@ -181,23 +181,67 @@
             color: white;
         }
 
-         footer {
-            position: fixed;
-            bottom: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.9rem;
-            z-index: 500;
-        }
+footer {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #bbbbbb;
+}
 
-        footer a {
-            color: #888;
-            text-decoration: none;
-        }
+footer a {
+    color: grey;
+    text-decoration: none;
+}
 
-        footer a:hover {
-            color: #0ff;
-        }
+
+.filter-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 18px 0 28px;
+}
+
+.filter-box label {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #999;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.filter-box select {
+    background: transparent;
+    color: #ffeb00;
+    border: 1px solid rgba(255, 235, 0, 0.6);
+    border-radius: 22px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    text-align: center;
+    min-width: 210px;
+}
+
+.filter-box select:hover {
+    background: rgba(255, 235, 0, 0.08);
+}
+
+.filter-box select:focus {
+    border-color: #ffeb00;
+}
+
+.filter-box select option {
+    background: #111;
+    color: #ffeb00;
+    font-weight: 500;
+}
+
+h2 {
+    text-align: center;
+    color: white;
+}
+
         /* MOBIL */
         @media (max-width: 768px) {
             p {
@@ -233,12 +277,40 @@
     <div class="container">
         <a href="fooldal.html" class="close-btn">✕</a>
 
-        <h1>PROGRAMJAINK</h1>
 
-        <p><b><i>Jelenleg nincsenek kiválasztott programjaink!</i></b></p>
-    <!---------
-        <br><br>
-        <div class="card" style="text-align: center;">
+        <h1>PROGRAMJAINK</h1>
+<footer style="text-align: center;">
+    <a href="archivprogramok.html">Archívum</a>
+</footer>
+    
+        <div class="filter-box">
+    <label for="monthFilter" style="color: #0ff;">Szűrés hónap szerint</label>
+    <select id="monthFilter">
+        <option value="all">Összes program</option>
+        <option value="2026-01">2026. január</option>
+        <option value="2026-02">2026. február</option>
+        <option value="2026-03">2026. március</option>
+        <option value="2026-04">2026. április</option>
+        <option value="2026-05">2026. május</option>
+        <option value="2026-06">2026. június</option>
+        <option value="2026-07">2026. július</option>
+        <option value="2026-08">2026. augusztus</option>
+        <option value="2026-09">2026. szeptember</option>
+        <option value="2026-10">2026. október</option>
+        <option value="2026-11">2026. november</option>
+        <option value="2026-12">2026. december</option>
+    </select>
+</div>
+
+<div style="text-align: center;">
+<p><b><i>Jelenleg nincsenek elérhető, előre lefoglalt családi programjaink!<br>Térj vissza később!</i></b></p>
+</div>
+<!-------
+
+<h2 class="month-title" data-month="2026-03">2026. MÁRCIUS</h2>
+<br>
+        <div class="card" data-month="2026-03">
+
             <img src="koldus.jpg" alt="">
             <div class="card-content">
                 <div class="countdown" data-date="2026-05-01T15:30:00">
@@ -278,11 +350,50 @@
             </div>
         </div>
 
------------->
+                <br><br>
+        <div class="card">
 
-<footer>
-    <a href="archivprogramok.html">Archívum</a>
-</footer>
+            <img src="koldus.jpg" alt="">
+            <div class="card-content">
+                <div class="countdown" data-date="2026-05-01T15:30:00">
+                    <div class="time-box">
+                        <span class="number days">00</span>
+                        <span class="label">NAP</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number hours">00</span>
+                        <span class="label">ÓRA</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number minutes">00</span>
+                        <span class="label">PERC</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number seconds">00</span>
+                        <span class="label">MÁSODPERC</span>
+                    </div>
+                </div>
+                <div style="text-align: center; font-size: 18px;">
+                    <b>2026. MÁRCIUS 01. 15:30</b> 
+                </div> <br>
+                <div class="card-title">KOLDUS ÉS KIRÁLYFI</div>
+                <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+                <div class="card-location">A londoni utcák nyomorában élő koldusfiú és a
+                    paloták aranyfényében nevelkedő trónörökös egy napon egymás tükörképére ismer – és helyet cserélnek.
+                    A rongyok között megtapasztalt szabadság, a selymek mögött rejtőző magány, az utcák lármája és a
+                    palota hideg pompája mind új arcát mutatja meg számukra. Ahogy a két fiú belekóstol a másik életébe,
+                    megtanulják, mit ér a hatalom, és mit ér az ember, ha nincs benne emberség.
+
+                    Mark Twain klasszikus történetének zenés színpadi változata humort és felfedezést hoz – de legfőképp
+                    megértést és együttérzést. Egy színpadra vitt kaland, amely megmutatja: az emberi értékek
+                    túlmutatnak a társadalmi különbségeken.</div> <br>
+                <a href="#" class="card-button">RÉSZLETEK</a> <br> <br>
+                <a href="jegyeink.html" class="card-button">MEGVÁSÁROLT JEGYEINK</a>
+            </div>
+        </div>
+
+
+-------->
         <script>
             function startCountdowns() {
                 const countdowns = document.querySelectorAll(".countdown");
@@ -314,6 +425,37 @@
 
             startCountdowns();
         </script>
+<script>
+    const filter = document.getElementById("monthFilter");
+    const cards = document.querySelectorAll(".card");
+    const monthTitles = document.querySelectorAll(".month-title");
+
+    filter.addEventListener("change", () => {
+        const selected = filter.value;
+
+        // Kártyák szűrése
+        cards.forEach(card => {
+            const cardMonth = card.dataset.month;
+
+            card.style.display =
+                selected === "all" || cardMonth === selected
+                    ? "block"
+                    : "none";
+        });
+
+        // Hónap címek szűrése
+        monthTitles.forEach(title => {
+            const titleMonth = title.dataset.month;
+
+            title.style.display =
+                selected === "all" || titleMonth === selected
+                    ? "block"
+                    : "none";
+        });
+    });
+</script>
+
+
 
 </body>
 

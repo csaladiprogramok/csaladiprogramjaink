@@ -227,10 +227,48 @@ body {
 }
 
 </style>
+<style>
+    #snow-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none; /* nem blokkol kattintást */
+        overflow: hidden;
+        z-index: 9999;
+    }
+
+    .snowflake {
+        position: absolute;
+        top: -10%;
+        font-size: 1.2rem;
+        opacity: 0.8;
+        animation-name: fall;
+        animation-timing-function: linear;
+    }
+
+    @keyframes fall {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(110vh);
+        }
+    }
+
+    /* Mobil optimalizálás */
+    @media (max-width: 600px) {
+        .snowflake {
+            font-size: 1rem;
+        }
+    }
+</style>
 </head>
 
 <body>
 
+<div id="snow-container"></div>
 <!-- KÖZLEMÉNY -->
 <div class="notice-bar">
     <div class="notice-text">
@@ -286,6 +324,42 @@ body {
 </div>
 
 <script>
+    const snowContainer = document.getElementById("snow-container");
+    const snowDuration = 5000; // 10 másodperc
+    const snowInterval = 180;   // sűrűség
+
+    function createSnowflake() {
+        const snowflake = document.createElement("div");
+        snowflake.className = "snowflake";
+        snowflake.textContent = "❄️";
+
+        snowflake.style.left = Math.random() * 100 + "vw";
+        snowflake.style.animationDuration = 5 + Math.random() * 3 + "s";
+
+        snowContainer.appendChild(snowflake);
+
+        // akkor töröljük, amikor már biztosan leért
+        setTimeout(() => {
+            snowflake.remove();
+        }, 9000);
+    }
+
+    const snowTimer = setInterval(createSnowflake, snowInterval);
+
+    // 10 mp után nem jön új hó
+    setTimeout(() => {
+        clearInterval(snowTimer);
+
+        // megvárjuk, míg az utolsók is leérnek
+        setTimeout(() => {
+            snowContainer.remove();
+        }, 9000);
+
+    }, snowDuration);
+</script>
+
+
+<script>
     
 let pin = "";
 
@@ -337,16 +411,16 @@ function frissitUzenet() {
     let emoji = "";
 
     if (ora >= 6 && ora < 10) {
-        szoveg = "Legyen pompás reggeled!";
+        szoveg = "Induljon szuperül a reggeled!";
         emoji = "🌅";
-    } else if (ora >= 10 && ora < 17) {
+    } else if (ora >= 10 && ora < 16) {
         szoveg = "Legyen klassz napod!";
         emoji = "☀️";
-    } else if (ora >= 17 && ora < 22) {
-        szoveg = "Legyen fantasztikus estéd!";
+    } else if (ora >= 16 && ora < 22) {
+        szoveg = "Kellemes, mosolygós estét!";
         emoji = "🌇";
     } else {
-        szoveg = "Legyen csodás éjszakád!";
+        szoveg = "Szép álmokat és kellemes éjszakát!";
         emoji = "🌙";
     }
 
