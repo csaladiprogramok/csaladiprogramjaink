@@ -1,315 +1,346 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CSALÁDI PROGRAMJAINK</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSALÁDI PROGRAMJAINK</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Playfair+Display:ital@1&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Playfair+Display:ital@1&family=Montserrat:wght@400;600&display=swap"
+        rel="stylesheet">
 
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-/* ===== FEJLÉC ===== */
-.header {
-    text-align: center;
-    margin-bottom: 16px;
-}
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-/* fő szöveg */
-#uzenet {
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-html, body {
-    min-height: 100%;
-}
+        /* ===== FEJLÉC ===== */
+        .header {
+            text-align: center;
+            margin-bottom: 16px;
+        }
 
-body {
-    background: radial-gradient(circle at top, #0b2a4a, #000);
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
+        /* fő szöveg */
+        #uzenet {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
 
-    overflow-y: auto;    /* görgethető */
-    overflow-x: hidden; /* nincs oldalirány */
-}
+        html,
+        body {
+            min-height: 100%;
+        }
 
-/* ======================
+        body {
+            background: radial-gradient(circle at top, #0b2a4a, #000);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+
+            overflow-y: auto;
+            /* görgethető */
+            overflow-x: hidden;
+            /* nincs oldalirány */
+        }
+
+        /* ======================
    KÖZLEMÉNY
    ====================== */
-.notice-bar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 32px;
-    background: #fff;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    z-index: 10;
-}
+        .notice-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 32px;
+            background: #fff;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+        }
 
-.notice-text {
-    color: red;
-    font-weight: 600;
-    white-space: nowrap;
-    animation: noticeMove 20s linear infinite;
-}
+        .notice-text {
+            color: red;
+            font-weight: 600;
+            white-space: nowrap;
+            animation: noticeMove 20s linear infinite;
+        }
 
-@keyframes noticeMove {
-    0% {
-        transform: translateX(100vw);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
+        @keyframes noticeMove {
+            0% {
+                transform: translateX(100vw);
+            }
 
-.notice-bar2 {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 32px;
-    background: yellow;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    z-index: 10;
-    margin-top: 30px;
-}
-a {
-    text-decoration: none;
-}
+            100% {
+                transform: translateX(-100%);
+            }
+        }
 
-.notice-text2 {
-    color: blue;
-    font-weight: 600;
-    white-space: nowrap;
-    animation: noticeMove 20s linear infinite;
-}
+        .notice-bar2 {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 32px;
+            background: yellow;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+            margin-top: 30px;
+        }
 
-@keyframes noticeMove {
-    0% {
-        transform: translateX(100vw);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
+        a {
+            text-decoration: none;
+        }
+
+        .notice-text2 {
+            color: blue;
+            font-weight: 600;
+            white-space: nowrap;
+            animation: noticeMove 20s linear infinite;
+        }
+
+        @keyframes noticeMove {
+            0% {
+                transform: translateX(100vw);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
 
 
-/* ======================
+        /* ======================
    TELJES KÉPERNYŐ
    ====================== */
-.wrapper {
-    min-height: 100svh;
-    padding-top: 42px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        .wrapper {
+            min-height: 100svh;
+            padding-top: 42px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
 
-.header h1 {
-    font-size: 26px;
-    letter-spacing: 2px;
-}
+        .header h1 {
+            font-size: 26px;
+            letter-spacing: 2px;
+        }
 
-.quote {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    color: #cfd8e3;
-}
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            color: #cfd8e3;
+        }
 
-.family-title {
-    font-family: 'Cinzel', serif;
-    font-size: 18px;
-    letter-spacing: 3px;
-    margin-top: 6px;
-}
+        .family-title {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            letter-spacing: 3px;
+            margin-top: 6px;
+        }
 
-/* ======================
+        /* ======================
    PIN KÉPERNYŐ
    ====================== */
-.pin-screen {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/* PIN DOTOK */
-.pin-dots {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 26px;
-}
-
-.dot {
-    width: 14px;
-    height: 14px;
-    border: 2px solid #7fbfff;
-    border-radius: 50%;
-}
-
-.dot.filled {
-    background: #7fbfff;
-}
-
-/* PIN PAD */
-.pin-pad {
-    display: grid;
-    grid-template-columns: repeat(3, 80px);
-    gap: 14px;
-}
-
-/* GOMB */
-.pin-btn {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-    color: #fff;
-    font-size: 22px;
-    font-weight: 600;
-    border: none;
-    backdrop-filter: blur(6px);
-}
-
-.pin-btn:active {
-    background: rgba(127,191,255,0.4);
-}
-
-/* 0 KÖZÉPEN */
-.pin-btn.zero {
-    grid-column: 2;
-}
-
-/* HIBA */
-.error {
-    color: #ff6666;
-    margin-top: 14px;
-    display: none;
-    font-size: 14px;
-    text-align: center;
-}
-.uzenet-container {
-    font-family: "Poppins", "Segoe UI", Arial, sans-serif;
-    text-align: center;
-    margin: 16px 0;
-}
-
-
-/* különlegesebb szöveg */
-.szoveg {
-    font-family: "Poppins", "Segoe UI", sans-serif;
-    font-style: italic;
-    font-size: 15px;
-}
-
-/* emoji */
-.emoji {
-    font-size: 1.4rem;
-}
-
-/* dátum-idő */
-#datumIdo {
-    margin-top: 6px;
-    color: #b0b0b0;
-    font-style: italic;
-    font-size: 0.8rem;
-}
-
-/* 💻 Laptop / desktop */
-@media (min-width: 769px) {
-    .uzenet-container {
-        position: fixed;
-        top: 30px;
-        right: 30px;
-        text-align: right;
-        margin: 0;
-        z-index: 1000;
-    }
-}
-
-/* 📱 Mobil – azonnal látszik, de nem letapad */
-@media (max-width: 768px) {
-    .uzenet-container {
-        position: sticky;
-        top: 0;
-        background: transparent;
-        padding-top: 12px;
-        z-index: 10;
-    }
-}
-
-/* MOBIL */
-@media (max-width: 600px) {
-    .pin-btn {
-        width: 72px;
-        height: 72px;
-        font-size: 24px;
-    }
-}
-
-</style>
-<style>
-    #snow-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        pointer-events: none; /* nem blokkol kattintást */
-        overflow: hidden;
-        z-index: 9999;
-    }
-
-    .snowflake {
-        position: absolute;
-        top: -10%;
-        font-size: 1.2rem;
-        opacity: 0.8;
-        animation-name: fall;
-        animation-timing-function: linear;
-    }
-
-    @keyframes fall {
-        0% {
-            transform: translateY(0);
+        .pin-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-        100% {
-            transform: translateY(110vh);
-        }
-    }
 
-    /* Mobil optimalizálás */
-    @media (max-width: 600px) {
+        /* PIN DOTOK */
+        .pin-dots {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 26px;
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            border: 2px solid #7fbfff;
+            border-radius: 50%;
+        }
+
+        .dot.filled {
+            background: #7fbfff;
+        }
+
+        /* PIN PAD */
+        .pin-pad {
+            display: grid;
+            grid-template-columns: repeat(3, 80px);
+            gap: 14px;
+        }
+
+        /* GOMB */
+        .pin-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            font-size: 22px;
+            font-weight: 600;
+            border: none;
+            backdrop-filter: blur(6px);
+        }
+
+        .pin-btn:active {
+            background: rgba(127, 191, 255, 0.4);
+        }
+
+        /* 0 KÖZÉPEN */
+        .pin-btn.zero {
+            grid-column: 2;
+        }
+
+        /* HIBA */
+        .error {
+            color: #ff6666;
+            margin-top: 14px;
+            display: none;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .uzenet-container {
+            font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+            text-align: center;
+            margin: 16px 0;
+        }
+
+
+        /* különlegesebb szöveg */
+        .szoveg {
+            font-family: "Poppins", "Segoe UI", sans-serif;
+            font-style: italic;
+            font-size: 15px;
+        }
+
+        /* emoji */
+        .emoji {
+            font-size: 1.4rem;
+        }
+
+        /* dátum-idő */
+        #datumIdo {
+            margin-top: 6px;
+            color: #b0b0b0;
+            font-style: italic;
+            font-size: 0.8rem;
+        }
+
+        /* 💻 Laptop / desktop */
+        @media (min-width: 769px) {
+            .uzenet-container {
+                position: fixed;
+                top: 30px;
+                right: 30px;
+                text-align: right;
+                margin: 0;
+                z-index: 1000;
+            }
+        }
+
+        /* 📱 Mobil – azonnal látszik, de nem letapad */
+        @media (max-width: 768px) {
+            .uzenet-container {
+                position: sticky;
+                top: 0;
+                background: transparent;
+                padding-top: 12px;
+                z-index: 10;
+            }
+        }
+
+        /* MOBIL */
+        @media (max-width: 600px) {
+            .pin-btn {
+                width: 72px;
+                height: 72px;
+                font-size: 24px;
+            }
+        }
+    </style>
+    <style>
+        #snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            /* nem blokkol kattintást */
+            overflow: hidden;
+            z-index: 9999;
+        }
+
         .snowflake {
-            font-size: 1rem;
+            position: absolute;
+            top: -10%;
+            font-size: 1.2rem;
+            opacity: 0.8;
+            animation-name: fall;
+            animation-timing-function: linear;
         }
-    }
-</style>
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(110vh);
+            }
+        }
+
+        /* Mobil optimalizálás */
+        @media (max-width: 600px) {
+            .snowflake {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div id="snow-container"></div>
-<!-- KÖZLEMÉNY -->
-<div class="notice-bar">
-    <div class="notice-text">
-    <!-----📢 KÖZLEMÉNY – A rendszerünk fejlesztés alatt áll, legkésőbb ma (01.01.) 23:59-től újra elérhető lesz! Köszönjük a megértést! 
+    <div id="snow-container"></div>
+    <!-- KÖZLEMÉNY -->
+    <div class="notice-bar">
+        <div class="notice-text">
+            <!-----📢 KÖZLEMÉNY – A rendszerünk fejlesztés alatt áll, legkésőbb ma (01.01.) 23:59-től újra elérhető lesz! Köszönjük a megértést! 
      📢 <span style="color: green;">KÖZLEMÉNY -</span> <i>A felhasználóélmény javítása érdekében az újévtől összeolvadt a CSALÁDI PROGRAMJAINK és a VAKÁCIÓVÁGYÓ rendszere! Egy kattintással elérhető mindkettő weboldalunk egyetlen egy PIN - kód segítségével. <span style="color: blue;"> A belépési PIN - kód mindenkinek a saját születési éve!</span> A korábbi bejelentkezési módszerek megszűntek!</i></div>
 ------->
-      🔑 <span style="color: green;">JELSZAVAD - </span>A SAJÁT SZÜLETÉSI ÉVED! :)</span></div>
+        
+            <span style="color: blue; background-color: yellow;"> |📢🔑 <span style="color: red;">KÖZLEMÉNY -</span> A
+                JELSZÓ A SAJÁT SZÜLETÉSI ÉVED! 📢🔑|</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                
+
+             <span>🎭🎭</span> 
+             &nbsp;&nbsp;&nbsp;
+            <!---------2026. MÁJUS --->
+            <span style="color: red;">| 2026. MÁJUS -</span> <span style="color: blue;">BÉRMÁLKOZÁS, BANKETT |</span>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <!-------2026. JÚNIUS ---->
+            <span style="color: red;">| 2026. JÚNIUS -</span> <span style="color: blue;">BALLAGÁS |</span>
+
+            &nbsp;&nbsp;&nbsp;
+             <span>🎭🎭</span> 
+            
+        </div>
     </div>
-<!---
+    <!---
     <a href="kiemeltajanlat.html">
     <div class="notice-bar2">
     <div class="notice-text2">
@@ -318,178 +349,179 @@ a {
     </div> </a>
 --->
 
-<div class="wrapper">
+    <div class="wrapper">
 
-    <!-- FEJLÉC -->
-    <div class="header">
-        <h1>CSALÁDI PROGRAMJAINK</h1>
-        <div class="quote">„Az együtt töltött idő a legszebb ajándék.”</div>
-        <div class="family-title">Orosz Család</div>
-    </div>
-
-    <!-- PIN -->
-    <div class="pin-screen">
-
-        <div class="pin-dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+        <!-- FEJLÉC -->
+        <div class="header">
+            <h1>CSALÁDI PROGRAMJAINK</h1>
+            <div class="quote">„Az együtt töltött idő a legszebb ajándék.”</div>
+            <div class="family-title">Orosz Család</div>
         </div>
 
-        <div class="pin-pad">
-            <button class="pin-btn">1</button>
-            <button class="pin-btn">2</button>
-            <button class="pin-btn">3</button>
-            <button class="pin-btn">4</button>
-            <button class="pin-btn">5</button>
-            <button class="pin-btn">6</button>
-            <button class="pin-btn">7</button>
-            <button class="pin-btn">8</button>
-            <button class="pin-btn">9</button>
-            <button class="pin-btn zero">0</button>
+        <!-- PIN -->
+        <div class="pin-screen">
+
+            <div class="pin-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+
+            <div class="pin-pad">
+                <button class="pin-btn">1</button>
+                <button class="pin-btn">2</button>
+                <button class="pin-btn">3</button>
+                <button class="pin-btn">4</button>
+                <button class="pin-btn">5</button>
+                <button class="pin-btn">6</button>
+                <button class="pin-btn">7</button>
+                <button class="pin-btn">8</button>
+                <button class="pin-btn">9</button>
+                <button class="pin-btn zero">0</button>
+            </div>
+
+            <div class="error" id="error">Hibás PIN-kód! Próbáld újra!</div>
+        </div>
+        <div class="uzenet-container">
+            <div id="uzenet"></div>
+            <div id="datumIdo"></div>
         </div>
 
-        <div class="error" id="error">Hibás PIN-kód! Próbáld újra!</div>
+        <div class="uzenet-container">
+            <div id="uzenet"></div>
+            <div id="datumIdo"></div>
+        </div>
     </div>
-    <div class="uzenet-container">
-    <div id="uzenet"></div>
-    <div id="datumIdo"></div>
-</div>
 
-<div class="uzenet-container">
-    <div id="uzenet"></div>
-    <div id="datumIdo"></div>
-</div>
-</div>
+    <script>
+        const snowContainer = document.getElementById("snow-container");
+        const snowDuration = 5000; // 10 másodperc
+        const snowInterval = 180;   // sűrűség
 
-<script>
-    const snowContainer = document.getElementById("snow-container");
-    const snowDuration = 5000; // 10 másodperc
-    const snowInterval = 180;   // sűrűség
+        function createSnowflake() {
+            const snowflake = document.createElement("div");
+            snowflake.className = "snowflake";
+            snowflake.textContent = "❄️";
 
-    function createSnowflake() {
-        const snowflake = document.createElement("div");
-        snowflake.className = "snowflake";
-        snowflake.textContent = "❄️";
+            snowflake.style.left = Math.random() * 100 + "vw";
+            snowflake.style.animationDuration = 5 + Math.random() * 3 + "s";
 
-        snowflake.style.left = Math.random() * 100 + "vw";
-        snowflake.style.animationDuration = 5 + Math.random() * 3 + "s";
+            snowContainer.appendChild(snowflake);
 
-        snowContainer.appendChild(snowflake);
-
-        // akkor töröljük, amikor már biztosan leért
-        setTimeout(() => {
-            snowflake.remove();
-        }, 9000);
-    }
-
-    const snowTimer = setInterval(createSnowflake, snowInterval);
-
-    // 10 mp után nem jön új hó
-    setTimeout(() => {
-        clearInterval(snowTimer);
-
-        // megvárjuk, míg az utolsók is leérnek
-        setTimeout(() => {
-            snowContainer.remove();
-        }, 9000);
-
-    }, snowDuration);
-</script>
-
-
-<script>
-    
-let pin = "";
-
-const dots = document.querySelectorAll(".dot");
-const error = document.getElementById("error");
-
-const encodedPins = [2103, 2108, 2141, 2148];
-
-document.querySelectorAll(".pin-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-        if (pin.length >= 4) return;
-
-        pin += btn.textContent;
-        dots[pin.length - 1].classList.add("filled");
-
-        if (pin.length === 4) {
-            setTimeout(checkPin, 200);
+            // akkor töröljük, amikor már biztosan leért
+            setTimeout(() => {
+                snowflake.remove();
+            }, 9000);
         }
-    });
-});
 
-function checkPin() {
-    const encodedInput = parseInt(pin) + 137;
+        const snowTimer = setInterval(createSnowflake, snowInterval);
 
-    if (encodedPins.includes(encodedInput)) {
-        window.location.href = "fooldal.html";
-    } else {
-        error.style.display = "block";
-        setTimeout(resetPin, 1200);
-    }
-}
+        // 10 mp után nem jön új hó
+        setTimeout(() => {
+            clearInterval(snowTimer);
 
-function resetPin() {
-    pin = "";
-    dots.forEach(d => d.classList.remove("filled"));
-    error.style.display = "none";
-}
-</script>
+            // megvárjuk, míg az utolsók is leérnek
+            setTimeout(() => {
+                snowContainer.remove();
+            }, 9000);
+
+        }, snowDuration);
+    </script>
 
 
-<script>
-function frissitUzenet() {
-    const most = new Date();
-    const ora = most.getHours();
-    const perc = most.getMinutes().toString().padStart(2, "0");
-    const mp = most.getSeconds().toString().padStart(2, "0");
+    <script>
 
-    let szoveg = "";
-    let emoji = "";
+        let pin = "";
 
-    if (ora >= 5 && ora < 10) {
-        szoveg = "Induljon szuperül a reggeled!";
-        emoji = "🌅";
-    } else if (ora >= 10 && ora < 16) {
-        szoveg = "Legyen klassz napod!";
-        emoji = "☀️";
-    } else if (ora >= 16 && ora < 22) {
-        szoveg = "Kellemes, mosolygós estét!";
-        emoji = "🌇";
-    } else {
-        szoveg = "Szép álmokat és jó éjszakát!";
-        emoji = "🌙";
-    }
+        const dots = document.querySelectorAll(".dot");
+        const error = document.getElementById("error");
 
-    document.getElementById("uzenet").innerHTML =
-        `<span class="szoveg">${szoveg}</span><span class="emoji"> ${emoji}</span>`;
+        const encodedPins = [2103, 2108, 2141, 2148];
 
-    const honapok = [
-        "január","február","március","április","május","június",
-        "július","augusztus","szeptember","október","november","december"
-    ];
+        document.querySelectorAll(".pin-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                if (pin.length >= 4) return;
 
-    const napok = [
-        "vasárnap","hétfő","kedd","szerda",
-        "csütörtök","péntek","szombat"
-    ];
+                pin += btn.textContent;
+                dots[pin.length - 1].classList.add("filled");
 
-    const datumSzoveg =
-        `${most.getFullYear()}. ${honapok[most.getMonth()]} ` +
-        `${most.getDate().toString().padStart(2, "0")}.` +
-        `, ${napok[most.getDay()]} ` +
-        `${ora}:${perc}:${mp}`;
+                if (pin.length === 4) {
+                    setTimeout(checkPin, 200);
+                }
+            });
+        });
 
-    document.getElementById("datumIdo").textContent = datumSzoveg;
-}
+        function checkPin() {
+            const encodedInput = parseInt(pin) + 137;
 
-frissitUzenet();
-setInterval(frissitUzenet, 1000);
-</script>
+            if (encodedPins.includes(encodedInput)) {
+                window.location.href = "fooldal.html";
+            } else {
+                error.style.display = "block";
+                setTimeout(resetPin, 1200);
+            }
+        }
+
+        function resetPin() {
+            pin = "";
+            dots.forEach(d => d.classList.remove("filled"));
+            error.style.display = "none";
+        }
+    </script>
+
+
+    <script>
+        function frissitUzenet() {
+            const most = new Date();
+            const ora = most.getHours();
+            const perc = most.getMinutes().toString().padStart(2, "0");
+            const mp = most.getSeconds().toString().padStart(2, "0");
+
+            let szoveg = "";
+            let emoji = "";
+
+            if (ora >= 5 && ora < 10) {
+                szoveg = "Induljon szuperül a reggeled!";
+                emoji = "🌅";
+            } else if (ora >= 10 && ora < 16) {
+                szoveg = "Legyen klassz napod!";
+                emoji = "☀️";
+            } else if (ora >= 16 && ora < 22) {
+                szoveg = "Kellemes, mosolygós estét!";
+                emoji = "🌇";
+            } else {
+                szoveg = "Szép álmokat és jó éjszakát!";
+                emoji = "🌙";
+            }
+
+            document.getElementById("uzenet").innerHTML =
+                `<span class="szoveg">${szoveg}</span><span class="emoji"> ${emoji}</span>`;
+
+            const honapok = [
+                "január", "február", "március", "április", "május", "június",
+                "július", "augusztus", "szeptember", "október", "november", "december"
+            ];
+
+            const napok = [
+                "vasárnap", "hétfő", "kedd", "szerda",
+                "csütörtök", "péntek", "szombat"
+            ];
+
+            const datumSzoveg =
+                `${most.getFullYear()}. ${honapok[most.getMonth()]} ` +
+                `${most.getDate().toString().padStart(2, "0")}.` +
+                `, ${napok[most.getDay()]} ` +
+                `${ora}:${perc}:${mp}`;
+
+            document.getElementById("datumIdo").textContent = datumSzoveg;
+        }
+
+        frissitUzenet();
+        setInterval(frissitUzenet, 1000);
+    </script>
 
 
 </body>
+
 </html>
