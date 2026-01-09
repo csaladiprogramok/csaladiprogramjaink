@@ -260,6 +260,35 @@
             color: black;
             animation: softGlow 5s ease-in-out infinite;
         }
+     .center-page-button {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+.small-red-link {
+    display: block;        /* fontos */
+    width: fit-content;    /* a gomb szélessége a szöveghez igazodik */
+    margin: 0 auto;        /* EZ középre teszi vízszintesen */
+    
+    background: #000;
+    color: white;
+    border: 1.5px solid #ff0000;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.small-red-link:hover {
+    background: #ff0000;
+    color: white;
+}
+
 
         @keyframes softGlow {
             0% {
@@ -320,6 +349,9 @@
         <h4 style="color: yellow; text-align: center;">A SZŰRŐ FUNKCIÓ NEM MŰKÖDIK MEGFELELŐEN! <br><br> Dolgozunk a
             problémán! <br> Az okozott kellemetlenségért elnézést kérünk!</h4>
             ---------->
+            
+            <a href="https://forms.gle/pnj4GySudhYXVaZB9" class="small-red-link" style="text-align: center;">+ Új program felvétele</a>
+                
         <footer style="text-align: center;">
             <a href="archivprogramok.html">Archívum</a>
         </footer>
