@@ -119,6 +119,48 @@
 .close-btn:hover {
     opacity: 1;
 }
+.small-red-link {
+    display: block;        /* fontos */
+    width: fit-content;    /* a gomb szélessége a szöveghez igazodik */
+    margin: 0 auto;        /* EZ középre teszi vízszintesen */
+    
+    background: #000;
+    color: white;
+    border: 1.5px solid #ff0000;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.small-red-link:hover {
+    background: #ff0000;
+    color: white;
+}
+
+.small-red-link2 {
+    display: block;        /* fontos */
+    width: fit-content;    /* a gomb szélessége a szöveghez igazodik */
+    margin: 0 auto;        /* EZ középre teszi vízszintesen */
+    
+    background: #000;
+    color: white;
+    border: 1.5px solid blue;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.small-red-link2:hover {
+    background: blue;
+    color: white;
+}
+
 
 /* MOBIL */
 @media (max-width: 768px) {
@@ -175,9 +217,15 @@
         <!-- 🔥 KIEMELT KAPCSOLAT -->
         <div class="highlight">
             <h2>KAPCSOLATFELVÉTEL</h2>
+              <div class="final"><br>
+              <b>BEJELENTŐ ŰRLAPOK </b>
+            </div> <br>
+
+            <a href="https://forms.gle/pnj4GySudhYXVaZB9" class="small-red-link" style="text-align: center;">+ Új program felvétele</a> <br>
+              <a href="https://forms.gle/bR6RCU1L7qbZC7X76" class="small-red-link2" style="text-align: center;">+ Új bejelentés, hiba hozzáadása</a> <br>
 
              <div class="final">
-              Kapcsolatfelvétel céljából írj emailt a(z) 
+              <b>EMAIL ELÉRHETŐSÉGEK</b> <br><br>Kapcsolatfelvétel céljából írj emailt a(z) 
             </div>
             <div class="emails">
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=oroszcsaladiprogramjaink@gmail.com" target="_blank">
