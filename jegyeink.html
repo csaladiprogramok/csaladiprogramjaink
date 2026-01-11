@@ -163,6 +163,26 @@ body.locked {
         .accordion.active .accordion-content {
             max-height: 300px;
         }
+.accordion-content p {
+    color: #000;
+    font-size: 0.95rem;
+    padding: 15px 0;
+}
+
+/* NYITOTT ÁLLAPOT */
+.accordion.active .accordion-content {
+    max-height: 300px;
+}
+
+/* MOBILON SORKIZÁRT */
+@media (max-width: 768px) {
+    .accordion-content p {
+        text-align: justify;
+        hyphens: auto;          /* elválasztás */
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+    }
+}
 
         .accordion.active .acc-arrow {
             transform: rotate(180deg);
@@ -298,13 +318,20 @@ footer a {
     <button onclick="addPin('8')">8</button>
     <button onclick="addPin('9')">9</button>
 
+    <button onclick="addPin('0')">0</button> 
     <button onclick="addPin('K')">K</button>
-    <button onclick="addPin('0')">0</button>
     <button onclick="addPin('S')">S</button>
+    <button onclick="addPin('E')">E</button>
+    
+    
+    <button onclick="addPin('U')">U</button>
+    <button onclick="addPin('Z')">Z</button>
+
+    <button onclick="addPin('I')">I</button>
     <button onclick="addPin('C')">C</button>
     
     <button onclick="addPin('A')">A</button>
-    <button onclick="addPin('Z')">Z</button>
+    
     
     
 </div>
@@ -325,7 +352,7 @@ footer a {
     </div>
     
 
-<!----
+<!--------
     <div class="accordion">
         <button class="accordion-header">
             <div class="acc-text">
@@ -340,7 +367,7 @@ footer a {
             <p>
                 
                 <a href="#"><b>MEGNÉZEM A JEGYEINKET - LETÖLTÉS ⬇️ </b></a> <br><br>
-                <span style="text-align: justify;"><b><i>Az előadásra megvásárolt jegyeinket a letöltés ikon segítségével tudod megtekinteni, amely az alábbi jegyeket tartalmazza:</b></i></span><br>
+                <span style="text-align: justify;"><b><i>Az előadásra megvásárolt jegyeinket a letöltés ikon segítségével tudod megtekinteni, amely az alábbi jegyeket tartalmazza:</b></i></span><br><br>
                 <i> - 1.) 1. SOR 1. SZÉK </i><br>
                 <i> - 2.) 1. SOR 2. SZÉK </i><br>
                 <i> - 3.) 1. SOR 3. SZÉK </i><br>
@@ -361,18 +388,23 @@ footer a {
     const _len = 6;
     const _max = 3;
 
-
-function _check(){
-    if(_p === "2009CS"){
-        document.getElementById("pinModal").style.display = "none";
-        document.body.classList.remove("locked");
-    } else {
-        _tries++;
-        _showErr();
-        _reset();
-        if(_tries >= _max) _lock();
+    
+    function _realPin(){
+        return String.fromCharCode(50,48,48,57,67,83);
+        
     }
-}
+
+    function _check(){
+        if(_p === _realPin()){
+            document.getElementById("pinModal").style.display = "none";
+            document.body.classList.remove("locked");
+        } else {
+            _tries++;
+            _showErr();
+            _reset();
+            if(_tries >= _max) _lock();
+        }
+    }
 
     function _lock(){
         const e = document.getElementById("pinError");
@@ -397,13 +429,14 @@ function _check(){
         setTimeout(()=>e.style.display="none",2000);
     }
 
- window.addPin = function(n){
-    if(_p.length >= _len) return;
-    _p += n;
-    document.getElementById("pinInput").value = "*".repeat(_p.length);
-    if(_p.length === _len) _check();
-};
+    window.addPin = function(n){
+        if(_p.length >= _len) return;
 
+        _p += n;
+        document.getElementById("pinInput").value = "●".repeat(_p.length);
+
+        if(_p.length === _len) _check();
+    };
 })();
 </script>
 
