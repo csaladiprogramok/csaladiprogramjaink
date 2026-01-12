@@ -343,10 +343,13 @@
 #warningImage {
     position: fixed;
     bottom: -100%;
-    right: 20px;
+    right: 16px;              /* mindig jobbra */
     z-index: 9998;
     cursor: pointer;
     animation: slideUp 1s ease-out forwards;
+
+    width: 260px;             /* ALAP MÉRET – mindenhol kisebb */
+    max-width: 70vw;          /* soha nem lesz túl nagy */
 }
 
 /* KÉP */
@@ -359,23 +362,27 @@
 /* 💻 Laptop / desktop */
 @media (min-width: 769px) {
     #warningImage {
-        width: 420px;        /* nagyobb méret */
-        max-width: 35vw;     /* arányos nagyítás */
-        bottom: -100%;
+        width: 320px;         /* kicsit nagyobb desktopon */
+        max-width: 30vw;
         right: 20px;
     }
 }
 
 /* 📱 Mobil */
+
 @media (max-width: 768px) {
     #warningImage {
-        left: 0;
-        right: 0;
-        width: 100vw;        /* TELJES SZÉLESSÉG */
+        width: 100%;          /* TELJES SZÉLESSÉG */
         max-width: 100vw;
-        bottom: -100%;
+        height: auto;         /* NEM LESZ MAGAS */
+        
+        right: 0;
+        left: 0;
+        padding: 0 8px;       /* kis oldalsó levegő */
+        box-sizing: border-box;
     }
 }
+
 
 /* Becúszó animáció */
 @keyframes slideUp {
@@ -407,25 +414,39 @@
             <!-----📢 KÖZLEMÉNY – A rendszerünk fejlesztés alatt áll, legkésőbb ma (01.01.) 23:59-től újra elérhető lesz! Köszönjük a megértést! 
      📢 <span style="color: green;">KÖZLEMÉNY -</span> <i>A felhasználóélmény javítása érdekében az újévtől összeolvadt a CSALÁDI PROGRAMJAINK és a VAKÁCIÓVÁGYÓ rendszere! Egy kattintással elérhető mindkettő weboldalunk egyetlen egy PIN - kód segítségével. <span style="color: blue;"> A belépési PIN - kód mindenkinek a saját születési éve!</span> A korábbi bejelentkezési módszerek megszűntek!</i></div>
 ------->
-        
+        <!-------
             <span style="color: blue; background-color: yellow;"> |📢🔑 <span style="color: red;">KÖZLEMÉNY -</span> A
-                JELSZÓ A SAJÁT SZÜLETÉSI ÉVED! 📢🔑|</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                
+                JELSZÓ A SAJÁT SZÜLETÉSI ÉVED! 📢🔑|</span> 
+               -------> 
+
+               <!------PROMRAMNAPTÁR 2026------->
+               <span style="color: red;">|</span><span style="color: blue"> CSALÁDI PROGRAMNAPTÁR <span style="color: red;">2026</span> ➡️➡️➡️ </span><span style="color: red;"> | </span>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
              <span>🎭🎭</span> 
              &nbsp;&nbsp;&nbsp;
             <!---------2026. MÁJUS --->
             <span style="color: red;">| 2026. MÁJUS -</span> <span style="color: blue;">BÉRMÁLKOZÁS, BANKETT |</span>
 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+             <span>🎭🎭</span> 
+             &nbsp;&nbsp;&nbsp;
 
             <!-------2026. JÚNIUS ---->
             <span style="color: red;">| 2026. JÚNIUS -</span> <span style="color: blue;">BALLAGÁS |</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+             <span>🎭🎭</span> 
+             &nbsp;&nbsp;&nbsp;
             <!---------2026. JÚLIUS --->
             <span style="color: red;">| 2026. JÚLIUS -</span> <span style="color: blue;">NYARALÁS 1.0 |</span>
 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+             <span>🎭🎭</span> 
+             &nbsp;&nbsp;&nbsp;
 
             <!---------2026. AUGUSZTUS --->
             <span style="color: red;">| 2026. AUGUSZTUS -</span> <span style="color: blue;">NYARALÁS 2.0, SZENT ISTVÁN NAPOK, SZERENCSI ARTÚR NAPOK |</span>
