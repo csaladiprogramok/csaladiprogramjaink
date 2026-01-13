@@ -155,6 +155,7 @@ body {
     margin-top: 6px;
     flex-wrap: wrap;
     justify-content: center;
+    min-width: 150px;
 }
 
 .buttons a {
@@ -163,9 +164,9 @@ body {
     text-decoration: none;
     padding: 12px 22px;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
-    min-width: 180px;
+    min-width: 160px;
     text-align: center;
 }
 
@@ -173,11 +174,15 @@ body {
 .buttons a:nth-last-child(2) {
     background-color: #ffd400;
     color: #003366;
+    min-width: 140px;
+
 }
 
 .buttons a:last-child {
     background-color: #c62828;
     color: white;
+    min-width: 140px;
+
 }
 
 /* ======================
@@ -211,7 +216,7 @@ body {
 }
 .quote2 {
     font-family: 'Playfair Display', serif;
-    font-size: 12px;
+    font-size: 14px;
     color: yellow;
     background-color: black;
     border-radius: 3px;
@@ -232,6 +237,20 @@ body {
         margin-right: auto;
 
         text-align: center;
+    }
+}
+.quote2 {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2.5s steps(30, end);
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
     }
 }
 
@@ -287,11 +306,11 @@ body {
     </div>
 
     <div class="buttons">
-        <a href="programjaink.html">PROGRAMJAINK</a>
-        <a href="bakancslistánk.html">Bakancslistánk</a>
-        <a href="programajanlok.html">Ajánlók</a>
-        <a href="ilyenvolt.html">Ilyen volt...</a>
-        <a href="hirek.html">Hírek</a>
+        <a href="programjaink.html" style="color: yellow;">PROGRAMJAINK</a>
+        <a href="bakancslistánk.html">BAKANCSLISTÁNK</a>
+        <a href="programajanlok.html">AJÁNLÓK</a>
+        <a href="ilyenvolt.html">ILYEN VOLT...</a>
+        <a href="hirek.html">HÍREK</a>
         <a href="jegyeink.html">JEGYEINK</a>
         <a href="https://csaladiprogramok.github.io/vakaciovagyo/">VAKÁCIÓVÁGYÓ</a>
         <a href="index.html">KIJELENTKEZÉS</a>
