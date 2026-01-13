@@ -209,6 +209,33 @@ body {
         width: 95vw;
     }
 }
+.quote2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    color: yellow;
+    background-color: black;
+    border-radius: 3px;
+
+    display: inline-block;
+    padding: 5px 10px;
+
+    margin-left: 5px;      /* laptop */
+    margin-right: auto;
+}
+
+@media (max-width: 768px) {
+    .quote2 {
+        display: block;
+        width: fit-content;
+
+        margin-left: calc((100vw - 95vw) / 2);
+        margin-right: auto;
+
+        text-align: center;
+    }
+}
+
+
 </style>
 </head>
 
@@ -220,10 +247,15 @@ body {
         <h1>CSALÁDI PROGRAMJAINK</h1>
         <div class="quote">„Az együtt töltött idő a legszebb ajándék.”</div>
         <div class="family-title">Orosz Család</div>
+        <div class="quote2">Kiemelt családi híreink</div> 
     </div>
-
     <div class="slider">
         <div class="slide active">
+            <a href="#">
+                <img src="figyelmezteto_01.jpg" alt="">
+            </a>
+        </div>
+                <div class="slide">
             <a href="#">
                 <img src="karacsonyifenyek.jpg" alt="">
             </a>
@@ -248,6 +280,7 @@ body {
 
     <div class="dots">
         <span class="dot active"></span>
+        <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
