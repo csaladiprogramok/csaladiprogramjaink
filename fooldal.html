@@ -216,7 +216,7 @@ body {
 }
 .quote2 {
     font-family: 'Playfair Display', serif;
-    font-size: 14px;
+    font-size: 16px;
     color: yellow;
     background-color: black;
     border-radius: 3px;
@@ -229,28 +229,24 @@ body {
 }
 
 @media (max-width: 768px) {
-    .quote2 {
-        display: block;
-        width: fit-content;
 
-        margin-left: calc((100vw - 95vw) / 2);
-        margin-right: auto;
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+        gap: 12px;
 
-        text-align: center;
+        justify-content: center;      /* rács középre */
+        justify-items: center;        /* gombok középre */
+
+        max-width: 340px;             /* teljes blokk középre */
+        margin: 12px auto 0 auto;
     }
-}
-.quote2 {
-    overflow: hidden;
-    white-space: nowrap;
-    animation: typing 2.5s steps(30, end);
-}
 
-@keyframes typing {
-    from {
-        width: 0;
-    }
-    to {
+    .buttons a {
         width: 100%;
+        min-width: unset;
+        padding: 14px 12px;
+        font-size: 14px;
     }
 }
 
@@ -266,7 +262,7 @@ body {
         <h1>CSALÁDI PROGRAMJAINK</h1>
         <div class="quote">„Az együtt töltött idő a legszebb ajándék.”</div>
         <div class="family-title">Orosz Család</div>
-        <div class="quote2">Kiemelt családi híreink</div> 
+        <div class="quote2">Kiemelt családi információink...</div> 
     </div>
     <div class="slider">
         <div class="slide active">
