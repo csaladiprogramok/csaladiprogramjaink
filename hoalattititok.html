@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HÓ ALATTI TITOK</title>
+<style>
+/* ===== ALAP ===== */
+body {
+    background: radial-gradient(circle at top, #0b2a4a, #000);
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: yellow;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.sub {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+/* ===== FŐ DOBOZ ===== */
+.main-box {
+    border: 2px solid #fff;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.day {
+    margin-bottom: 30px;
+}
+
+.day h3 {
+    margin-bottom: 10px;
+}
+
+ul {
+    margin-left: 20px;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+/* Alárendelt pontok */
+.detail {
+    margin-left: 60px;
+    list-style-type: none;
+    opacity: 0.85;
+}
+
+/* ===== BEZÁRÓ GOMB ===== */
+.close-btn {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    color: white;
+    font-size: 26px;
+    font-weight: 600;
+    z-index: 1000;
+    opacity: 0.85;
+}
+
+.close-btn:hover {
+    opacity: 1;
+}
+
+/* ===== FEJLÉC KÉP ===== */
+.kep-tarolo {
+    display: flex;
+    justify-content: center;
+}
+
+.kep-tarolo img {
+    width: 90%;
+    max-width: 800px;
+    aspect-ratio: 50 / 15;
+    height: auto;
+    border-radius: 0;
+}
+
+/* ===== KÖZÉPSŐ KÉP ===== */
+.center-image {
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.center-image img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: none;
+}
+
+/* ===== SLIDER ===== */
+.slider {
+    max-width: 500px;
+    margin: 40px auto;
+    position: relative;
+}
+
+.slides img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: none;
+    border-radius: 12px;
+}
+
+.slides img.active {
+    display: block;
+}
+
+.dots {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 4px;
+    background-color: #555;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.active {
+    background-color: #fff;
+}
+
+.ajanlat-container {
+    display: flex;
+    flex-direction: column; /* ← EZ A LÉNYEG */
+    gap: 20px;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 10px;
+}
+
+
+.box {
+    flex: 1;
+    min-width: 260px;
+    background-color: #f4f9ff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    color: #000;
+}
+
+.box h2 {
+    color: #1e4fa3;
+}
+
+.iroda {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.box ul {
+    padding-left: 18px;
+}
+
+.ar {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #0a7a3d;
+}
+
+.kiemelt {
+    background-color: #eaf3ff;
+    border: 2px solid #1e4fa3;
+    text-align: center;
+}
+
+.kiemelt-piros {
+    color: red;
+    font-weight: bold;
+}
+
+.zold {
+    color: green;
+}
+
+.figyelmezteto {
+    font-weight: bold;
+    text-align: center;
+}
+
+.datum {
+    font-size: 1.2em;
+}
+
+.fizetes {
+    font-size: 1.1em;
+    margin-top: 20px;
+}
+
+/* ===== MOBIL ===== */
+@media (max-width: 768px) {
+    .ajanlat-container {
+        flex-direction: column;
+    }
+
+    .box {
+        text-align: center;
+    }
+
+    .box ul {
+        padding-left: 0;
+        list-style-position: inside;
+    }
+
+    .slider {
+        max-width: 90vw;
+    }
+
+    .close-btn {
+        font-size: 28px;
+    }
+}
+
+/* ===== HÓESÉS ===== */
+#snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10%;
+    font-size: 1.2rem;
+    opacity: 0.8;
+    animation: fall linear;
+}
+
+@keyframes fall {
+    from { transform: translateY(0); }
+    to { transform: translateY(110vh); }
+}
+
+@media (max-width: 600px) {
+    .snowflake {
+        font-size: 1rem;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+    <h1>JELENLEG NEM ELÉRHETŐ TARTALOM!<br> Hamarosan...</h1>
+<!-----------
+    <div id="snow-container"></div>
+
+    <div class="container">
+        <a href="fooldal.html" class="close-btn">✕</a>
+    <div class="kep-tarolo">
+    <img src="irany.jpg" alt="Kép leírása">
+</div> <br><br>
+
+        <div class="main-box">
+
+            <div class="section-title"><b>Tervezett program</b></div>
+
+            <div class="day">
+                <h3>2026. december 27.</h3>
+                <ul>
+                    <li>07:00 – Indulás itthonról (Szerencs)</li>
+                    <li>10:30 – Érkezés a szállásra (Zakopane)</li>
+                    <li>14:00 – Városnézés és adventi vásár - <a href="https://www.zakopane.pl/en/tourist-area">Részletek</a></li></li> 
+                    <li>16:30 – Lovasszánozás - <a href="https://www.zakopaneinfo.hu/?strona,menu,pol,glowna,1507,0,1493,lovasszanozas,ant.html">Részletek</a></li>
+
+                    <li class="detail">🐎 Különleges, hagyományos élmény</li>
+                    <li class="detail">🏔️ Gyönyörű havas táj</li>
+                    <li class="detail">🔥 Fáklyás felvonulás és meleg étel</li>
+                    <li class="detail">🌙 Esti, csodás program</li>
+                </ul>
+            </div>
+
+            <div class="day">
+                <h3>2026. december 28.</h3>
+                <ul>
+                    <li>10:00 – Hóbarlang látogatás - <a href="https://www.zakopane.pl/en/tourist-area/tourism/tourist-attractions/snowland-winter-theme-park">Részletek</a></li>
+
+                    <li class="detail">❄️ Látványos hó- és jégépítmények</li>
+                    <li class="detail">🛷 Szórakoztató minden korosztálynak</li>
+                    <li class="detail">🏰 Különleges élménypark</li>
+                    <li class="detail">📸 Tökéletes hely fotózáshoz</li>
+
+                    <li>17:00 – Indulás haza</li>
+                    <li>20:00 – Villás vacsora Kassán</li>
+                    <li>21:00 – Érkezés Szerencsre</li>
+                </ul>
+            </div>
+
+            <div>---------------------------------------------------</div> <br>
+           <div class="center-image">
+  <img src="ajanlat.jpg" alt="Középre igazított kép">
+
+  <p style="text-align: center;"><b>Ez egy önnállóan megvalósítható kb. 149.990 - Ft értékű ajánlat! <br>Kedvezőbb ajánlatokért terkerj lejjebb!</b></p>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center;"><h3><i>Ízelítőképek a fakultatív programokról...</i></h3></div>
+    <div class="slider">
+    <div class="slides">
+        <img src="s01.JPG" class="active">
+        <img src="s02.JPG">
+        <img src="s03.JPG">
+        <img src="l01.JPG">
+        <img src="l02.JPG">
+        <img src="l03.JPG">
+        <img src="a01.jpg">
+        <img src="a02.jpg">
+        <img src="a03.jpg">
+    </div>
+
+    <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div>
+<div class="ajanlat-container">
+
+   
+    <div class="box">
+        <h2>ZAKOPANES ÚT</h2>
+
+        <p class="iroda">Utazási irodával</p>
+        <ul>
+            <li>1 napos program autóbuszos kirándulással.</li>
+            <li> 3 db fakultatív program (Városnézés,Lószánkózás,Snowlandia).</li>
+        </ul>
+        <p class="ar">Kb. 80.000 Ft / 4 fő</p>
+
+        <hr>
+
+        <p class="iroda">Önállóan</p>
+        <ul>
+            <li>2 napos program</li>
+            <li>1 éjszakás szállás</li>
+            <li>2 db reggeli és vacsora</li>
+            <li>3 db fakultatív program (Városnézés,Lószánkózás,Snowlandia).</li>
+        </ul>
+        <p class="ar">
+            Kb. 149.990 Ft / 4 fő <span class="kiemelt-piros">/ 2 nap</span>
+        </p>
+        
+        <hr>
+               
+    
+       
+        <div style="text-align: center;">
+        <p style="font-size: 25px; color: yellow; background-color: black;"><b>NÉGYKERÉK MEGHAJTÁSÚ CSOMAG</b></p>
+         <p class="iroda"><i>Kihagyunk egy előre tervezett fakultatív programot a három programkínálatból: <br> <span>Pl.: Fáklyás lovasszánkózás (40.000 Ft) vagy Snowlandia - Hóbarlang (50.000 Ft).</span></i></p>
+        
+            <p>2 napos program</p>
+            <p>1 éjszakás szállás<p>
+            <p>2 db reggeli és vacsora</p>
+            <p> Városnézés és egy darab fakultatív program</p>
+        
+
+        <p class="ar" style="font-size: 25px;">
+            Kb. 89.990 Ft / 4 fő <span class="kiemelt-piros">/ 2 nap</span>
+        </p>
+
+              <div style="text-align: center;">
+        <p style="font-size: 25px; color: yellow; background-color: black;"><b>KÉTKERÉK MEGHAJTÁSÚ CSOMAG</b></p>
+               
+            <p>1 napos program</p>
+            <p>1 db reggeli és egy vacsora Kassán.</p>
+            <p> Városnézés és adventi vásár</p>
+        
+
+        <p class="ar" style="font-size: 25px;">
+            Kb. 39.990 Ft / 4 fő </span>
+        </p>
+
+    </div>
+    </div>
+    
+    <div class="box kiemelt">
+        <h2>FOGLALÁS</h2>
+
+        <p class="figyelmezteto">
+            LEGKÉSŐBB<br>
+            <span class="datum"><span style="color: red;">2026. január 31. - ig</span></span>
+        </p>
+
+        <hr>
+
+        <p class="fizetes">
+            <b>FIZETÉS AKÁR</b><br>
+            <span class="datum zold">2026. ŐSZÉN</span>
+        </p>
+    </div>
+
+</div>
+
+
+<script>
+let index = 0;
+const images = document.querySelectorAll(".slides img");
+const dots = document.querySelectorAll(".dot");
+
+setInterval(() => {
+    images[index].classList.remove("active");
+    dots[index].classList.remove("active");
+
+    index = (index + 1) % images.length;
+
+    images[index].classList.add("active");
+    dots[index].classList.add("active");
+}, 5000);
+</script>
+
+<script>
+    const snowContainer = document.getElementById("snow-container");
+    const snowInterval = 180; // sűrűség (minél kisebb, annál több hó)
+
+    function createSnowflake() {
+        const snowflake = document.createElement("div");
+        snowflake.className = "snowflake";
+        snowflake.textContent = "❄️";
+
+        snowflake.style.left = Math.random() * 100 + "vw";
+        snowflake.style.animationDuration = 5 + Math.random() * 3 + "s";
+
+        snowContainer.appendChild(snowflake);
+
+        // amikor leért, töröljük (memóriaszivárgás ellen)
+        setTimeout(() => {
+            snowflake.remove();
+        }, 9000);
+    }
+
+    // folyamatos hóesés
+    setInterval(createSnowflake, snowInterval);
+</script>
+----------->
+</body>
+
+</html>
