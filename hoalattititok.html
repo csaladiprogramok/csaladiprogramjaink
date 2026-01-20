@@ -190,6 +190,26 @@ li {
     font-weight: bold;
     color: #0a7a3d;
 }
+.gomb-kontener {
+    display: flex;
+    flex-direction: column;    /* egymás alá */
+    gap: 20px;                 /* távolság a gombok között */
+}
+
+.gomb {
+    text-decoration: none;
+    background-color: #0077cc;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 30px;       /* lekerekítés */
+    text-align: center;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.gomb:hover {
+    background-color: #005fa3;
+}
 
 .kiemelt {
     background-color: #eaf3ff;
@@ -281,7 +301,7 @@ li {
 <body>
 
     <h1>JELENLEG NEM ELÉRHETŐ TARTALOM!<br> Hamarosan...</h1>
-<!-----------
+<!------
     <div id="snow-container"></div>
 
     <div class="container">
@@ -393,7 +413,7 @@ li {
     
        
         <div style="text-align: center;">
-        <p style="font-size: 25px; color: yellow; background-color: black;"><b>NÉGYKERÉK MEGHAJTÁSÚ CSOMAG</b></p>
+        <p style="font-size: 25px; color: yellow; background-color: black;"><b>NÉGYKERÉK MEGHAJTÁSÚ CSOMAG - AJÁNLOTT</b></p>
          <p class="iroda"><i>Kihagyunk egy előre tervezett fakultatív programot a három programkínálatból: <br> <span>Pl.: Fáklyás lovasszánkózás (40.000 Ft) vagy Snowlandia - Hóbarlang (50.000 Ft).</span></i></p>
         
             <p>2 napos program</p>
@@ -439,7 +459,10 @@ li {
 
 </div>
 
-
+<div class="gomb-kontener">
+    <a href="https://www.booking.com/searchresults.hu.html?label=hu-hu-booking-mobile-_9td8vcLEKH_6wpGG*i7TwSM652796014995%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9063076%3Ali%3Adem%3Adm&aid=2311236&ss=Zakopane%2C+Kis-Lengyelorsz%C3%A1g%2C+Lengyelorsz%C3%A1g&ssne=Per%C3%ADsza&ssne_untouched=Per%C3%ADsza&efdco=1&lang=hu&sb=1&src_elem=sb&dest_id=-538221&dest_type=city&ac_position=0&ac_click_type=b&ac_langcode=hu&ac_suggestion_list_length=5&search_selected=true&search_pageview_id=77b47c64da9b076f&checkin=2026-12-27&checkout=2026-12-28&group_adults=3&no_rooms=1&group_children=1&age=15&order=price" class="gomb"><b>SZÁLLÁS AJÁNLATOK</b></a>
+    
+</div>
 <script>
 let index = 0;
 const images = document.querySelectorAll(".slides img");
