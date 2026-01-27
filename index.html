@@ -444,8 +444,8 @@
 
 /* ===== Modal tartalom ===== */
 .modalContent {
-    background: #fff;
-    color: #000;
+    background: radial-gradient(circle at top, #0b2a4a, #000);;
+    color: white;
     min-height: 100vh;
     padding: 20px;
     position: relative;
@@ -455,12 +455,13 @@
 /* X gomb */
 .closeBtn {
     position: fixed;
-    top: 16px;
-    right: 16px;
+    top: 13px;
+    right: 25px;
     font-size: 26px;
     background: none;
     border: none;
     cursor: pointer;
+    color: yellow;
 }
 
 /* Képek */
@@ -472,29 +473,65 @@
     border-radius: 10px;
 }
 
-/* ===== Lebegő kép (alap – laptop / desktop) ===== */
-#floatingLink img {
-    width: 90px;
-    max-width: 20vw;
+/* ===== Lebegő konténer ===== */
+#floatingLink {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 9999;
+    cursor: pointer;
+
+    animation: megaPulse 1.2s infinite;
 }
 
-/* 📱 Mobil – kisebb méret */
+/* ===== KÉP MÉRETE ===== */
+
+/* 💻 Laptop / desktop */
+/* ===== Lebegő konténer – lassabb pulzálás ===== */
+#floatingLink {
+    animation: megaPulse 8.2s infinite;
+}
+
+/* 📱 Mobilon picit gyorsabb, de még mindig lassú */
 @media (max-width: 768px) {
     #floatingLink {
-        right: 10px;
-        bottom: 10px;
+        animation: megaPulse 8s infinite;
     }
 
     #floatingLink img {
-        width: 65px;          /* 👈 EZ A LÉNYEG */
+        width: 60px;      /* 👈 EZ A KULCS */
         max-width: 18vw;
     }
 }
 
-/* 📱 Nagyon kicsi mobil */
+/* 📱 Extra kicsi mobil */
 @media (max-width: 400px) {
     #floatingLink img {
-        width: 55px;
+        width: 52px;
+    }
+}
+
+/* ===== ERŐS, DE ELEGÁNS PULZÁLÁS ===== */
+@keyframes megaPulse {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0 rgba(255,255,255,0));
+    }
+    25% {
+        transform: scale(1.12);
+        filter: drop-shadow(0 0 14px rgba(255,255,255,0.85));
+    }
+    50% {
+        transform: scale(0.96);
+        filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
+    }
+    75% {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 10px rgba(255,255,255,0.6));
+    }
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0 rgba(255,255,255,0));
     }
 }
 
@@ -522,7 +559,7 @@
                -------> 
 
                <!------PROMRAMNAPTÁR 2026------->
-               <span style="color: red;">|</span><span style="color: blue"> CSALÁDI PROGRAMNAPTÁR <span style="color: red;">2026</span> ➡️➡️➡️ </span><span style="color: red;"> | </span>
+               <span style="color: red;">|</span><span style="color: blue"> CSALÁDI <span style="color: red;">PROGRAMJAINK</span> ➡️➡️➡️ </span><span style="color: red;"> | </span>
 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -625,31 +662,37 @@
             <div id="datumIdo"></div>
            <div id="datumIdo"></div>
 <div id="kerdesLink" class="uzenet-lejebb">
-    <a href="kapcsolat.html">Kérdésed van, hibát találtál? Kattints ide!</a>
+    <a href="kapcsolat.html">Hibát találtál? Kattints ide!</a>
 </div>
 
 
         </div>
     </div>
 
-    <!-- 🔔 Lebegő kattintható kép 
+    <!-- 🔔 Lebegő kattintható kép -->
 <div id="floatingLink">
     <img src="ertesites.webp" alt="Figyelmeztetés">
 </div>
--->
+
 <!-- 📱 Teljes képernyős modal -->
 <div id="fullModal">
     <div class="modalContent">
         <button class="closeBtn">✕</button>
 
-        <h2>Fontos információ</h2>
+        <h2 style="color: yellow;">KIEMELT...</h2> <br>
         <p>
-            Itt tudsz elhelyezni bármilyen szöveget.  
-            Mobilon és laptopon is kényelmesen olvasható.
-        </p>
+            Ne feledkezz meg a kiemelt ajánlatokról! <br><br> Igazán megéri igénybe venni a <br> <span style="color: yellow; font-size: 28px;"><b>250.000 - FT </b></span><br> értékű ajánlatot. 
+        </p> <br>
 
-        <img src="kep1.jpg" alt="Kép 1">
-        <img src="kep2.jpg" alt="Kép 2">
+        <img src="ertesitesrepulo.jpg" alt="Kép 1">
+        <img src="ertesiteszakopane.jpg" alt="Kép 2">
+
+        <br>
+
+            <p>
+            <i>További részletek a családi webalkalmazásunkban bejelentkezés után az <span style="color: yellow;">AJÁNLÓK</span> menüpontban!</i> 
+        </p> <br>
+
     </div>
 </div>
 
