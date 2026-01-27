@@ -386,7 +386,7 @@
 
     <div class="month-group" data-month="2026-03">
 
-            <h2 class="month-title">2026. MÁRCIUS</h2> <br>
+           <h2 class="month-title">2026. MÁRCIUS</h2>  <br>
 
 
              <div class="card" id="marcius15" data-month="2026-03">
@@ -431,7 +431,7 @@
     </div>
 
 
-            <div class="card"  id="orokmozgas" data-month="2026-03">
+            <div class="card"  id="orokmozgas" data-month="2026-03"  data-hide-date="2026-03-20T21:00:00">
 
                 <img src="tancest.jpg" alt="">
 
@@ -479,7 +479,7 @@ Szeretettel hívunk és várunk mindenkit, tapsoljunk együtt a fiataloknak és 
     <div class="month-group" data-month="2026-04">
             <h2 class="month-title">2026. ÁPRILIS</h2> <br>
 
-            <div class="card"  id="valasztas" data-month="2026-04">
+            <div class="card"  id="valasztas" data-month="2026-04"  data-hide-date="2026-04-12T23:59:00">
 
                 <img src="valasztas.jpg" alt="">
 
@@ -615,7 +615,7 @@ Szeretettel hívunk és várunk mindenkit, tapsoljunk együtt a fiataloknak és 
         <div class="month-group" data-month="2026-06">
             <h2 class="month-title">2026. JÚNIUS</h2> <br>
 
-            <div class="card"  id="ballagas-dorka" data-month="2026-06">
+            <div class="card"  id="ballagas-dorka" data-month="2026-06"  data-hide-date="2026-06-20T14:00:00">
 
                 <img src="ballagas.jpg" alt="">
 
@@ -760,7 +760,7 @@ Szeretettel hívunk és várunk mindenkit, tapsoljunk együtt a fiataloknak és 
             </div>
 
 
-            <div class="card" id="szentistvannapokbudapest" data-month="2026-08">
+            <div class="card" id="szentistvannapokbudapest" data-month="2026-08"  data-hide-date="2026-08-23T23:59:00">
 
                 <img src="szentistvannapokbudapest.jpg" alt="">
                 <div class="card-content">
@@ -916,6 +916,90 @@ A látogatók ingyenes koncertek, családi programok, kiállítások, gasztronó
                 updateView();
                 filter.addEventListener("change", updateView);
             </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const now = new Date();
+    const filter = document.getElementById("monthFilter");
+    const noResults = document.getElementById("noResults");
+    const monthGroups = document.querySelectorAll(".month-group");
+
+    /* =====================================================
+       1️⃣ LEJÁRT KÁRTYÁK ELTÜNTETÉSE
+    ===================================================== */
+    document.querySelectorAll(".card[data-hide-date]").forEach(card => {
+        const hideDate = new Date(card.dataset.hideDate);
+        if (now >= hideDate) {
+            card.style.display = "none";
+        }
+    });
+
+    /* =====================================================
+       2️⃣ ÜRES HÓNAPOK MEGJELÖLÉSE + ELREJTÉSE
+    ===================================================== */
+    monthGroups.forEach(group => {
+        const visibleCards = group.querySelectorAll(
+            ".card:not([style*='display: none'])"
+        );
+
+        if (visibleCards.length === 0) {
+            group.classList.add("empty-month");
+            group.style.display = "none"; // cím + blokk eltűnik
+        }
+    });
+
+    /* =====================================================
+       3️⃣ SZŰRŐBŐL CSAK AZ IDŐBEN LEZÁRULT HÓNAPOK TŰNNEK EL
+    ===================================================== */
+    filter.querySelectorAll("option").forEach(option => {
+        if (option.value === "all") return;
+
+        const [year, month] = option.value.split("-");
+        const monthEnd = new Date(year, month, 0, 23, 59, 59);
+
+        if (now > monthEnd) {
+            option.remove();
+        }
+    });
+
+    /* =====================================================
+       4️⃣ SZŰRÉS + ÜRES HÓNAP ÜZENET
+    ===================================================== */
+    function updateView() {
+        const selected = filter.value;
+        let visibleCardsCount = 0;
+
+        monthGroups.forEach(group => {
+
+            // ❗️HA ÜRES HÓNAP → SOHA NEM JELENHET MEG
+            if (group.classList.contains("empty-month")) {
+                group.style.display = "none";
+                return;
+            }
+
+            if (selected === "all" || group.dataset.month === selected) {
+                group.style.display = "block";
+                visibleCardsCount += group.querySelectorAll(
+                    ".card:not([style*='display: none'])"
+                ).length;
+            } else {
+                group.style.display = "none";
+            }
+        });
+
+        if (selected !== "all" && visibleCardsCount === 0) {
+            noResults.style.display = "block";
+        } else {
+            noResults.style.display = "none";
+        }
+    }
+
+    updateView();
+    filter.addEventListener("change", updateView);
+
+});
+</script>
+
 
 
 
