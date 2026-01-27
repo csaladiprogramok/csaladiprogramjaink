@@ -489,13 +489,13 @@
 /* 💻 Laptop / desktop */
 /* ===== Lebegő konténer – lassabb pulzálás ===== */
 #floatingLink {
-    animation: megaPulse 3.2s infinite;
+    animation: megaPulse 2.2s infinite;
 }
 
 /* 📱 Mobilon picit gyorsabb, de még mindig lassú */
 @media (max-width: 768px) {
     #floatingLink {
-        animation: megaPulse 3s infinite;
+        animation: megaPulse 2s infinite;
     }
 
     #floatingLink img {
@@ -685,7 +685,18 @@
     <div class="modalContent">
         <button class="closeBtn">✕</button>
 
-        <h2 style="color: yellow;">KIEMELT...</h2> <br>
+ <h4 style="
+    color: yellow;
+    border: 3px solid yellow;
+    border-radius: 10px;
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+">
+    🔔 Új értesítésed érkezett! <br>
+    <span style="color:red">⬇⬇⬇⬇</span>
+</h4> <br><br>
+
         <p>
             Ne feledkezz meg a kiemelt ajánlatokról! <br><br> Igazán megéri igénybe venni a <br> <span style="color: yellow; font-size: 28px;"><b>250.000 - FT </b></span><br> értékű ajánlatot. 
         </p> <br>
