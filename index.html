@@ -403,6 +403,101 @@
     }
 }
 
+/* ===== Lebegő kép ===== */
+#floatingLink {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 9999;
+    cursor: pointer;
+    animation: pulse 1.6s infinite;
+}
+
+#floatingLink img {
+    width: 90px;
+    max-width: 25vw;
+}
+
+/* Mobilon kicsit nagyobb */
+@media (max-width: 768px) {
+    #floatingLink img {
+        width: 110px;
+    }
+}
+
+/* Pulzáló animáció */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+/* ===== Modal háttér ===== */
+#fullModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    z-index: 10000;
+    overflow-y: auto;
+}
+
+/* ===== Modal tartalom ===== */
+.modalContent {
+    background: #fff;
+    color: #000;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+}
+
+/* X gomb */
+.closeBtn {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    font-size: 26px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Képek */
+.modalContent img {
+    width: 100%;
+    max-width: 420px;
+    margin: 12px auto;
+    display: block;
+    border-radius: 10px;
+}
+
+/* ===== Lebegő kép (alap – laptop / desktop) ===== */
+#floatingLink img {
+    width: 90px;
+    max-width: 20vw;
+}
+
+/* 📱 Mobil – kisebb méret */
+@media (max-width: 768px) {
+    #floatingLink {
+        right: 10px;
+        bottom: 10px;
+    }
+
+    #floatingLink img {
+        width: 65px;          /* 👈 EZ A LÉNYEG */
+        max-width: 18vw;
+    }
+}
+
+/* 📱 Nagyon kicsi mobil */
+@media (max-width: 400px) {
+    #floatingLink img {
+        width: 55px;
+    }
+}
+
     </style>
 </head>
 
@@ -434,7 +529,7 @@
             <span>🎭🎭</span> 
              &nbsp;&nbsp;&nbsp;
             <!---------2026. MÁRCIUS --->
-            <span style="color: red;">| 2026. MÁRCIUS -</span> <span style="color: blue;">TÁNCEST |</span>
+            <span style="color: red;">| 2026. MÁRCIUS -</span> <span style="color: blue;">MÁRCIUS 15, TÁNCEST |</span>
              &nbsp;&nbsp;&nbsp;
             <span>🎭🎭</span> 
              &nbsp;&nbsp;&nbsp;
@@ -536,6 +631,28 @@
 
         </div>
     </div>
+
+    <!-- 🔔 Lebegő kattintható kép -->
+<div id="floatingLink">
+    <img src="ertesites.webp" alt="Figyelmeztetés">
+</div>
+
+<!-- 📱 Teljes képernyős modal -->
+<div id="fullModal">
+    <div class="modalContent">
+        <button class="closeBtn">✕</button>
+
+        <h2>Fontos információ</h2>
+        <p>
+            Itt tudsz elhelyezni bármilyen szöveget.  
+            Mobilon és laptopon is kényelmesen olvasható.
+        </p>
+
+        <img src="kep1.jpg" alt="Kép 1">
+        <img src="kep2.jpg" alt="Kép 2">
+    </div>
+</div>
+
     <script>
         const snowContainer = document.getElementById("snow-container");
         const snowDuration = 5000; // 10 másodperc
@@ -674,6 +791,21 @@
         setTimeout(() => {
             warning.remove();
         }, 600);
+    });
+</script>
+<script>
+    const floating = document.getElementById("floatingLink");
+    const modal = document.getElementById("fullModal");
+    const closeBtn = document.querySelector(".closeBtn");
+
+    floating.addEventListener("click", () => {
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden"; // ne görgessen mögötte
+    });
+
+    closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
     });
 </script>
 
