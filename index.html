@@ -224,6 +224,17 @@
             margin: 16px 0;
         }
 
+#floatingLink {
+    text-align: center; /* hogy a szöveg a kép alatt középen legyen */
+}
+
+#floatingLink .datum {
+    color: yellow;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 10px;
+    margin-top: 5px; /* kis távolság a kép és a szöveg között */
+}
 
         /* különlegesebb szöveg */
         .szoveg {
@@ -484,6 +495,17 @@
     animation: megaPulse 1.2s infinite;
 }
 
+/* 📱 Mobil nézet */
+@media (max-width: 768px) {
+    #floatingLink img {
+        width: 130px;   /* kisebb kép mobilon */
+    }
+
+    #floatingLink .datum {
+        font-size: 7px; /* kisebb szöveg mobilon */
+        margin-top: 4px;
+    }
+}
 /* ===== KÉP MÉRETE ===== */
 
 /* 💻 Laptop / desktop */
@@ -713,6 +735,7 @@
     <!-- 🔔 Lebegő kattintható kép -->
 <div id="floatingLink">
     <img src="ertesites.webp" alt="Figyelmeztetés">
+      <div class="datum">2026.01.28.</div>
 </div>
 
 <!-- 📱 Teljes képernyős modal -->
@@ -728,7 +751,7 @@
     display: inline-block;
     text-align: center;
 " class="iro-animacio">
-    🔔 Új értesítésed érkezett!</span>
+    🔔 Új értesítésed érkezett! <br> 2026.01.28.</span>
 </h4> <br><br>
 
         <p>
