@@ -250,7 +250,6 @@ body {
     }
 }
 
-
 </style>
 </head>
 
@@ -265,7 +264,12 @@ body {
         <div class="quote2">Kiemelt családi információink...</div> 
     </div>
     <div class="slider">
-        <div class="slide active">
+           <div class="slide kiemelt"  data-start="2026-02-01T14:08" data-end="2026-02-05T23:59">
+        <a href="https://forms.gle/nEKgjA3D4UHjXCsZA">
+            <img src="honapkerdes.jpg" alt="">
+        </a>
+    </div>
+        <div class="slide">
             <a href="nyaralasiajanlatok.html">
                 <img src="NYAajanlatok.jpg" alt="">
             </a>
@@ -320,12 +324,42 @@ body {
     </div>
 
 </div>
-
 <script>
 let index = 0;
+const now = new Date();
+
+// 🔹 1. Kiemelt slide-ok időintervallum ellenőrzése
+document.querySelectorAll(".slide.kiemelt").forEach(slide => {
+    const startDate = new Date(slide.dataset.start);
+    const endDate = new Date(slide.dataset.end);
+
+    // ha MÉG NEM kezdődött el, vagy MÁR LEJÁRT → törlés
+    if (now < startDate || now > endDate) {
+        slide.remove();
+    }
+});
+
+// 🔹 2. Megmaradt kiemelt slide(ok) előre hozása
+const slider = document.querySelector(".slider");
+document.querySelectorAll(".slide.kiemelt").forEach(slide => {
+    slider.prepend(slide);
+});
+
+// 🔹 3. DOTOK ÚJRAÉPÍTÉSE A MEGMARADT SLIDE-OK ALAPJÁN
+const dotsKontener = document.querySelector(".dots");
+dotsKontener.innerHTML = "";
+
 const slides = document.querySelectorAll(".slide");
+
+slides.forEach(() => {
+    const dot = document.createElement("span");
+    dot.classList.add("dot");
+    dotsKontener.appendChild(dot);
+});
+
 const dots = document.querySelectorAll(".dot");
 
+// 🔹 4. Slider működés (a tiéd)
 function showSlide(i) {
     slides.forEach(s => s.classList.remove("active"));
     dots.forEach(d => d.classList.remove("active"));
@@ -335,8 +369,13 @@ function showSlide(i) {
     dots[index].classList.add("active");
 }
 
+// indulás
+showSlide(0);
+
+// automatikus váltás
 setInterval(() => showSlide(index + 1), 5000);
 </script>
+
 
 </body>
 </html>
