@@ -484,12 +484,15 @@
     border-radius: 10px;
 }
 /* ===== ÉRTESÍTÉS DÁTUM – KICSI, KÖZEL A KÉPHEZ ===== */
+#floatingLink {
+    position: fixed; /* már megvan, de kell */
+}
+
 .ertesites-datum {
     position: absolute;
-    bottom: 100%;          /* 👈 a kép fölé */
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 4px;
+    bottom: 100%;          /* 👈 kép FELETT */
+    right: 0;              /* 👈 jobb oldal */
+    margin-bottom: 6px;
 
     background: white;
     color: red;
@@ -499,8 +502,8 @@
     font-size: 9px;
     font-weight: 700;
     line-height: 1.2;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
     white-space: nowrap;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 
 /* 📱 Mobil */
@@ -764,7 +767,7 @@
     <!-- 🔔 Lebegő kattintható kép -->
 <div id="floatingLink">
     <img src="ertesites.webp" alt="Figyelmeztetés">
-    <div class="ertesites-datum">01.28.</div>
+    <div class="ertesites-datum">1.</div>
 </div>
 
 <!-- 📱 Teljes képernyős modal -->
