@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archívum</title>
+    <title>Egyebek</title>
 
     <style>
         body.locked {
-            background: radial-gradient(circle at top, #0b2a4a, #000);;
+            background: radial-gradient(circle at top, #0b2a4a, #000);
+            ;
         }
 
         body {
@@ -53,7 +54,7 @@
         p {
             font-size: 1.1rem;
             line-height: 1.6;
-            color: #dddddd;
+            color: black
         }
 
         .close-btn {
@@ -158,26 +159,28 @@
         .accordion.active .accordion-content {
             max-height: 300px;
         }
-.accordion-content p {
-    color: #000;
-    font-size: 0.95rem;
-    padding: 15px 0;
-}
 
-/* NYITOTT ÁLLAPOT */
-.accordion.active .accordion-content {
-    max-height: 300px;
-}
+        .accordion-content p {
+            color: #000;
+            font-size: 0.95rem;
+            padding: 15px 0;
+        }
 
-/* MOBILON SORKIZÁRT */
-@media (max-width: 768px) {
-    .accordion-content p {
-        text-align: justify;
-        hyphens: auto;          /* elválasztás */
-        -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-    }
-}
+        /* NYITOTT ÁLLAPOT */
+        .accordion.active .accordion-content {
+            max-height: 300px;
+        }
+
+        /* MOBILON SORKIZÁRT */
+        @media (max-width: 768px) {
+            .accordion-content p {
+                text-align: justify;
+                hyphens: auto;
+                /* elválasztás */
+                -webkit-hyphens: auto;
+                -ms-hyphens: auto;
+            }
+        }
 
         .accordion.active .acc-arrow {
             transform: rotate(180deg);
@@ -220,7 +223,7 @@
 
         a {
             text-decoration: none;
-            color:red;
+            color: blue;
         }
 
         footer {
@@ -229,55 +232,164 @@
             color: #888;
             font-size: 0.9rem;
         }
-        /* ACCORDION KÁRTYA MÉRET */
-.accordion {
-    max-width: 520px;        /* ⬅ kártyaszélesség */
-    margin: 30px auto;       /* ⬅ középre igazítás */
+
+        body {
+            background-color: #f0f4f8;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Oldal széleitől beljebb */
+.oldal-keret {
+    max-width: 900px;
+    margin: 5px auto 20px; /* felül kisebb */
+    padding: 0 20px;
+}
+
+        .accordion {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Fejléc */
+        .accordion-fejlec {
+            background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .accordion-fejlec h3 {
+            margin: 0;
+        }
+
+        .accordion-fejlec p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .nyil {
+            font-size: 22px;
+            transition: transform 0.3s;
+        }
+
+        /* Tartalom */
+        .accordion-tartalom {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            padding: 0 20px;
+        }
+
+        .accordion-tartalom ul {
+            padding-left: 20px;
+        }
+
+        .accordion-tartalom li {
+            margin: 6px 0;
+        }
+
+        /* Letöltés gomb */
+        .letoltes {
+            display: inline-block;
+            margin: 15px 0 20px;
+            padding: 10px 16px;
+            background-color: #3a7bd5;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .letoltes:hover {
+            background-color: #2f65b0;
+        }
+        
+/* ⏳ Időzített megjelenés – alapból rejtve */
+[data-show-date] {
+    display: none;
 }
 
     </style>
 </head>
 
-<body >
+<body>
 
     <a href="fooldal.html" class="close-btn">✕</a>
 
     <div class="tartalom">
-        <h1>ARCHÍV JEGYEK</h1>
-        <p><b><i>Jelenleg nem állnak rendelkezésre megvásárolt archív jegyek!<br>Térj vissza később!</i></b></p>
+        <h1>EGYEBEK</h1>
+        <h4>JÁTÉKAINK</h4>
     </div>
 
-<!--------
-    <div class="accordion">
-        <button class="accordion-header">
-            <div class="acc-text">
-                <h3>KOLDUS ÉS KIRÁLYFI - TESZTJEGY</h3>
-                <div class="acc-sub"><b> MAGYAR SZÍNHÁZ, BUDAPEST <br> 2026. március 01.</b></div>
-                <div class="acc-status" style="color: green;">ELÉRHETŐ</div>
+    <div class="oldal-keret">
+
+        <div class="accordion">
+            <div class="accordion-fejlec" onclick="valt(0)">
+                <div>
+                    <h3>A HÓNAP KÉRDÉSE</h3>
+                    <p><strong>Játék</strong></p>
+                </div>
+                <span class="nyil">▼</span>
             </div>
-            <span class="acc-arrow">▲</span>
-        </button>
 
-        <div class="accordion-content">
-            <p>
-                
-                <a href="#"><b>MEGNÉZEM A JEGYEINKET - LETÖLTÉS ⬇️ </b></a> <br><br>
-                <span style="text-align: justify;"><b><i>Az előadásra megvásárolt jegyeinket a letöltés ikon segítségével tudod megtekinteni, amely az alábbi jegyeket tartalmazza:</b></i></span><br><br>
-                <i> - 1.) 1. SOR 1. SZÉK </i><br>
-                <i> - 2.) 1. SOR 2. SZÉK </i><br>
-                <i> - 3.) 1. SOR 3. SZÉK </i><br>
-                <i> - 4.) 1. SOR 4. SZÉK </i><br><br>
+            <div class="accordion-tartalom">
 
-            </p>
+                <div>
+                    <p><strong>2026. FEBRUÁR</strong></p>
+                    
+                    <p><a href="https://forms.gle/iSBzjwhPcow1rMr58">JÁTÉKTÉR</a> <br> BEKÜLDÖTT
+                        VÁLASZLAPOK <br> HATÁROZATOK</p>
+                </div>
+                <div data-show-date="2026-03-01T00:00:00">
+                    <p><strong>2026. MÁRCIUS</strong></p>
+                    <a href="#">JÁTÉKTÉR</a> <br> BEKÜLDÖTT
+                        VÁLASZLAPOK <br> HATÁROZATOK</p>
+                </div>
+
+
+            </div>
         </div>
+
     </div>
---------->
+
     <script>
-        document.querySelectorAll(".accordion-header").forEach(btn => {
-            btn.addEventListener("click", () => {
-                btn.parentElement.classList.toggle("active");
-            });
-        });
+
+        function valt(index) {
+            const tartalom = document.querySelectorAll(".accordion-tartalom")[index];
+            const nyil = document.querySelectorAll(".nyil")[index];
+
+            if (tartalom.style.maxHeight) {
+                tartalom.style.maxHeight = null;
+                nyil.style.transform = "rotate(0deg)";
+            } else {
+                tartalom.style.maxHeight = tartalom.scrollHeight + "px";
+                nyil.style.transform = "rotate(180deg)";
+            }
+        }
+
+
     </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const now = new Date();
+
+    document.querySelectorAll("[data-show-date]").forEach(elem => {
+        const showDate = new Date(elem.dataset.showDate);
+
+        if (now >= showDate) {
+            elem.style.display = "block";
+        }
+    });
+
+});
+</script>
+
 </body>
+
 </html>
