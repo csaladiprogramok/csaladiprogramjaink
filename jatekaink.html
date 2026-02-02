@@ -320,6 +320,17 @@
     gap: 15px;                /* térköz a képek között */
     margin: 20px 0;
 }
+.tartalom {
+    padding-bottom: 5px;   /* volt 40px */
+}
+
+.tartalom h1 {
+    margin-bottom: 5px;    /* alapból ~20px */
+}
+
+.oldal-keret {
+    margin-top: 0;
+}
 
 .segitseg-linkek img {
     width: 90%;               /* mobilon kitölti */
@@ -333,16 +344,8 @@
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
-.tartalom {
-    padding-bottom: 5px;   /* volt 40px */
-}
-
-.tartalom h1 {
-    margin-bottom: 5px;    /* alapból ~20px */
-}
-
-.oldal-keret {
-    margin-top: 0;
+.a1 {
+    color: black;
 }
 
     </style>
@@ -350,25 +353,46 @@
 
 <body>
 
-    <a href="fooldal.html" class="close-btn">✕</a>
+    <a href="egyebek.html" class="close-btn">✕</a>
 
     <div class="tartalom">
-        <h1>EGYEBEK</h1>
-        
+        <h1>JÁTÉKAINK</h1>
     </div>
 
     <div class="oldal-keret">
 
-        <div class="segitseg-linkek">
+ 
 
-    <a href="jatekaink.html">
-        <img src="jatekaink.png" alt="Játékaink">
-    </a>
 
+        <div class="accordion">
+            <div class="accordion-fejlec" onclick="valt(0)">
+                <div>
+                    <h3>A HÓNAP KÉRDÉSE</h3>
+                    </a><p><a href="https://drive.google.com/file/d/1eVHDRMrAeAQwO9zWZ3WoADtnYPDZRIXL/view?usp=sharing" class="a1"><strong><i>Játékszabályzat</i></strong></p>
+                </div>
+                <span class="nyil">▼</span>
+            </div>
+
+            <div class="accordion-tartalom">
+
+                <div>
+                    <p><strong>2026. FEBRUÁR</strong></p>
+                    
+                    <p><a href="https://forms.gle/iSBzjwhPcow1rMr58">JÁTÉKTÉR</a> <br> BEKÜLDÖTT
+                        VÁLASZLAPOK <br> HATÁROZATOK</p>
+                </div>
+                <div data-show-date="2026-03-01T00:00:00">
+                    <p><strong>2026. MÁRCIUS</strong></p>
+                    <a href="#">JÁTÉKTÉR</a> <br> BEKÜLDÖTT
+                        VÁLASZLAPOK <br> HATÁROZATOK</p>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
 </div>
-
-</div>
-
     <script>
 
         function valt(index) {
