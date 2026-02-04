@@ -136,18 +136,117 @@ header {
     color: #ff4d4d;
     text-decoration: underline;
 }
+/* JELMAGYARÁZAT LINK */
+.legend-link {
+    margin-top: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffd166;
+    cursor: pointer;
+}
+
+.legend-link:hover {
+    text-decoration: underline;
+}
+
+/* JELMAGYARÁZAT MODAL */
+.legend-content {
+    background: #ffffff;
+    color: #111;
+    padding: 22px;
+    border-radius: 14px;
+    max-width: 360px;
+    margin: 0 14px;
+}
+
+.legend-content h3 {
+    margin-top: 0;
+    margin-bottom: 14px;
+    text-align: center;
+}
+
+/* SOROK */
+.legend-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+/* KIS KOCKA IKON */
+.legend-box {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+/* TODAY kockához keret */
+.legend-box.today {
+    background-color: #1c3455;
+    border: 2px solid #ffd166;
+}
+.legend-ok {
+    margin-top: 18px;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    background-color: #132c4a;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.legend-ok:hover {
+    background-color: #1c3455;
+}
+
 </style>
+
+
 </head>
 
 <body>
 <a href="fooldal.html" class="close-page">✕</a>
 
-<header>CSALÁDI NAPTÁR
-    
+<header>
+    CSALÁDI NAPTÁR
+    <div class="legend-link" onclick="openLegend()">
+    Jelmagyarázat
+</div>
+
 </header>
 <!---
 <p style="color: yellow; text-align: center; font-size: small;"><b><i>FIGYELEM! </b> <br>Ez az új menüpont működőképes, használható, de tesztelés alatt is áll. <br>Használd bátran, de egyelőre ne csak ez alapján tájékozodj! <br> Köszönjük! </p></i>
 ---->
+
+<div class="modal" id="legendModal">
+    <div class="legend-content">
+        <h3>Jelmagyarázat</h3>
+
+        <div class="legend-row">
+            <div class="legend-box free"></div>
+            <span>Az adott nap szabadnap, nincs előre tervezett közös családi program.</span>
+        </div>
+
+        <div class="legend-row">
+            <div class="legend-box event"></div>
+            <span>Az adott napon van közös családi program. Rákattintva extra információk, részletek tekinthetőek meg az adott napról.</span>
+        </div>
+
+        <div class="legend-row">
+            <div class="legend-box today"></div>
+            <span>Aktuális nap.</span>
+        </div>
+
+        <button class="legend-ok" onclick="closeLegend()">OK</button>
+
+    </div>
+</div>
+
 <div id="calendar"></div>
 
 <div class="modal" id="modal">
@@ -319,6 +418,23 @@ for (let i = 0; i < 12; i++) {
         )
     );
 }
+
+function openLegend() {
+    document.getElementById("legendModal").style.display = "flex";
+}
+
+document.getElementById("legendModal").onclick = e => {
+    if (e.target.id === "legendModal") {
+        e.target.style.display = "none";
+    }
+};
+
+
+function closeLegend() {
+    document.getElementById("legendModal").style.display = "none";
+}
+
+
 </script>
 
 </body>

@@ -264,7 +264,7 @@ body {
         <div class="quote2">Kiemelt családi információink...</div> 
     </div>
     <div class="slider">
-           <div class="slide kiemelt"  data-start="2026-02-01T14:08" data-end="2026-02-05T23:59">
+           <div class="slide"  data-start="2026-02-04T18:07" data-end="2026-02-05T23:59">
         <a href="https://forms.gle/nEKgjA3D4UHjXCsZA">
             <img src="honapkerdes.jpg" alt="">
         </a>
@@ -274,6 +274,16 @@ body {
                 <img src="NYAajanlatok.jpg" alt="">
             </a>
         </div>
+                   <div class="slide"  data-start="2026-02-01T00:00" data-end="2026-02-28T23:59">
+        <a href="csaladinaptar.html">
+            <img src="februariprogramok.jpg" alt="">
+        </a>
+    </div>
+               <div class="slide"  data-start="2026-03-01T00:00" data-end="2026-03-31T23:59">
+        <a href="csaladinaptar.html">
+            <img src="marciusiprogramok.jpg" alt="">
+        </a>
+    </div>
                         <div class="slide">
             <a href="programajanlok.html">
                 <img src="kiemelt.jpg" alt="">
@@ -330,18 +340,24 @@ body {
 let index = 0;
 const now = new Date();
 
-// 🔹 1. Kiemelt slide-ok időintervallum ellenőrzése
-document.querySelectorAll(".slide.kiemelt").forEach(slide => {
-    const startDate = new Date(slide.dataset.start);
-    const endDate = new Date(slide.dataset.end);
+// 🔹 1. MINDEN slide időintervallum ellenőrzése (nem csak kiemelt)
+document.querySelectorAll(".slide").forEach(slide => {
+    const start = slide.dataset.start;
+    const end = slide.dataset.end;
 
-    // ha MÉG NEM kezdődött el, vagy MÁR LEJÁRT → törlés
-    if (now < startDate || now > endDate) {
-        slide.remove();
+    // csak akkor vizsgáljuk, ha VAN dátum megadva
+    if (start && end) {
+        const startDate = new Date(start);
+        const endDate = new Date(end);
+
+        // ha MÉG NEM kezdődött el, vagy MÁR LEJÁRT → törlés
+        if (now < startDate || now > endDate) {
+            slide.remove();
+        }
     }
 });
 
-// 🔹 2. Megmaradt kiemelt slide(ok) előre hozása
+// 🔹 2. Megmaradt KIEMELT slide(ok) előre hozása
 const slider = document.querySelector(".slider");
 document.querySelectorAll(".slide.kiemelt").forEach(slide => {
     slider.prepend(slide);
@@ -361,7 +377,7 @@ slides.forEach(() => {
 
 const dots = document.querySelectorAll(".dot");
 
-// 🔹 4. Slider működés (a tiéd)
+// 🔹 4. Slider működés (változatlan)
 function showSlide(i) {
     slides.forEach(s => s.classList.remove("active"));
     dots.forEach(d => d.classList.remove("active"));
@@ -372,11 +388,14 @@ function showSlide(i) {
 }
 
 // indulás
-showSlide(0);
+if (slides.length > 0) {
+    showSlide(0);
 
-// automatikus váltás
-setInterval(() => showSlide(index + 1), 5000);
+    // automatikus váltás
+    setInterval(() => showSlide(index + 1), 5000);
+}
 </script>
+
 
 
 </body>
