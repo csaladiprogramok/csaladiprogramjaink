@@ -239,11 +239,12 @@
         }
 
         /* Oldal széleitől beljebb */
-.oldal-keret {
-    max-width: 900px;
-    margin: 5px auto 20px; /* felül kisebb */
-    padding: 0 20px;
-}
+        .oldal-keret {
+            max-width: 900px;
+            margin: 5px auto 20px;
+            /* felül kisebb */
+            padding: 0 20px;
+        }
 
         .accordion {
             background-color: #ffffff;
@@ -308,46 +309,56 @@
         .letoltes:hover {
             background-color: #2f65b0;
         }
-        
-/* ⏳ Időzített megjelenés – alapból rejtve */
-[data-show-date] {
-    display: none;
-}
-.segitseg-linkek {
-    display: flex;
-    flex-direction: column;   /* egymás alatt */
-    align-items: center;      /* vízszintes közép */
-    gap: 15px;                /* térköz a képek között */
-    margin: 20px 0;
-}
-.tartalom {
-    padding-bottom: 5px;   /* volt 40px */
-}
 
-.tartalom h1 {
-    margin-bottom: 5px;    /* alapból ~20px */
-}
+        /* ⏳ Időzített megjelenés – alapból rejtve */
+        [data-show-date] {
+            display: none;
+        }
 
-.oldal-keret {
-    margin-top: 0;
-}
+        .segitseg-linkek {
+            display: flex;
+            flex-direction: column;
+            /* egymás alatt */
+            align-items: center;
+            /* vízszintes közép */
+            gap: 15px;
+            /* térköz a képek között */
+            margin: 20px 0;
+        }
 
-.segitseg-linkek img {
-    width: 90%;               /* mobilon kitölti */
-    max-width: 400px;         /* asztalin nem nő túl nagyra */
-    height: auto;
-    border-radius: 12px;      /* lekerekített sarkok */
-    transition: 0.3s;
-}
+        .tartalom {
+            padding-bottom: 5px;
+            /* volt 40px */
+        }
 
-.segitseg-linkek img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-}
-.a1 {
-    color: black;
-}
+        .tartalom h1 {
+            margin-bottom: 5px;
+            /* alapból ~20px */
+        }
 
+        .oldal-keret {
+            margin-top: 0;
+        }
+
+        .segitseg-linkek img {
+            width: 90%;
+            /* mobilon kitölti */
+            max-width: 400px;
+            /* asztalin nem nő túl nagyra */
+            height: auto;
+            border-radius: 12px;
+            /* lekerekített sarkok */
+            transition: 0.3s;
+        }
+
+        .segitseg-linkek img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .a1 {
+            color: black;
+        }
     </style>
 </head>
 
@@ -361,7 +372,7 @@
 
     <div class="oldal-keret">
 
- 
+
 
 
         <div class="accordion">
@@ -369,7 +380,7 @@
                 <div>
                     <h3>A HÓNAP KÉRDÉSE</h3>
                     <p><strong><i>Játék</i></strong></p>
-                 
+
                 </div>
                 <span class="nyil">▼</span>
             </div>
@@ -377,23 +388,40 @@
             <div class="accordion-tartalom">
 
                 <div>
-                       <b><i></a><p style="text-align: justify;">A játék játékszabályzata<a href="https://drive.google.com/file/d/1LaY0lpL7BiG8DxMe4OIrnZTnFZO4KBL2/view?usp=sharing"> ide kattintva </a> érhető el! </i></b></p>-----------------
+
+                    <b><i></a>
+                            <p style="text-align: justify;">A játék játékszabályzata<a
+                                    href="https://drive.google.com/file/d/1LaY0lpL7BiG8DxMe4OIrnZTnFZO4KBL2/view?usp=sharing">
+                                    ide kattintva </a> érhető el!
+                        </i></b></p>-----------------
+
+
+
+                    <div data-show-date="2026-03-01T00:00:00">
+                        <p><strong><u>2026. MÁRCIUS</u></strong></p>
+                        <p><a href="https://forms.gle/x6UUoUTNp8cWLMD77">JÁTÉKTÉR</a>
+                            <br> BEKÜLDÖTT VÁLASZLAPOK:<br> <b style="font-size: 12px;">Orosz Szilvia, Orosz Dorka,
+                                Orosz Sándor </b><br> HATÁROZATOK: <br> <b style="font-size: 12px;">Orosz Szilvia, Orosz
+                                Dorka, Orosz Sándor </b>
+                        </p>
+                        -----------------
+                    </div>
                     <p><strong><u>2026. FEBRUÁR</u></strong></p>
                     <p><a href="https://forms.gle/iSBzjwhPcow1rMr58">JÁTÉKTÉR</a>
-                        <br> BEKÜLDÖTT VÁLASZLAPOK:<br> <b style="font-size: 12px;">Orosz Szilvia, Orosz Dorka, Orosz Sándor </b><br> HATÁROZATOK: <br> <b style="font-size: 12px;">Orosz Szilvia, Orosz Dorka, Orosz Sándor </b></p>
+                        <br> BEKÜLDÖTT VÁLASZLAPOK:<br> <b style="font-size: 12px;">Orosz Szilvia, Orosz Dorka, Orosz
+                            Sándor </b><br> HATÁROZATOK: <br> <b style="font-size: 12px;">Orosz Szilvia, Orosz Dorka,
+                            Orosz Sándor </b>
+                    </p>
+
                 </div>
-                <div data-show-date="2026-03-01T00:00:00">
-                    <p><strong><u>2026. MÁRCIUS</u></strong></p>
-                    <p><a href="https://forms.gle/x6UUoUTNp8cWLMD77">JÁTÉKTÉR</a>
-                        <br> BEKÜLDÖTT VÁLASZLAPOK:<br> <b style="font-size: 12px;">Orosz Szilvia, Orosz Dorka, Orosz Sándor </b><br> HATÁROZATOK: <br> <b style="font-size: 12px;">Orosz Szilvia, Orosz Dorka, Orosz Sándor </b></p>
-                </div>
+
 
 
             </div>
         </div>
 
     </div>
-</div>
+    </div>
     <script>
 
         function valt(index) {
@@ -411,21 +439,21 @@
 
 
     </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
-    const now = new Date();
+            const now = new Date();
 
-    document.querySelectorAll("[data-show-date]").forEach(elem => {
-        const showDate = new Date(elem.dataset.showDate);
+            document.querySelectorAll("[data-show-date]").forEach(elem => {
+                const showDate = new Date(elem.dataset.showDate);
 
-        if (now >= showDate) {
-            elem.style.display = "block";
-        }
-    });
+                if (now >= showDate) {
+                    elem.style.display = "block";
+                }
+            });
 
-});
-</script>
+        });
+    </script>
 
 </body>
 
