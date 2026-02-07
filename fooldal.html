@@ -6,7 +6,6 @@
 <title>Főoldal</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital@1&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-
 <style>
 /* ======================
    RESET + ALAP BIZTONSÁG
@@ -56,8 +55,6 @@ body {
     line-height: 1.25;
     letter-spacing: 0.14em;
     margin: 6px 0;
-    word-break: break-word;
-    overflow-wrap: break-word;
 }
 
 .quote {
@@ -79,20 +76,20 @@ body {
     font-size: clamp(12px, 3.8vw, 15px);
     color: yellow;
     background-color: black;
-    border-radius: 4px;
-    padding: 5px 10px;
+    border-radius: 6px;
+    padding: 6px 12px;
     display: inline-block;
-    word-break: break-word;
 }
 
 /* ======================
-   SLIDER
+   SLIDER – MOBIL / ALAP
    ====================== */
 .slider {
     width: 100%;
-    max-width: 1000px;
-    overflow: hidden;
+    max-width: 100%;
+    margin: 8px auto;
     border-radius: 14px;
+    overflow: hidden;
 }
 
 .slide {
@@ -133,15 +130,14 @@ body {
 }
 
 /* ======================
-   GOMBOK – ALAP
+   GOMBOK – MOBIL-FIRST
    ====================== */
 .buttons {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
-
     width: 100%;
-    margin-top: 12px;
+    margin-top: 14px;
 }
 
 .buttons a {
@@ -153,19 +149,13 @@ body {
     align-items: center;
     justify-content: center;
 
-    padding: 10px 6px;
-    border-radius: 9px;
+    padding: 16px 10px;     /* ✅ magasabb mobilon */
+    border-radius: 14px;    /* ✅ lekerekített */
 
     font-size: clamp(11px, 3.6vw, 14px);
     font-weight: 600;
     text-align: center;
-
-    white-space: normal;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
-
-    line-height: 1.25;
+    line-height: 1.35;
 }
 
 /* Speciális gombszínek */
@@ -180,12 +170,12 @@ body {
 }
 
 /* ======================
-   📱 EXTRA KICSI MOBIL (BIZTOSÍTÁS)
+   📱 EXTRA KICSI MOBIL
    ====================== */
 @media (max-width: 360px) {
     .buttons a {
+        padding: 13px 10px; /* 🔥 még kényelmesebb */
         font-size: 11px;
-        padding: 9px 5px;
     }
 }
 
@@ -207,31 +197,28 @@ body {
         margin: 0 auto;
     }
 
+    /* 🔑 KISEBB, ARÁNYTARTÓ KÉP */
+    .slider {
+        max-width: 800px;   /* ⬅️ EZ a kulcs */
+        margin: 6px auto;
+        border-radius: 16px;
+    }
+
     .buttons {
-        grid-template-columns: repeat(3, 1fr);
-        max-width: 900px;
-        margin-left: auto;
-        margin-right: auto;
+        grid-template-columns: repeat(6, 1fr);
+        max-width: 1000px;
+        margin: 12px auto 0;
         gap: 12px;
     }
 
     .buttons a {
         font-size: 14px;
-        padding: 12px 10px;
+        padding: 13px 10px;
     }
-
-    .slider {
-        max-width: 85%;
-    }
+    
 }
-@supports (padding: env(safe-area-inset-top)) {
-    body {
-        padding-left: env(safe-area-inset-left);
-        padding-right: env(safe-area-inset-right);
-    }
-}
-
 </style>
+
 </head>
 
 <body>
