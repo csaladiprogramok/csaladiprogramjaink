@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIEMELT AJÁNLAT</title>
+    <title>Programajánlók</title>
 
     <style>
         * {
@@ -18,6 +18,7 @@
             padding: 20px;
         }
 
+
         .container {
             max-width: 420px;
             margin: 0 auto;
@@ -30,12 +31,12 @@
         }
 
         .header h1 {
-            font-size: 26px;
+            font-size: 22px;
             letter-spacing: 1px;
         }
 
         .header h2 {
-            font-size: 20px;
+            font-size: 26px;
             margin-top: 5px;
         }
 
@@ -44,7 +45,7 @@
             font-weight: bold;
             text-align: center;
             margin: 20px 0 10px;
-            font-size: 18px;
+            font-size: 24px;
         }
 
         .card {
@@ -156,49 +157,6 @@
 .close-btn:hover {
     opacity: 1;
 }
-/* ❤️ SZÍVEK */
-.heart-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    background: rgba(0,0,0,0.85);
-    padding: 10px 14px;
-    border-radius: 30px;
-}
-
-
-.heart {
-    font-size: 32px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.heart:hover {
-    transform: scale(1.2);
-}
-
-/* 💕 FELREPÜLŐ SZÍVEK */
-.flying-heart {
-    position: fixed;
-    bottom: -40px;
-    font-size: 28px;
-    animation: flyUp 5s linear forwards;
-    pointer-events: none;
-    z-index: 9999;
-}
-
-@keyframes flyUp {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-110vh);
-        opacity: 0;
-    }
-}
-
 
 /* MOBIL */
 @media (max-width: 768px) {
@@ -228,125 +186,42 @@
 </head>
 
 <body>
-<a href="index.html" class="close-btn">✕</a>
+<a href="fooldal.html" class="close-btn">✕</a>
 <div class="container">
 
     <div class="header">
-        <h1>KIEMELT AJÁNLAT <br> HATÁRIDŐ - 2026.02.01. 23:00</h1> <br>
-        <h2>NYOMJ EGY ❤️ - ET AZ ESEMÉNYRE HA ÉRDEKEL!!!</h2> <br>
-        <h4>HA ÖSSZEGYŰLIK 3 DB ❤️, AKKOR MEGYÜNK, SZÓVAL GYERÜNK!!!</h4> <br>
-    
-        
+        <div class="month">KIEMELT AJÁNLATOK</div>
     </div>
 
-    <div class="card">
-        <img src="koldus.jpg" alt=""> <br>
-        <h3 style="color: red; text-align: center;">GYERÜNK! SZAVAZZ KEDVENCEDRE!</h3>
+     
+
+<div class="card">
+        <img src="szuperrepulosajanlo.jpg" alt="">
         <div class="card-content">
-            <div class="heart-container" data-id="ko">
-    <span class="heart">🤍</span>
-    <span class="heart">🤍</span>
-    <span class="heart">🤍</span>
-    <span class="heart">🤍</span>
-</div> <br>
+            <div class="card-title">IRÁNY KÜLFÖLD!</div>
+            <div class="card-location"><b>Külföldi, közösen választott helyszín</b></div>
+            <div class="card-location"><b>2026. nyár</b></div>
+            <div class="card-location" style="color: red;"><b>Érvényes: Visszavonásig</b></div>
+             <br>             
+<a href="https://csaladiprogramok.github.io/vakaciovagyo/forroajanlat" class="card-button">RÉSZLETEKÉRT KATTINTS IDE</a>  <br><br> 
+<a href="nyaralasiajanlatok.html" class="card-button">NYARALÁSI AJÁNLATOK</a>  <br><br>             
+        </div>
+  </div>
 
-            <div class="card-title">KOLDUS ÉS KIRÁLYFI</div>
-            <div class="card-location"><b>Magyar Színház, Budapest</b></div>
-             <div class="card-location" style="text-align: justify;">A londoni utcák nyomorában élő koldusfiú és a paloták aranyfényében nevelkedő trónörökös egy napon egymás tükörképére ismer – és helyet cserélnek. A rongyok között megtapasztalt szabadság, a selymek mögött rejtőző magány, az utcák lármája és a palota hideg pompája mind új arcát mutatja meg számukra. Ahogy a két fiú belekóstol a másik életébe, megtanulják, mit ér a hatalom, és mit ér az ember, ha nincs benne emberség.
-
-Mark Twain klasszikus történetének zenés színpadi változata humort és felfedezést hoz – de legfőképp megértést és együttérzést. Egy színpadra vitt kaland, amely megmutatja: az emberi értékek túlmutatnak a társadalmi különbségeken.</div>
-            <a href="https://magyarszinhaz.hu/programok/koldus-es-kiralyfi/" class="card-button">További részletek...</a>  <br><br>             
-<a href="https://www.jegy.hu/program/koldus-es-kiralyfi-178172" class="card-button">Jegyvásárlás</a>
+    <div class="card">
+        <img src="hoalattiajanlo.jpg" alt="">
+        <div class="card-content">
+            <div class="card-title">IRÁNY ZAKOPANE!</div>
+            <div class="card-location"><b>Lengyelország, Zakopane</b></div>
+            <div class="card-location"><b>2026. december 27. - 28. </b></div>
+            <div class="card-location" style="color: red;"><b>Érvényes: Visszavonásig</b></div>
+             <br>             
+<a href="hoalattititok.html" class="card-button">RÉSZLETEKÉRT KATTINTS IDE</a>  <br><br>             
         </div>
     </div>
 
 
-    
-    <div class="card">
-        <img src="koldus.jpg" alt="">
-        <div class="card-content">
-             <h3 style="color: red; text-align: center;">GYERÜNK! SZAVAZZ KEDVENCEDRE!</h3> <br>
-            <div class="heart-container" data-id="kon">
-    <span class="heart">🤍</span>
-    <span class="heart">🤍</span>
-    <span class="heart">🤍</span>
-    <span class="heart">🤍</span>
 </div>
-<br>
-            <div class="card-title">KOLDUS ÉS KIRÁLYFI</div>
-            <div class="card-location"><b>Magyar Színház, Budapest</b></div>
-             <div class="card-location" style="text-align: justify;">A londoni utcák nyomorában élő koldusfiú és a paloták aranyfényében nevelkedő trónörökös egy napon egymás tükörképére ismer – és helyet cserélnek. A rongyok között megtapasztalt szabadság, a selymek mögött rejtőző magány, az utcák lármája és a palota hideg pompája mind új arcát mutatja meg számukra. Ahogy a két fiú belekóstol a másik életébe, megtanulják, mit ér a hatalom, és mit ér az ember, ha nincs benne emberség.
-
-Mark Twain klasszikus történetének zenés színpadi változata humort és felfedezést hoz – de legfőképp megértést és együttérzést. Egy színpadra vitt kaland, amely megmutatja: az emberi értékek túlmutatnak a társadalmi különbségeken.</div>
-            <a href="https://magyarszinhaz.hu/programok/koldus-es-kiralyfi/" class="card-button">További részletek...</a>  <br><br>             
-<a href="https://www.jegy.hu/program/koldus-es-kiralyfi-178172" class="card-button">Jegyvásárlás</a>
-        </div>
-    </div>
-</div>
-
-<script>
-const MAX_HEART = 4;
-
-document.querySelectorAll(".heart-container").forEach(container => {
-    const id = container.dataset.id;
-    const hearts = container.querySelectorAll(".heart");
-
-    let active = localStorage.getItem("heart_" + id);
-    active = active ? parseInt(active) : 0;
-
-    refresh();
-
-    hearts.forEach((heart, index) => {
-        heart.addEventListener("click", () => {
-
-            // ❌ Ha ez a szív már piros, ne történjen semmi
-            if (index < active) return;
-
-            active = index + 1;
-            if (active > MAX_HEART) active = MAX_HEART;
-
-            localStorage.setItem("heart_" + id, active);
-            refresh();
-
-            if (active === 3) {
-                startFlyingHearts();
-            }
-        });
-    });
-
-    function refresh() {
-        hearts.forEach((h, i) => {
-            if (i < active) {
-                h.textContent = "❤️";
-                h.style.pointerEvents = "none"; // 🔒 lezárjuk
-                h.style.cursor = "default";
-            } else {
-                h.textContent = "🤍";
-                h.style.pointerEvents = "auto";
-                h.style.cursor = "pointer";
-            }
-        });
-    }
-});
-
-/* 💕 ANIMÁCIÓ */
-function startFlyingHearts() {
-    const interval = setInterval(() => {
-        const heart = document.createElement("div");
-        heart.classList.add("flying-heart");
-        heart.textContent = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-
-        document.body.appendChild(heart);
-
-        setTimeout(() => heart.remove(), 5000);
-    }, 300);
-
-    setTimeout(() => clearInterval(interval), 5000);
-}
-</script>
-
-
 
 </body>
 </html>
