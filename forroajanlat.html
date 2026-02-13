@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FORRÓ AJÁNLAT</title>
+<style>
+/* ===== ALAP ===== */
+body {
+    background: #fefcc8;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: yellow;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.sub {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+/* ===== FŐ DOBOZ ===== */
+.main-box {
+    border: 2px solid #fff;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.day {
+    margin-bottom: 30px;
+}
+
+.day h3 {
+    margin-bottom: 10px;
+}
+
+ul {
+    margin-left: 20px;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+/* Alárendelt pontok */
+.detail {
+    margin-left: 60px;
+    list-style-type: none;
+    opacity: 0.85;
+}
+
+/* ===== BEZÁRÓ GOMB ===== */
+.close-btn {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    color: black;
+    font-size: 26px;
+    font-weight: 600;
+    z-index: 1000;
+    opacity: 0.85;
+}
+
+.close-btn:hover {
+    opacity: 1;
+}
+
+/* ===== FEJLÉC KÉP ===== */
+.kep-tarolo {
+    display: flex;
+    justify-content: center;
+}
+
+.kep-tarolo img {
+    width: 90%;
+    max-width: 800px;
+    aspect-ratio: 50 / 15;
+    height: auto;
+    border-radius: 0;
+}
+
+/* ===== KÖZÉPSŐ KÉP ===== */
+.center-image {
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.center-image img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: none;
+}
+
+/* ===== SLIDER ===== */
+.slider {
+    max-width: 500px;
+    margin: 40px auto;
+    position: relative;
+}
+
+.slides img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: none;
+    border-radius: 12px;
+}
+
+.slides img.active {
+    display: block;
+}
+
+.dots {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 4px;
+    background-color: #555;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.active {
+    background-color: #fff;
+}
+
+.ajanlat-container {
+    display: flex;
+    flex-direction: column; /* ← EZ A LÉNYEG */
+    gap: 20px;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 10px;
+}
+
+
+.box {
+    flex: 1;
+    min-width: 260px;
+    background-color: #f4f9ff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    color: #000;
+}
+
+.box h2 {
+    color: #1e4fa3;
+}
+
+.iroda {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.box ul {
+    padding-left: 18px;
+}
+
+.ar {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #0a7a3d;
+}
+
+.kiemelt {
+    background-color: #eaf3ff;
+    border: 2px solid #1e4fa3;
+    text-align: center;
+}
+
+.kiemelt-piros {
+    color: red;
+    font-weight: bold;
+}
+
+.zold {
+    color: green;
+}
+
+.figyelmezteto {
+    font-weight: bold;
+    text-align: center;
+}
+
+.datum {
+    font-size: 1.2em;
+}
+
+.fizetes {
+    font-size: 1.1em;
+    margin-top: 20px;
+}
+
+/* ===== MOBIL ===== */
+@media (max-width: 768px) {
+    .ajanlat-container {
+        flex-direction: column;
+    }
+
+    .box {
+        text-align: center;
+    }
+
+    .box ul {
+        padding-left: 0;
+        list-style-position: inside;
+    }
+
+    .slider {
+        max-width: 90vw;
+    }
+
+    .close-btn {
+        font-size: 28px;
+    }
+}
+.gomb {
+    text-decoration: none;
+    background-color: #0077cc;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 30px;       /* lekerekítés */
+    text-align: center;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+.gomb-kontener {
+    display: flex;
+    flex-direction: column;    /* egymás alá */
+    gap: 20px;                 /* távolság a gombok között */
+}
+.gomb:hover {
+    background-color: #005fa3;
+}
+
+/* ===== HÓESÉS ===== */
+#snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10%;
+    font-size: 1.2rem;
+    opacity: 0.8;
+    animation: fall linear;
+}
+.kozepre-kep {
+    width: 90vw;          /* mobilon kitölti a képernyőt */
+    max-width: 800px;     /* asztalin kb. 20 cm helyett */
+    aspect-ratio: 8 / 1;  /* 20 : 2.5 arány */
+}
+
+.kozepre-kep img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+@keyframes fall {
+    from { transform: translateY(0); }
+    to { transform: translateY(110vh); }
+}
+
+@media (max-width: 600px) {
+    .snowflake {
+        font-size: 1rem;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+  
+
+    <div id="snow-container"></div>
+
+    <div class="container">
+        <a href="kiemeltajanlat.html" class="close-btn">✕</a>
+    <div class="kep-tarolo">
+    <img src="iranykulfold.jpg" alt="Ajánlat">
+</div> <br>
+
+
+                        
+           <div class="center-image">
+  <img src="repulosajanlat.jpg" alt="Ajánlat">
+
+</div>
+
+<div class="kep-tarolo">
+        <img src="szalagcímkulfold.jpg" alt="Ajánlat">
+    </div>
+
+            </div>
+        </div>
+    </div>
+
+             <div class="box kiemelt">
+        <h2>FOGLALÁS</h2>
+
+        <p class="figyelmezteto">
+            LEGKÉSŐBB<br>
+        
+            <span class="datum"><span style="color: red;">2026. február 08. - ig</span></span>
+          <div class="card-location" style="color: red; text-align: center;"><b>Az ajánlat érvényességi ideje meghosszabítva!</b></div>
+            <div class="card-location" style="color: red; text-align: center;"><b>ÉRVÉNYES: VISSZAVONÁSIG</b></div>
+        
+        </p>
+
+        <hr>
+
+        <p class="fizetes">
+            <b>FIZETÉS AKÁR</b><br>
+            <span class="datum zold">2026. TAVASZ</span>
+        </p>
+    </div>
+</div>     
+<br><br>
+<div class="gomb-kontener">
+    <a href="https://www.booking.com/" class="gomb"><b>SZÁLLÁS AJÁNLATOK</b></a>
+    <a href="https://www.skyscanner.hu/" class="gomb"><b>REPJEGY AJÁNLATOK</b></a>
+</div>
+    <script>
+let index = 0;
+const images = document.querySelectorAll(".slides img");
+const dots = document.querySelectorAll(".dot");
+
+setInterval(() => {
+    images[index].classList.remove("active");
+    dots[index].classList.remove("active");
+
+    index = (index + 1) % images.length;
+
+    images[index].classList.add("active");
+    dots[index].classList.add("active");
+}, 5000);
+</script>
+
+<script>
+    const snowContainer = document.getElementById("snow-container");
+    const snowInterval = 180; // sűrűség (minél kisebb, annál több hó)
+
+    function createSnowflake() {
+        const snowflake = document.createElement("div");
+        snowflake.className = "snowflake";
+        snowflake.textContent = "⛱️";
+
+        snowflake.style.left = Math.random() * 100 + "vw";
+        snowflake.style.animationDuration = 5 + Math.random() * 3 + "s";
+
+        snowContainer.appendChild(snowflake);
+
+        // amikor leért, töröljük (memóriaszivárgás ellen)
+        setTimeout(() => {
+            snowflake.remove();
+        }, 9000);
+    }
+
+    // folyamatos hóesés
+    setInterval(createSnowflake, snowInterval);
+</script>
+  
+</body>
+
+</html>
