@@ -273,55 +273,64 @@ const events = {
         title: "KERESZTLÁNYOS MEGHÍVÓ",
         location: "Abaújszántó",
         desc: "KERESZTLÁNYOS esküvői családi meghívás 2026. február 21.-én 15:00-ra Abaújszántóra!",
-        link: "programjaink.html#keresztlanyosmeghivo"
+        link: "programjaink.html#keresztlanyosmeghivo",
+        linkExpires: "2026-02-21T21:00:00"
     },
         "2026-03-14": {
         title: "MÁRCIUS 15 - ÜNNEPI MŰSOR",
         location: "Szerencs",
         desc: "Március 15-én ünnepi műsor kerül megrendezésre a szerencsi várban. A megemlékezés során ünnepi beszéd hangzik el az 1848–49-es forradalom és szabadságharc tiszteletére. A műsorban közreműködnek helyi diákok és kulturális csoportok, akik versekkel és zenés előadásokkal idézik fel a történelmi eseményeket. Az ünnepi hangulatot hagyományőrző elemek is gazdagítják. A rendezvény méltó alkalmat teremt a közös emlékezésre és tisztelgésre a hősök előtt. A program minden korosztály számára tartalmas és emelkedett élményt nyújt.",
-        link: "programjaink.html#marcius15"
+        link: "programjaink.html#marcius15",
+        linkExpires: "2026-03-14T15:00:00"
     },
     "2026-04-12": {
         title: "ORSZÁGGYŰLÉSI VÁLASZTÁS",
         location: "Szerencs",
         desc: "2026-ban országgyűlési választás lesz Magyarországon, amely a családunkat is érinti, hiszen három családttag is jogosult SZAVAZNI. Ezért érdemes előre úgy szervezni a programokat, hogy a szavazás biztosan beleférjen a napba. A választás lehetőséget ad arra, hogy élhessünk állampolgári jogainkkal.",
-        link: "programjaink.html#valasztas"
+        link: "programjaink.html#valasztas",
+        linkExpires: "2026-04-12T23:59:00"
     },
     "2026-06-20": {
         title: "BALLAGÁS – DORKA",
         location: "Szerencs",
         desc: "A ballagás egy fontos mérföldkő, ahol lezárul egy hosszú tanulási időszak, és új fejezet kezdődik az életben. Ez a nap a búcsúról, az emlékekről és az együtt megélt pillanatokról szól. Ilyenkor visszagondolunk a közös élményekre, sikerekre és kihívásokra is. A ballagás nemcsak az elválásról, hanem az előrelépésről és a jövőbe vetett reményről is szól. Jó alkalom arra, hogy megálljunk egy pillanatra és büszkék legyünk az eddig megtett útra. Az ünnepség közös emlékké válik mindannyiunk számára.",
-        link: "programjaink.html#ballagas-dorka"
+        link: "programjaink.html#ballagas-dorka",
+        linkExpires: "2026-06-20T15:00:00"
     },
         "2026-08-20": {
         title: "SZENT ISTVÁN NAPOK",
         location: "Budapest",
         desc: "2026. augusztus 20. és 23. között ismét megtelnek élettel a főváros legszebb helyszínei: a Budai Vár, a Várkert Bazár, a Tabán, a Duna-part és számos más ikonikus helyszín ad otthont a Szent István Nap eseményeinek.",
-        link: "programjaink.html#szentistvannapokbudapest"
+        link: "programjaink.html#szentistvannapokbudapest",
+        linkExpires: "2026-08-23T23:59:00"
     },
             "2026-08-21": {
         title: "SZENT ISTVÁN NAPOK",
         location: "Budapest",
         desc: "2026. augusztus 20. és 23. között ismét megtelnek élettel a főváros legszebb helyszínei: a Budai Vár, a Várkert Bazár, a Tabán, a Duna-part és számos más ikonikus helyszín ad otthont a Szent István Nap eseményeinek.",
-        link: "programjaink.html#szentistvannapokbudapest"
+        link: "programjaink.html#szentistvannapokbudapest",
+        linkExpires: "2026-08-23T23:59:00"
     },
             "2026-08-22": {
         title: "SZENT ISTVÁN NAPOK",
         location: "Budapest",
         desc: "2026. augusztus 20. és 23. között ismét megtelnek élettel a főváros legszebb helyszínei: a Budai Vár, a Várkert Bazár, a Tabán, a Duna-part és számos más ikonikus helyszín ad otthont a Szent István Nap eseményeinek.",
-        link: "programjaink.html#szentistvannapokbudapest"
+        link: "programjaink.html#szentistvannapokbudapest",
+        linkExpires: "2026-08-23T23:59:00"
     },
             "2026-08-23": {
         title: "SZENT ISTVÁN NAPOK",
         location: "Budapest",
         desc: "2026. augusztus 20. és 23. között ismét megtelnek élettel a főváros legszebb helyszínei: a Budai Vár, a Várkert Bazár, a Tabán, a Duna-part és számos más ikonikus helyszín ad otthont a Szent István Nap eseményeinek.",
-        link: "programjaink.html#szentistvannapokbudapest"
+        link: "programjaink.html#szentistvannapokbudapest",
+        linkExpires: "2026-08-23T23:59:00"
     },
         "2026-03-20": {
         title: "ÖRÖKMOZGÁS TÁNCEST",
         location: "Szerencs",
         desc: "Az idén hagyományszerűen immár XVIII. alkalommal rendezzük meg Örök Mozgásban Táncestünket. Rengeteg hazai és nemzetközi versenyen vettünk már részt, mégis nekünk ez az előadás az év egyik legfontosabb eseménye. Ekkor láthatják a nézők egyben a 240 gyermeket, kicsit és nagyot, az új koreográfiákat. Szeretettel hívunk és várunk mindenkit, tapsoljunk együtt a fiataloknak és adjuk meg nekik a színpad, a fények, a tánc, a szereplés által kapott élményt.",
-        link: "programjaink.html#orokmozgas"
+        link: "programjaink.html#orokmozgas",
+        linkExpires: "2026-03-20T21:00:00"
     }
 };
 
@@ -446,7 +455,36 @@ function closeLegend() {
     document.getElementById("legendModal").style.display = "none";
 }
 
+function openModal(data) {
+    modalTitle.innerText = data.title;
+    modalDesc.innerText = data.desc;
 
+    const nowTime = new Date();
+    let showLink = true;
+
+    if (data.linkExpires) {
+        const expireTime = new Date(data.linkExpires);
+        if (nowTime >= expireTime) {
+            showLink = false;
+        }
+    }
+
+    if (showLink && data.link) {
+        modalLink.href = data.link;
+        modalLink.style.display = "inline-block";
+    } else {
+        modalLink.style.display = "none";
+    }
+
+    if (data.location) {
+        modalLocation.innerText = data.location;
+        modalLocation.style.display = "block";
+    } else {
+        modalLocation.style.display = "none";
+    }
+
+    modal.style.display = "flex";
+}
 </script>
 
 </body>

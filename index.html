@@ -136,7 +136,8 @@
             font-size: 16px;
             color: #cfd8e3;
         }
-                .quote2 {
+
+        .quote2 {
             font-family: 'Playfair Display', serif;
             font-size: 16px;
             color: yellow;
@@ -224,17 +225,19 @@
             margin: 16px 0;
         }
 
-#floatingLink {
-    text-align: center; /* hogy a szöveg a kép alatt középen legyen */
-}
+        #floatingLink {
+            text-align: center;
+            /* hogy a szöveg a kép alatt középen legyen */
+        }
 
-#floatingLink .datum {
-    color: yellow;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 10px;
-    margin-top: 5px; /* kis távolság a kép és a szöveg között */
-}
+        #floatingLink .datum {
+            color: yellow;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 10px;
+            margin-top: 5px;
+            /* kis távolság a kép és a szöveg között */
+        }
 
         /* különlegesebb szöveg */
         .szoveg {
@@ -255,21 +258,22 @@
             font-style: italic;
             font-size: 0.8rem;
         }
-#kerdesLink {
-    margin-top: 2px;
-    font-size: 0.75rem;
-    opacity: 0.85;
-    font-style: italic;
-}
 
-#kerdesLink a {
-    color: yellow;
-    text-decoration: none;
-}
+        #kerdesLink {
+            margin-top: 2px;
+            font-size: 0.75rem;
+            opacity: 0.85;
+            font-style: italic;
+        }
 
-#kerdesLink a:hover {
-    text-decoration: none;
-}
+        #kerdesLink a {
+            color: yellow;
+            text-decoration: none;
+        }
+
+        #kerdesLink a:hover {
+            text-decoration: none;
+        }
 
         /* 💻 Laptop / desktop */
         @media (min-width: 769px) {
@@ -341,289 +345,323 @@
                 font-size: 1rem;
             }
         }
+
         @media (min-width: 769px) {
-    .uzenet-lejebb {
-        position: fixed;
-        top: 90px; /* lejjebb tolva */
-        right: 30px;
-        text-align: right;
-        z-index: 1000;
-    }
-}
-@media (max-width: 768px) {
-    .uzenet-container {
-        position: relative;
-        top: auto;
-        padding-top: 0;
-    }
-}
-/* ===== FIGYELMEZTETŐ KÉP ===== */
-#warningImage {
-    position: fixed;
-    bottom: -100%;
-    right: 16px;              /* mindig jobbra */
-    z-index: 9998;
-    cursor: pointer;
-    animation: slideUp 1s ease-out forwards;
+            .uzenet-lejebb {
+                position: fixed;
+                top: 90px;
+                /* lejjebb tolva */
+                right: 30px;
+                text-align: right;
+                z-index: 1000;
+            }
+        }
 
-    width: 260px;             /* ALAP MÉRET – mindenhol kisebb */
-    max-width: 70vw;          /* soha nem lesz túl nagy */
-}
+        @media (max-width: 768px) {
+            .uzenet-container {
+                position: relative;
+                top: auto;
+                padding-top: 0;
+            }
+        }
 
-/* KÉP */
-#warningImage img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
+        /* ===== FIGYELMEZTETŐ KÉP ===== */
+        #warningImage {
+            position: fixed;
+            bottom: -100%;
+            right: 16px;
+            /* mindig jobbra */
+            z-index: 9998;
+            cursor: pointer;
+            animation: slideUp 1s ease-out forwards;
 
-/* 💻 Laptop / desktop */
-@media (min-width: 769px) {
-    #warningImage {
-        width: 320px;         /* kicsit nagyobb desktopon */
-        max-width: 30vw;
-        right: 20px;
-    }
-}
+            width: 260px;
+            /* ALAP MÉRET – mindenhol kisebb */
+            max-width: 70vw;
+            /* soha nem lesz túl nagy */
+        }
 
-/* 📱 Mobil */
+        /* KÉP */
+        #warningImage img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
 
-@media (max-width: 768px) {
-    #warningImage {
-        width: 100%;          /* TELJES SZÉLESSÉG */
-        max-width: 100vw;
-        height: auto;         /* NEM LESZ MAGAS */
-        
-        right: 0;
-        left: 0;
-        padding: 0 8px;       /* kis oldalsó levegő */
-        box-sizing: border-box;
-    }
-}
+        /* 💻 Laptop / desktop */
+        @media (min-width: 769px) {
+            #warningImage {
+                width: 320px;
+                /* kicsit nagyobb desktopon */
+                max-width: 30vw;
+                right: 20px;
+            }
+        }
+
+        /* 📱 Mobil */
+
+        @media (max-width: 768px) {
+            #warningImage {
+                width: 100%;
+                /* TELJES SZÉLESSÉG */
+                max-width: 100vw;
+                height: auto;
+                /* NEM LESZ MAGAS */
+
+                right: 0;
+                left: 0;
+                padding: 0 8px;
+                /* kis oldalsó levegő */
+                box-sizing: border-box;
+            }
+        }
 
 
-/* Becúszó animáció */
-@keyframes slideUp {
-    from {
-        bottom: -100%;
-        opacity: 0;
-    }
-    to {
-        bottom: 0;
-        opacity: 1;
-    }
-}
+        /* Becúszó animáció */
+        @keyframes slideUp {
+            from {
+                bottom: -100%;
+                opacity: 0;
+            }
 
-/* ===== Lebegő kép ===== */
-#floatingLink {
-    position: fixed;
-    right: 16px;
-    bottom: 16px;
-    z-index: 9999;
-    cursor: pointer;
-    animation: pulse 1.6s infinite;
-}
+            to {
+                bottom: 0;
+                opacity: 1;
+            }
+        }
 
-#floatingLink img {
-    width: 90px;
-    max-width: 25vw;
-}
+        /* ===== Lebegő kép ===== */
+        #floatingLink {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            z-index: 9999;
+            cursor: pointer;
+            animation: pulse 1.6s infinite;
+        }
 
-/* Mobilon kicsit nagyobb */
-@media (max-width: 768px) {
-    #floatingLink img {
-        width: 110px;
-    }
-}
+        #floatingLink img {
+            width: 90px;
+            max-width: 25vw;
+        }
 
-/* Pulzáló animáció */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-    100% { transform: scale(1); }
-}
+        /* Mobilon kicsit nagyobb */
+        @media (max-width: 768px) {
+            #floatingLink img {
+                width: 110px;
+            }
+        }
 
-/* ===== Modal háttér ===== */
-#fullModal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    display: none;
-    z-index: 10000;
-    overflow-y: auto;
-}
+        /* Pulzáló animáció */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
 
-/* ===== Modal tartalom ===== */
-.modalContent {
-    background: radial-gradient(circle at top, #0b2a4a, #000);;
-    color: white;
-    min-height: 100vh;
-    padding: 20px;
-    position: relative;
-    text-align: center;
-}
+            50% {
+                transform: scale(1.08);
+            }
 
-/* X gomb */
-.closeBtn {
-    position: fixed;
-    top: 13px;
-    right: 25px;
-    font-size: 26px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: yellow;
-}
+            100% {
+                transform: scale(1);
+            }
+        }
 
-/* Képek */
-.modalContent img {
-    width: 100%;
-    max-width: 420px;
-    margin: 12px auto;
-    display: block;
-    border-radius: 10px;
-}
-/* ===== ÉRTESÍTÉS DÁTUM – KICSI, KÖZEL A KÉPHEZ ===== */
-#floatingLink {
-    position: fixed; /* már megvan, de kell */
-}
+        /* ===== Modal háttér ===== */
+        #fullModal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            z-index: 10000;
+            overflow-y: auto;
+        }
 
-.ertesites-datum {
-    position: absolute;
-    bottom: 100%;          /* 👈 kép FELETT */
-    right: 0;              /* 👈 jobb oldal */
-    margin-bottom: 6px;
+        /* ===== Modal tartalom ===== */
+        .modalContent {
+            background: radial-gradient(circle at top, #0b2a4a, #000);
+            ;
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            text-align: center;
+        }
 
-    background: white;
-    color: red;
-    border: 1.5px solid red;
-    border-radius: 6px;
-    padding: 2px 3px;
-    font-size: 9px;
-    font-weight: 700;
-    line-height: 1.2;
-    white-space: nowrap;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-}
+        /* X gomb */
+        .closeBtn {
+            position: fixed;
+            top: 13px;
+            right: 25px;
+            font-size: 26px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: yellow;
+        }
 
-/* 📱 Mobil */
-@media (max-width: 768px) {
-    .ertesites-datum {
-        font-size: 8px;
-        padding: 1px 5px;
-        margin-bottom: 1px;
-        border-radius: 5px;
-    }
-}
+        /* Képek */
+        .modalContent img {
+            width: 100%;
+            max-width: 420px;
+            margin: 12px auto;
+            display: block;
+            border-radius: 10px;
+        }
 
-/* ===== Lebegő konténer ===== */
-#floatingLink {
-    position: fixed;
-    right: 16px;
-    bottom: 16px;
-    z-index: 9999;
-    cursor: pointer;
+        /* ===== ÉRTESÍTÉS DÁTUM – KICSI, KÖZEL A KÉPHEZ ===== */
+        #floatingLink {
+            position: fixed;
+            /* már megvan, de kell */
+        }
 
-    animation: megaPulse 1.2s infinite;
-}
+        .ertesites-datum {
+            position: absolute;
+            bottom: 100%;
+            /* 👈 kép FELETT */
+            right: 0;
+            /* 👈 jobb oldal */
+            margin-bottom: 6px;
 
-/* 📱 Mobil nézet */
-@media (max-width: 768px) {
-    #floatingLink img {
-        width: 130px;   /* kisebb kép mobilon */
-    }
+            background: white;
+            color: red;
+            border: 1.5px solid red;
+            border-radius: 6px;
+            padding: 2px 3px;
+            font-size: 9px;
+            font-weight: 700;
+            line-height: 1.2;
+            white-space: nowrap;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
 
-    #floatingLink .datum {
-        font-size: 7px; /* kisebb szöveg mobilon */
-        margin-top: 4px;
-    }
-}
-/* ===== KÉP MÉRETE ===== */
+        /* 📱 Mobil */
+        @media (max-width: 768px) {
+            .ertesites-datum {
+                font-size: 8px;
+                padding: 1px 5px;
+                margin-bottom: 1px;
+                border-radius: 5px;
+            }
+        }
 
-/* 💻 Laptop / desktop */
-/* ===== Lebegő konténer – lassabb pulzálás ===== */
-#floatingLink {
-    animation: megaPulse 2.2s infinite;
-}
+        /* ===== Lebegő konténer ===== */
+        #floatingLink {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            z-index: 9999;
+            cursor: pointer;
 
-/* 📱 Mobilon picit gyorsabb, de még mindig lassú */
-@media (max-width: 768px) {
-    #floatingLink {
-        animation: megaPulse 2s infinite;
-    }
+            animation: megaPulse 1.2s infinite;
+        }
 
-    #floatingLink img {
-        width: 60px;      /* 👈 EZ A KULCS */
-        max-width: 18vw;
-    }
-}
+        /* 📱 Mobil nézet */
+        @media (max-width: 768px) {
+            #floatingLink img {
+                width: 130px;
+                /* kisebb kép mobilon */
+            }
 
-/* 📱 Extra kicsi mobil */
-@media (max-width: 400px) {
-    #floatingLink img {
-        width: 52px;
-    }
-}
+            #floatingLink .datum {
+                font-size: 7px;
+                /* kisebb szöveg mobilon */
+                margin-top: 4px;
+            }
+        }
 
-/* ===== ERŐS, DE ELEGÁNS PULZÁLÁS ===== */
-@keyframes megaPulse {
-    0% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 0 rgba(255,255,255,0));
-    }
-    25% {
-        transform: scale(1.12);
-        filter: drop-shadow(0 0 14px rgba(255,255,255,0.85));
-    }
-    50% {
-        transform: scale(0.96);
-        filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
-    }
-    75% {
-        transform: scale(1.08);
-        filter: drop-shadow(0 0 10px rgba(255,255,255,0.6));
-    }
-    100% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 0 rgba(255,255,255,0));
-    }
-}
+        /* ===== KÉP MÉRETE ===== */
 
-.iro-animacio {
-  display: inline-block;
-}
+        /* 💻 Laptop / desktop */
+        /* ===== Lebegő konténer – lassabb pulzálás ===== */
+        #floatingLink {
+            animation: megaPulse 2.2s infinite;
+        }
 
-.iro-animacio span {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 2px solid black;
-  font-family: monospace;
+        /* 📱 Mobilon picit gyorsabb, de még mindig lassú */
+        @media (max-width: 768px) {
+            #floatingLink {
+                animation: megaPulse 2s infinite;
+            }
 
-  width: 0;
-  animation:
-    gepeles 4s steps(30, end) infinite,
-    kurzor 0.7s step-end infinite;
-}
+            #floatingLink img {
+                width: 60px;
+                /* 👈 EZ A KULCS */
+                max-width: 18vw;
+            }
+        }
 
-@keyframes gepeles {
-  0% {
-    width: 0;
-  }
-  50% {
-    width: max-content;
-  }
-  100% {
-    width: 0;
-  }
-}
+        /* 📱 Extra kicsi mobil */
+        @media (max-width: 400px) {
+            #floatingLink img {
+                width: 52px;
+            }
+        }
 
-@keyframes kurzor {
-  50% {
-    border-color: transparent;
-  }
-}
+        /* ===== ERŐS, DE ELEGÁNS PULZÁLÁS ===== */
+        @keyframes megaPulse {
+            0% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+            }
 
+            25% {
+                transform: scale(1.12);
+                filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.85));
+            }
+
+            50% {
+                transform: scale(0.96);
+                filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+            }
+
+            75% {
+                transform: scale(1.08);
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+            }
+
+            100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+            }
+        }
+
+        .iro-animacio {
+            display: inline-block;
+        }
+
+        .iro-animacio span {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid black;
+            font-family: monospace;
+
+            width: 0;
+            animation:
+                gepeles 4s steps(30, end) infinite,
+                kurzor 0.7s step-end infinite;
+        }
+
+        @keyframes gepeles {
+            0% {
+                width: 0;
+            }
+
+            50% {
+                width: max-content;
+            }
+
+            100% {
+                width: 0;
+            }
+        }
+
+        @keyframes kurzor {
+            50% {
+                border-color: transparent;
+            }
+        }
     </style>
 </head>
 
@@ -642,60 +680,62 @@
             <!-----📢 KÖZLEMÉNY – A rendszerünk fejlesztés alatt áll, legkésőbb ma (01.01.) 23:59-től újra elérhető lesz! Köszönjük a megértést! 
      📢 <span style="color: green;">KÖZLEMÉNY -</span> <i>A felhasználóélmény javítása érdekében az újévtől összeolvadt a CSALÁDI PROGRAMJAINK és a VAKÁCIÓVÁGYÓ rendszere! Egy kattintással elérhető mindkettő weboldalunk egyetlen egy PIN - kód segítségével. <span style="color: blue;"> A belépési PIN - kód mindenkinek a saját születési éve!</span> A korábbi bejelentkezési módszerek megszűntek!</i></div>
 ------->
-        <!-------
+            <!-------
             <span style="color: blue; background-color: yellow;"> |📢🔑 <span style="color: red;">KÖZLEMÉNY -</span> A
                 JELSZÓ A SAJÁT SZÜLETÉSI ÉVED! 📢🔑|</span> 
-               -------> 
+               ------->
 
-               <!------PROMRAMNAPTÁR 2026------->
-               <span style="color: red;">|</span><span style="color: blue"> CSALÁDI <span style="color:blue">PROGRAMJAINK</span></span><span style="color: red;"> | </span>
+            <!------PROMRAMNAPTÁR 2026------->
+            <span style="color: red;">|</span><span style="color: blue"> CSALÁDI <span
+                    style="color:blue">PROGRAMJAINK</span></span><span style="color: red;"> | </span>
 
             &nbsp;&nbsp;&nbsp;
-              <span>🎭🎭</span> 
-             &nbsp;&nbsp;&nbsp;
+            <span>🎭🎭</span>
+            &nbsp;&nbsp;&nbsp;
 
             <!---------2026. MÁRCIUS --->
             <span style="color: red;">| 2026. MÁRCIUS -</span> <span style="color: blue;">MÁRCIUS 15, TÁNCEST |</span>
-             &nbsp;&nbsp;&nbsp;
-            <span>🎭🎭</span> 
-             &nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;
+            <span>🎭🎭</span>
+            &nbsp;&nbsp;&nbsp;
             <!---------2026. ÁPRILIS --->
             <span style="color: red;">| 2026. ÁPRILIS -</span> <span style="color: blue;">VÁLASZTÁS '26 |</span>
 
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-             <span>🎭🎭</span> 
-             &nbsp;&nbsp;&nbsp;
+            <span>🎭🎭</span>
+            &nbsp;&nbsp;&nbsp;
             <!---------2026. MÁJUS --->
             <span style="color: red;">| 2026. MÁJUS -</span> <span style="color: blue;">BÉRMÁLKOZÁS, BANKETT |</span>
 
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-             <span>🎭🎭</span> 
-             &nbsp;&nbsp;&nbsp;
+            <span>🎭🎭</span>
+            &nbsp;&nbsp;&nbsp;
 
             <!-------2026. JÚNIUS ---->
             <span style="color: red;">| 2026. JÚNIUS -</span> <span style="color: blue;">BALLAGÁS |</span>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-             <span>🎭🎭</span> 
-             &nbsp;&nbsp;&nbsp;
+            <span>🎭🎭</span>
+            &nbsp;&nbsp;&nbsp;
             <!---------2026. JÚLIUS --->
             <span style="color: red;">| 2026. JÚLIUS -</span> <span style="color: blue;">NYARALÁS 1.0 |</span>
 
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-             <span>🎭🎭</span> 
-             &nbsp;&nbsp;&nbsp;
+            <span>🎭🎭</span>
+            &nbsp;&nbsp;&nbsp;
 
             <!---------2026. AUGUSZTUS --->
-            <span style="color: red;">| 2026. AUGUSZTUS -</span> <span style="color: blue;">NYARALÁS 2.0, SZENT ISTVÁN NAPOK, SZERENCSI ARTÚR NAPOK |</span>
+            <span style="color: red;">| 2026. AUGUSZTUS -</span> <span style="color: blue;">NYARALÁS 2.0, SZENT ISTVÁN
+                NAPOK, SZERENCSI ARTÚR NAPOK |</span>
 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
             &nbsp;&nbsp;&nbsp;
-             <span>🎭🎭</span> 
-            
+            <span>🎭🎭</span>
+
         </div>
     </div>
     <!---
@@ -714,7 +754,7 @@
             <h1>CSALÁDI PROGRAMJAINK</h1>
             <div class="quote">„Az együtt töltött idő a legszebb ajándék.”</div>
             <div class="family-title">Orosz Család</div>
-          </div>
+        </div>
 
         <!-- PIN -->
         <div class="pin-screen">
@@ -749,27 +789,27 @@
         <div class="uzenet-container">
             <div id="uzenet"></div>
             <div id="datumIdo"></div>
-           <div id="datumIdo"></div>
-<div id="kerdesLink" class="uzenet-lejebb">
-    <a href="kapcsolat.html">Hibát találtál? Kattints ide!</a>
-</div>
+            <div id="datumIdo"></div>
+            <div id="kerdesLink" class="uzenet-lejebb">
+                <a href="kapcsolat.html">Hibát találtál? Kattints ide!</a>
+            </div>
 
 
         </div>
     </div>
 
     <!-- 🔔 Lebegő kattintható kép -->
-<div id="floatingLink">
-    <img src="ertesites.webp" alt="Figyelmeztetés">
-    <div class="ertesites-datum">1.</div>
-</div>
+    <div id="floatingLink">
+        <img src="ertesites.webp" alt="Figyelmeztetés">
+        <div class="ertesites-datum">1.</div>
+    </div>
 
-<!-- 📱 Teljes képernyős modal -->
-<div id="fullModal">
-    <div class="modalContent">
-        <button class="closeBtn">✕</button>
+    <!-- 📱 Teljes képernyős modal -->
+    <div id="fullModal">
+        <div class="modalContent">
+            <button class="closeBtn">✕</button>
 
- <h4 style="
+            <h4 style="
     color: yellow;
     border: 3px solid yellow;
     border-radius: 10px;
@@ -777,59 +817,85 @@
     display: inline-block;
     text-align: center;
 " class="iro-animacio">
-    🔔 Új értesítésed érkezett! <br> <span style="font-size: 12px;">Frissítve - 2026.01.28.</span></span>
-</h4> <br><br>
-
-        <p>
-            Ne feledkezz meg a kiemelt ajánlatokról! <br><br> Igazán megéri igénybe venni a <br> <span style="color: yellow; font-size: 28px;"><b>250.000 - FT </b></span><br> értékű ajánlatot. 
-        </p> <br>
-
-        <img src="ertesitesrepulo.jpg" alt="Kép 1">
-        <img src="ertesiteszakopane.jpg" alt="Kép 2">
-
-        <br>
+                🔔 Új értesítésed érkezett! <br> <span style="font-size: 12px;">Frissítve - 2026.01.28.</span></span>
+            </h4> <br><br>
 
             <p>
-            <i>További részletek és <span style="color: yellow;">NYARALÁSI AJÁNLATOK</span> a családi webalkalmazásunkban bejelentkezés után az <span style="color: yellow;">AJÁNLÓK</span> menüpontban!</i> 
-        </p> <br>
+                Ne feledkezz meg a kiemelt ajánlatokról! <br><br> Igazán megéri igénybe venni a <br> <span
+                    style="color: yellow; font-size: 28px;"><b>250.000 - FT </b></span><br> értékű ajánlatot.
+            </p> <br>
 
+            <img src="ertesitesrepulo.jpg" alt="Kép 1">
+            <img src="ertesiteszakopane.jpg" alt="Kép 2">
+
+            <br>
+
+            <p>
+                <i>További részletek és <span style="color: yellow;">NYARALÁSI AJÁNLATOK</span> a családi
+                    webalkalmazásunkban bejelentkezés után az <span style="color: yellow;">AJÁNLÓK</span>
+                    menüpontban!</i>
+            </p> <br>
+
+        </div>
     </div>
-</div>
 
     <script>
-        const snowContainer = document.getElementById("snow-container");
-        const snowDuration = 5000; // 10 másodperc
-        const snowInterval = 180;   // sűrűség
+        const effectContainer = document.getElementById("snow-container");
+        const now = new Date();
+        const month = now.getMonth(); // 0 = január
 
-        function createSnowflake() {
-            const snowflake = document.createElement("div");
-            snowflake.className = "snowflake";
-            snowflake.textContent = "❄️";
+        let icon = "❄️";      // alap
+        let color = "white";
 
-            snowflake.style.left = Math.random() * 100 + "vw";
-            snowflake.style.animationDuration = 5 + Math.random() * 3 + "s";
+        // 🌸 TAVASZ (március–május)
+        if (month >= 2 && month <= 4) {
+            icon = "🌸";
+            color = "#ffb6c1";
+        }
 
-            snowContainer.appendChild(snowflake);
+        // ☀️ NYÁR (június–augusztus)
+        else if (month >= 5 && month <= 7) {
+            icon = "🪂";
+            color = "#ffd700";
+        }
 
-            // akkor töröljük, amikor már biztosan leért
+        // 🍂 ŐSZ (szeptember–november)
+        else if (month >= 8 && month <= 10) {
+            icon = "🍂";
+            color = "#ff8c00";
+        }
+
+        // ❄️ TÉL (december–február)
+        else {
+            icon = "❄️";
+            color = "white";
+        }
+
+        function createEffect() {
+            const el = document.createElement("div");
+            el.className = "snowflake";
+            el.textContent = icon;
+            el.style.left = Math.random() * 100 + "vw";
+            el.style.animationDuration = 5 + Math.random() * 4 + "s";
+            el.style.color = color;
+
+            effectContainer.appendChild(el);
+
             setTimeout(() => {
-                snowflake.remove();
+                el.remove();
             }, 9000);
         }
 
-        const snowTimer = setInterval(createSnowflake, snowInterval);
+        const interval = setInterval(createEffect, 200);
 
-        // 10 mp után nem jön új hó
         setTimeout(() => {
-            clearInterval(snowTimer);
-
-            // megvárjuk, míg az utolsók is leérnek
+            clearInterval(interval);
             setTimeout(() => {
-                snowContainer.remove();
+                effectContainer.remove();
             }, 9000);
+        }, 6000);
 
-        }, snowDuration);
-    </script>
+</script>
 
 
     <script>
@@ -923,34 +989,34 @@
         setInterval(frissitUzenet, 1000);
     </script>
 
-<script>
-    const warning = document.getElementById("warningImage");
+    <script>
+        const warning = document.getElementById("warningImage");
 
-    warning.addEventListener("click", () => {
-        warning.style.transition = "all 0.6s ease";
-        warning.style.opacity = "0";
-        warning.style.bottom = "-100%";
+        warning.addEventListener("click", () => {
+            warning.style.transition = "all 0.6s ease";
+            warning.style.opacity = "0";
+            warning.style.bottom = "-100%";
 
-        setTimeout(() => {
-            warning.remove();
-        }, 600);
-    });
-</script>
-<script>
-    const floating = document.getElementById("floatingLink");
-    const modal = document.getElementById("fullModal");
-    const closeBtn = document.querySelector(".closeBtn");
+            setTimeout(() => {
+                warning.remove();
+            }, 600);
+        });
+    </script>
+    <script>
+        const floating = document.getElementById("floatingLink");
+        const modal = document.getElementById("fullModal");
+        const closeBtn = document.querySelector(".closeBtn");
 
-    floating.addEventListener("click", () => {
-        modal.style.display = "block";
-        document.body.style.overflow = "hidden"; // ne görgessen mögötte
-    });
+        floating.addEventListener("click", () => {
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden"; // ne görgessen mögötte
+        });
 
-    closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-        document.body.style.overflow = "auto";
-    });
-</script>
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        });
+    </script>
 
 
 </body>
