@@ -135,6 +135,8 @@ header {
     margin-top: 18px;
     color: #ff4d4d;
     text-decoration: underline;
+    font-size: 15px;
+    font-weight: bold;
 }
 /* JELMAGYARÁZAT LINK */
 .legend-link {
@@ -203,7 +205,13 @@ header {
 .legend-ok:hover {
     background-color: #1c3455;
 }
-
+.expired-text {
+    margin-top: 18px;
+    color: yellow;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+}
 </style>
 
 
@@ -274,7 +282,7 @@ const events = {
         location: "Abaújszántó",
         desc: "KERESZTLÁNYOS esküvői családi meghívás 2026. február 21.-én 15:00-ra Abaújszántóra!",
         link: "programjaink.html#keresztlanyosmeghivo",
-        linkExpires: "2026-02-21T21:00:00"
+        linkExpires: "2026-02-22T12:53:00"
     },
         "2026-03-14": {
         title: "MÁRCIUS 15 - ÜNNEPI MŰSOR",
@@ -472,6 +480,43 @@ function openModal(data) {
     if (showLink && data.link) {
         modalLink.href = data.link;
         modalLink.style.display = "inline-block";
+    } else {
+        modalLink.style.display = "none";
+    }
+
+    if (data.location) {
+        modalLocation.innerText = data.location;
+        modalLocation.style.display = "block";
+    } else {
+        modalLocation.style.display = "none";
+    }
+
+    modal.style.display = "flex";
+}
+function openModal(data) {
+    modalTitle.innerText = data.title;
+    modalDesc.innerText = data.desc;
+
+    const nowTime = new Date();
+    let expired = false;
+
+    if (data.linkExpires) {
+        const expireTime = new Date(data.linkExpires);
+        if (nowTime >= expireTime) {
+            expired = true;
+        }
+    }
+
+    if (expired) {
+        modalLink.style.display = "inline-block";
+        modalLink.removeAttribute("href");
+        modalLink.innerText = "A program véget ért!";
+        modalLink.classList.add("expired-text");
+    } else if (data.link) {
+        modalLink.href = data.link;
+        modalLink.innerText = "Részletek megtekintése";
+        modalLink.style.display = "inline-block";
+        modalLink.classList.remove("expired-text");
     } else {
         modalLink.style.display = "none";
     }
