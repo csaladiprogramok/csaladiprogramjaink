@@ -1,303 +1,323 @@
 <!DOCTYPE html>
 <html lang="hu">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Főoldal</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital@1&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-<style>
-/* ======================
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Főoldal</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital@1&family=Montserrat:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ======================
    RESET + ALAP
    ====================== */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    max-width: 100%;
-}
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            max-width: 100%;
+        }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-}
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
 
-body {
-    background: radial-gradient(circle at top, #0b2a4a, #000);
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-}
+        body {
+            background: radial-gradient(circle at top, #0b2a4a, #000);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
 
-/* ======================
+        /* ======================
    WRAPPER
    ====================== */
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100svh;
-    padding: 10px;
-    width: 100%;
-}
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100svh;
+            padding: 10px;
+            width: 100%;
+        }
 
-/* ======================
+        /* ======================
    FEJLÉC
    ====================== */
-.header {
-    text-align: center;
-    width: 100%;
-}
+        .header {
+            text-align: center;
+            width: 100%;
+        }
 
-.header h1 {
-    font-size: clamp(18px, 5.5vw, 30px);
-    line-height: 1.25;
-    letter-spacing: 0.14em;
-    margin: 6px 0;
-}
+        .header h1 {
+            font-size: clamp(18px, 5.5vw, 30px);
+            line-height: 1.25;
+            letter-spacing: 0.14em;
+            margin: 6px 0;
+        }
 
-.quote {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(13px, 4vw, 16px);
-    color: #cfd8e3;
-    margin: 4px 0;
-}
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(13px, 4vw, 16px);
+            color: #cfd8e3;
+            margin: 4px 0;
+        }
 
-.family-title {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(17px, 5.5vw, 24px);
-    letter-spacing: 0.18em;
-    margin: 4px 0 8px;
-}
+        .family-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(17px, 5.5vw, 24px);
+            letter-spacing: 0.18em;
+            margin: 4px 0 8px;
+        }
 
-.quote2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(12px, 3.8vw, 15px);
-    color: yellow;
-    background-color: black;
-    border-radius: 6px;
-    padding: 6px 12px;
-    display: inline-block;
-}
+        .quote2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(12px, 3.8vw, 15px);
+            color: yellow;
+            background-color: black;
+            border-radius: 6px;
+            padding: 6px 12px;
+            display: inline-block;
+        }
 
-/* ======================
+        /* ======================
    SLIDER
    ====================== */
-.slider {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    border-radius: 14px;
-    overflow: hidden;
-}
+        .slider {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            border-radius: 14px;
+            overflow: hidden;
+        }
 
-.slide {
-    display: none;
-}
+        .slide {
+            display: none;
+        }
 
-.slide.active {
-    display: block;
-}
+        .slide.active {
+            display: block;
+        }
 
-.slide img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-}
+        .slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
 
-/* ======================
+        /* ======================
    DOTS
    ====================== */
-.dots {
-    margin: 6px 0;
-    text-align: center;
-    width: 100%;
-}
+        .dots {
+            margin: 6px 0;
+            text-align: center;
+            width: 100%;
+        }
 
-.dot {
-    width: 9px;
-    height: 9px;
-    margin: 0 3px;
-    background: #555;
-    border-radius: 50%;
-    display: inline-block;
-}
+        .dot {
+            width: 9px;
+            height: 9px;
+            margin: 0 3px;
+            background: #555;
+            border-radius: 50%;
+            display: inline-block;
+        }
 
-.dot.active {
-    background: white;
-}
+        .dot.active {
+            background: white;
+        }
 
-/* ======================
+        /* ======================
    GOMBOK – MOBIL / TABLET (GRID)
    ====================== */
-.buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    width: 100%;
-    margin-top: 14px;
-}
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+            margin-top: 14px;
+        }
 
-.buttons a {
-    background-color: #0b2a4a;
-    color: white;
-    text-decoration: none;
+        .buttons a {
+            background-color: #0b2a4a;
+            color: white;
+            text-decoration: none;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    padding: 16px 10px;
-    border-radius: 14px;
+            padding: 16px 10px;
+            border-radius: 14px;
 
-    font-size: clamp(11px, 3.6vw, 14px);
-    font-weight: 600;
-    text-align: center;
-    line-height: 1.35;
-}
+            font-size: clamp(11px, 3.6vw, 14px);
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.35;
+        }
 
-/* Speciális gombszínek */
-.buttons a:nth-last-child(2) {
-    background-color: #ffd400;
-    color: #003366;
-}
+        /* Speciális gombszínek */
+        .buttons a:nth-last-child(2) {
+            background-color: #ffd400;
+            color: #003366;
+        }
 
-.buttons a:last-child {
-    background-color: #c62828;
-    color: white;
-}
+        .buttons a:last-child {
+            background-color: #c62828;
+            color: white;
+        }
 
-/* ======================
+        /* ======================
    📱 EXTRA KICSI MOBIL
    ====================== */
-@media (max-width: 360px) {
-    .buttons a {
-        padding: 14px 8px;
-        font-size: 11px;
-    }
-}
+        @media (max-width: 360px) {
+            .buttons a {
+                padding: 14px 8px;
+                font-size: 11px;
+            }
+        }
 
-/* ======================
+        /* ======================
    📱📱 TABLET
    ====================== */
-@media (min-width: 600px) and (max-width: 768px) {
-    .buttons {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
+        @media (min-width: 600px) and (max-width: 768px) {
+            .buttons {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
 
-/* ======================
+        /* ======================
    💻 LAPTOP – FLEXBOX (ALSÓ SOR KÖZÉPEN!)
    ====================== */
-@media (min-width: 769px) {
+        @media (min-width: 769px) {
 
-    .wrapper {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+            .wrapper {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
 
-    .slider {
-        max-width: 800px;
-        border-radius: 16px;
-    }
+            .slider {
+                max-width: 800px;
+                border-radius: 16px;
+            }
 
-    /* 🔥 EZ A MEGOLDÁS */
-    .buttons {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;   /* 👉 UTOLSÓ SOR IS KÖZÉPEN */
-        gap: 12px;
+            /* 🔥 EZ A MEGOLDÁS */
+            .buttons {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                /* 👉 UTOLSÓ SOR IS KÖZÉPEN */
+                gap: 12px;
 
-        max-width: 1000px;
-        margin: 14px auto 0;
-    }
+                max-width: 1000px;
+                margin: 14px auto 0;
+            }
 
-    .buttons a {
-        width: 150px;              /* fix szélesség */
-        padding: 18px 10px;
-        font-size: 14px;
-    }
-}
+            .buttons a {
+                width: 150px;
+                /* fix szélesség */
+                padding: 18px 10px;
+                font-size: 14px;
+            }
+        }
 
-/* ======================
+        /* ======================
    GÉPELŐS ANIMÁCIÓ
    ====================== */
-.iro-animacio {
-    display: inline-block;
-}
+        .iro-animacio {
+            display: inline-block;
+        }
 
-.iro-animacio span {
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 2px solid black;
-    font-family: monospace;
-    width: 0;
+        .iro-animacio span {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid black;
+            font-family: monospace;
+            width: 0;
 
-    animation:
-        gepeles 4s steps(30, end) infinite,
-        kurzor 0.7s step-end infinite;
-}
+            animation:
+                gepeles 4s steps(30, end) infinite,
+                kurzor 0.7s step-end infinite;
+        }
 
-@keyframes gepeles {
-    0% { width: 0; }
-    50% { width: max-content; }
-    100% { width: 0; }
-}
+        @keyframes gepeles {
+            0% {
+                width: 0;
+            }
 
-@keyframes kurzor {
-    50% { border-color: transparent; }
-}
+            50% {
+                width: max-content;
+            }
 
-</style>
+            100% {
+                width: 0;
+            }
+        }
+
+        @keyframes kurzor {
+            50% {
+                border-color: transparent;
+            }
+        }
+    </style>
 
 </head>
 
 <body>
 
-<div class="wrapper">
+    <div class="wrapper">
 
-    <div class="header">
-        <h1>CSALÁDI PROGRAMJAINK</h1>
-        <div class="quote">„Az együtt töltött idő a legszebb ajándék.”</div>
-        <div class="family-title">Orosz Család</div>
-        <div class="quote2"><span>Kiemelt családi információink...</span></div> 
-    </div>
-    <div class="slider">
-           <div class="slide"  data-start="2026-02-08T13:22" data-end="2026-02-08T13:23">
-        <a href="https://forms.gle/nEKgjA3D4UHjXCsZA">
-            <img src="honapkerdes.jpg" alt="">
-        </a>
-    </div>
+        <div class="header">
+            <h1>CSALÁDI PROGRAMJAINK</h1>
+            <div class="quote">„Az együtt töltött idő a legszebb ajándék.”</div>
+            <div class="family-title">Orosz Család</div>
+            <div class="quote2"><span>Kiemelt családi információink...</span></div>
+        </div>
+        <div class="slider">
+            <div class="slide" data-start="2026-02-08T13:22" data-end="2026-02-08T13:23">
+                <a href="https://forms.gle/nEKgjA3D4UHjXCsZA">
+                    <img src="honapkerdes.jpg" alt="">
+                </a>
+            </div>
 
-               <div class="slide"  data-start="2026-03-01T00:00" data-end="2026-03-05T23:59">
-        <a href="https://forms.gle/eJXyVDxkeo2ecQ7p6">
-            <img src="honapkerdesmarcius.jpg" alt="">
-        </a>
-    </div>
-        <div class="slide">
-            <a href="nyaralasiajanlatok.html">
-                <img src="NYAajanlatok.jpg" alt="">
-            </a>
-        </div>
-                   <div class="slide"  data-start="2026-02-01T00:00" data-end="2026-02-28T23:59">
-        <a href="csaladinaptar.html">
-            <img src="februariprogramok.jpg" alt="">
-        </a>
-    </div>
-               <div class="slide"  data-start="2026-03-01T00:00" data-end="2026-03-31T23:59">
-        <a href="csaladinaptar.html">
-            <img src="marciusiprogramok.jpg" alt="">
-        </a>
-    </div>
-                        <div class="slide">
-            <a href="kiemeltajanlat.html">
-                <img src="kiemelt.jpg" alt="">
-            </a>
-        </div>
-        <!---
+            <div class="slide" data-start="2026-03-01T00:00" data-end="2026-03-05T23:59">
+                <a href="https://forms.gle/eJXyVDxkeo2ecQ7p6">
+                    <img src="honapkerdesmarcius.jpg" alt="">
+                </a>
+            </div>
+            <div class="slide">
+                <a href="nyaralasiajanlatok.html">
+                    <img src="NYAajanlatok.jpg" alt="">
+                </a>
+            </div>
+            <div class="slide" data-start="2026-03-01T00:00" data-end="2026-04-03T23:59">
+                <a href="#">
+                    <img src="nyarifenyek.jpg" alt="">
+                </a>
+            </div>
+            <div class="slide" data-start="2026-02-01T00:00" data-end="2026-02-28T23:59">
+                <a href="csaladinaptar.html">
+                    <img src="februariprogramok.jpg" alt="">
+                </a>
+            </div>
+            <div class="slide" data-start="2026-03-01T00:00" data-end="2026-03-31T23:59">
+                <a href="csaladinaptar.html">
+                    <img src="marciusiprogramok.jpg" alt="">
+                </a>
+            </div>
+            <div class="slide">
+                <a href="kiemeltajanlat.html">
+                    <img src="kiemelt.jpg" alt="">
+                </a>
+            </div>
+            <!---
 
         <div class="slide">
             <a href="#">
@@ -315,94 +335,95 @@ body {
             </a>
         </div>
  ----->
-    </div>
+        </div>
 
-    <div class="dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <!----
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <!----
         <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
         --->
+        </div>
+
+        <div class="buttons">
+            <a href="csaladinaptar.html" style="color: yellow;">NAPTÁRUNK</a>
+            <a href="programjaink.html" style="color: yellow;">PROGRAMJAINK</a>
+            <a href="bakancslistánk.html">BAKANCSLISTA</a>
+            <a href="programajanlok.html">AJÁNLÓK</a>
+            <a href="ilyenvolt.html">ILYEN VOLT...</a>
+            <a href="https://csaladiprogramok.github.io/eldujra/">ÉLD ÚJRA</a>
+            <a href="jegyeink.html"><span style="color: yellow;">JEGYEINK</span></a>
+            <a href="egyebek.html">EGYEBEK</a>
+            <a href="https://csaladiprogramok.github.io/vakaciovagyo/">VAKÁCIÓVÁGYÓ</a>
+            <a href="index.html">KIJELENTKEZÉS</a>
+        </div>
+
     </div>
+    <script>
+        let index = 0;
+        const now = new Date();
 
-    <div class="buttons">
-        <a href="csaladinaptar.html" style="color: yellow;">NAPTÁRUNK</a>
-        <a href="programjaink.html" style="color: yellow;">PROGRAMJAINK</a>
-        <a href="bakancslistánk.html">BAKANCSLISTA</a>
-        <a href="programajanlok.html">AJÁNLÓK</a>
-        <a href="ilyenvolt.html">ILYEN VOLT...</a>
-        <a href="https://csaladiprogramok.github.io/eldujra/">ÉLD ÚJRA</a>
-        <a href="jegyeink.html"><span style="color: yellow;">JEGYEINK</span></a>
-        <a href="egyebek.html">EGYEBEK</a>
-        <a href="https://csaladiprogramok.github.io/vakaciovagyo/">VAKÁCIÓVÁGYÓ</a>
-        <a href="index.html">KIJELENTKEZÉS</a>
-    </div>
+        // 🔹 1. MINDEN slide időintervallum ellenőrzése (nem csak kiemelt)
+        document.querySelectorAll(".slide").forEach(slide => {
+            const start = slide.dataset.start;
+            const end = slide.dataset.end;
 
-</div>
-<script>
-let index = 0;
-const now = new Date();
+            // csak akkor vizsgáljuk, ha VAN dátum megadva
+            if (start && end) {
+                const startDate = new Date(start);
+                const endDate = new Date(end);
 
-// 🔹 1. MINDEN slide időintervallum ellenőrzése (nem csak kiemelt)
-document.querySelectorAll(".slide").forEach(slide => {
-    const start = slide.dataset.start;
-    const end = slide.dataset.end;
+                // ha MÉG NEM kezdődött el, vagy MÁR LEJÁRT → törlés
+                if (now < startDate || now > endDate) {
+                    slide.remove();
+                }
+            }
+        });
 
-    // csak akkor vizsgáljuk, ha VAN dátum megadva
-    if (start && end) {
-        const startDate = new Date(start);
-        const endDate = new Date(end);
+        // 🔹 2. Megmaradt KIEMELT slide(ok) előre hozása
+        const slider = document.querySelector(".slider");
+        document.querySelectorAll(".slide.kiemelt").forEach(slide => {
+            slider.prepend(slide);
+        });
 
-        // ha MÉG NEM kezdődött el, vagy MÁR LEJÁRT → törlés
-        if (now < startDate || now > endDate) {
-            slide.remove();
+        // 🔹 3. DOTOK ÚJRAÉPÍTÉSE A MEGMARADT SLIDE-OK ALAPJÁN
+        const dotsKontener = document.querySelector(".dots");
+        dotsKontener.innerHTML = "";
+
+        const slides = document.querySelectorAll(".slide");
+
+        slides.forEach(() => {
+            const dot = document.createElement("span");
+            dot.classList.add("dot");
+            dotsKontener.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll(".dot");
+
+        // 🔹 4. Slider működés (változatlan)
+        function showSlide(i) {
+            slides.forEach(s => s.classList.remove("active"));
+            dots.forEach(d => d.classList.remove("active"));
+
+            index = (i + slides.length) % slides.length;
+            slides[index].classList.add("active");
+            dots[index].classList.add("active");
         }
-    }
-});
 
-// 🔹 2. Megmaradt KIEMELT slide(ok) előre hozása
-const slider = document.querySelector(".slider");
-document.querySelectorAll(".slide.kiemelt").forEach(slide => {
-    slider.prepend(slide);
-});
+        // indulás
+        if (slides.length > 0) {
+            showSlide(0);
 
-// 🔹 3. DOTOK ÚJRAÉPÍTÉSE A MEGMARADT SLIDE-OK ALAPJÁN
-const dotsKontener = document.querySelector(".dots");
-dotsKontener.innerHTML = "";
-
-const slides = document.querySelectorAll(".slide");
-
-slides.forEach(() => {
-    const dot = document.createElement("span");
-    dot.classList.add("dot");
-    dotsKontener.appendChild(dot);
-});
-
-const dots = document.querySelectorAll(".dot");
-
-// 🔹 4. Slider működés (változatlan)
-function showSlide(i) {
-    slides.forEach(s => s.classList.remove("active"));
-    dots.forEach(d => d.classList.remove("active"));
-
-    index = (i + slides.length) % slides.length;
-    slides[index].classList.add("active");
-    dots[index].classList.add("active");
-}
-
-// indulás
-if (slides.length > 0) {
-    showSlide(0);
-
-    // automatikus váltás
-    setInterval(() => showSlide(index + 1), 5000);
-}
-</script>
+            // automatikus váltás
+            setInterval(() => showSlide(index + 1), 5000);
+        }
+    </script>
 
 
 
 </body>
+
 </html>
