@@ -25,14 +25,14 @@
             max-width: 1200px;
         }
 
-        .keptar img {
-            width: 100%;
-            aspect-ratio: 10 / 3; /* kb. 50 cm x 15 cm arány */
-            object-fit: cover;
-            display: block;
-            margin: 0 auto 15px auto; /* középre igazítás */
-            border-radius: 8px;
-        }
+.keptar img {
+    width: 70%;          /* kisebb lesz */
+    max-width: 900px;    /* felső korlát nagy kijelzőn */
+    height: auto;        /* arány megtartása */
+    display: block;
+    margin: 0 auto 20px auto;
+    border-radius: 8px;
+}
                /* ❌ BEZÁRÓ X */
 .close-btn {
     position: fixed;
@@ -78,11 +78,13 @@
 <body>
 <br>
 <a href="fooldal.html" class="close-btn">✕</a>
+
+<!----
     <div class="kep-tarolo">
     <img src="kozostaktika.jpg" alt="Kép leírása">
 </div>
-
-    <h1>Bakancslistánk <br>2026</h1>
+-------->
+    <h1>BAKANCSLISTÁNK</h1>
 
     <div class="keptar">
         <img src="Dia4.JPG" alt="Kép 1">
