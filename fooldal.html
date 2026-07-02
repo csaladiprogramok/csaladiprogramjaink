@@ -266,6 +266,56 @@
                 border-color: transparent;
             }
         }
+
+        .modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal-content{
+    background:#fff;
+    color:#222;
+    width:90%;
+    max-width:420px;
+    padding:25px;
+    border-radius:14px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+.modal-content h3{
+    margin-top:0;
+}
+
+.modal-buttons{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+.modal-buttons button{
+    padding:10px 22px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+#cancelBtn{
+    background:#c62828;
+    color:#fff;
+}
+
+#okBtn{
+    background:#0b2a4a;
+    color:#fff;
+}
     </style>
 
 </head>
@@ -282,14 +332,8 @@
         </div>
         <div class="slider">
 
-            <div class="slide" data-start="2026-06-01T00:00" data-end="2026-06-10T23:59">
-                <a href="https://forms.gle/Lhy3rV64LDPzktr96">
-                    <img src="startfejlec.jpg.png" alt="">
-                </a>
-            </div>
-
             <div class="slide" data-start="2026-06-10T00:00" data-end="2026-08-31T23:59">
-                <a href="https://csaladiprogramok.github.io/vakaciovagyo/teljesitesinaplostart27.html">
+               <a href="https://csaladiprogramok.github.io/vakaciovagyo/teljesitesinaplostart27.html" class="vakacio-link">
                     <img src="startfejlec.jpg.png" alt="">
                 </a>
             </div>
@@ -356,7 +400,26 @@
         </div>
 
     </div>
-    <script>
+
+
+
+<div id="vakacioModal" class="modal">
+    <div class="modal-content">
+        <h3>Tájékoztatás</h3>
+
+        <p>
+            Az oldal megtekintéséhez át kell jelentkeztetnünk
+            a <strong>VakációVágyó</strong> rendszerébe!
+        </p>
+
+        <div class="modal-buttons">
+            <button id="cancelBtn">Mégse</button>
+            <button id="okBtn">Rendben</button>
+        </div>
+    </div>
+</div>
+
+<script>
         let index = 0;
         const now = new Date();
 
@@ -414,9 +477,46 @@
             // automatikus váltás
             setInterval(() => showSlide(index + 1), 5000);
         }
+        let celLink = "";
+
+const modal = document.getElementById("vakacioModal");
+
+document.querySelectorAll(".vakacio-link").forEach(link => {
+
+    link.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        celLink = this.href;
+
+        modal.style.display = "flex";
+
+    });
+
+});
+
+document.getElementById("cancelBtn").onclick = function(){
+
+    modal.style.display = "none";
+
+};
+
+document.getElementById("okBtn").onclick = function(){
+
+    window.location.href = celLink;
+
+};
+
+window.onclick = function(e){
+
+    if(e.target === modal){
+
+        modal.style.display = "none";
+
+    }
+
+};
     </script>
-
-
 
 </body>
 
