@@ -663,17 +663,158 @@
             }
         }
     </style>
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    
+  }
+
+  #summer-countdown {
+    /* EZT MÓDOSÍTSD: ennyire legyen lent az oldal tetejétől */
+    top: 125px;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: min(82%, 560px);
+    min-height: 30px;
+    height: auto;
+    padding: 3px 10px;
+    box-sizing: border-box;
+
+    background: rgba(255,255,255,.96);
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    overflow: hidden;
+
+    color: #155e75;
+    font-size: clamp(12px, 1.6vw, 15px);
+    font-weight: 800;
+    line-height: 1;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  }
+
+  #summer-countdown::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 -35%;
+    width: 30%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 215, 0, .62),
+      transparent
+    );
+    animation: shine 4s linear infinite;
+  }
+
+  .sun,
+  .palm,
+  .text {
+    position: relative;
+    z-index: 1;
+  }
+
+  .text {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+    line-height: 1.05;
+  }
+
+  .sun {
+    font-size: clamp(15px, 2vw, 18px);
+    animation: sun 2.4s ease-in-out infinite;
+  }
+
+  .palm {
+    font-size: clamp(15px, 2vw, 18px);
+    transform-origin: bottom center;
+    animation: palm 2.2s ease-in-out infinite;
+  }
+
+  .days-highlight {
+    color: #ff4f87;
+    font-size: inherit;
+    font-weight: 900;
+    display: inline-block;
+  }
+
+  @keyframes shine {
+    from { left: -35%; }
+    to   { left: 120%; }
+  }
+
+  @keyframes sun {
+    0%, 100% { transform: rotate(-8deg) scale(1); }
+    50%      { transform: rotate(8deg) scale(1.10); }
+  }
+
+  @keyframes palm {
+    0%, 100% { transform: rotate(-4deg); }
+    50%      { transform: rotate(4deg); }
+  }
+
+  /* Mobil */
+  @media (max-width: 600px) {
+    #summer-countdown {
+      /* MOBILON EZT MÓDOSÍTSD: ennyire legyen lent a tetejétől */
+      top: 70px;
+
+      width: 88%;
+      max-width: 460px;
+      min-height: 28px;
+      padding: 2px 7px;
+      gap: 4px;
+      font-size: clamp(11px, 3.5vw, 13px);
+      border-radius: 8px;
+    }
+
+    #summer-countdown .sun,
+    #summer-countdown .palm {
+      font-size: 15px;
+    }
+  }
+
+  /* Nagyon keskeny mobil */
+  @media (max-width: 380px) {
+    #summer-countdown {
+      /* EXTRA KICSI MOBILON ezt is külön állíthatod */
+      top: 120px;
+
+      width: 92%;
+      max-width: 340px;
+      min-height: 27px;
+      padding: 2px 5px;
+      gap: 3px;
+      font-size: 11px;
+    }
+
+    #summer-countdown .sun,
+    #summer-countdown .palm {
+      font-size: 14px;
+    }
+  }
+</style>
 </head>
 
 <body>
 
     <div id="snow-container"></div>
 
-    <!-- FIGYELMEZTETŐ KÉP 
+    <!-- FIGYELMEZTETŐ KÉP ----->
 <div id="warningImage">
-    <img src="figyelmeztetes01.jpg" alt="Figyelmeztetés">
+    <img src="figyelmeztetes.jpg" alt="Figyelmeztetés">
 </div>
--->
+
     <!-- KÖZLEMÉNY -->
     <div class="notice-bar">
         <div class="notice-text">
@@ -705,7 +846,7 @@
             &nbsp;&nbsp;
 
             <!---------2026. AUGUSZTUS --->
-            <span style="color: red;">| 2026. AUGUSZTUS -</span> <span style="color: blue;">NYARALÁS 2.0 |</span>
+            <span style="color: red;">| 2026. SZEPTEMBER -</span> <span style="color: blue;">ARTÚR NAPOK |</span>
 
             &nbsp;&nbsp;&nbsp;
 
@@ -739,7 +880,13 @@
             <div class="quote">„Az együtt töltött idő a legszebb ajándék.”</div>
             <div class="family-title">Orosz Család</div>
         </div>
-
+        <!-----
+<div id="summer-countdown">
+  <span class="sun">☀️</span>
+  <span class="text">MÁR CSAK <span class="days-highlight"><span id="days">...</span> NAP</span> ÉS ITT A NYÁR!</span>
+  <span class="palm">🌴</span>
+</div>
+------->
         <!-- PIN -->
         <div class="pin-screen">
 
@@ -782,7 +929,7 @@
         </div>
     </div>
 
-    <!-- 🔔 Lebegő kattintható kép -->
+    <!-- 🔔 Lebegő kattintható kép 
     <div id="floatingLink">
         <img src="ertesites.webp" alt="Figyelmeztetés">
         <div class="ertesites-datum">4.</div>
@@ -809,13 +956,13 @@
                 Ne feledkezz meg a kiemelt ajánlatokról! <br><br> Igazán megéri igénybe venni a <br> <span
                     style="color: yellow; font-size: 28px;"><b>200.000 - FT </b></span><br> értékű ajánlatot.
             </p> <br>
-            ---->
+            ----><!----
            <p>
             <span style="font-size: 20px;">
               <b>CÉLEGYENESBEN!</b>  <br><br>
                </span> <i>Kezdjük már ma a gyűjtést, hogy gondtalan legyen a jövő nyár!</i>
-            </p> <br>
-            <img src="CÉLEGYENESBEN.jpg" alt="Kép 1">
+            </p> <br> --><!------
+            <img src="CÉLEGYENESBEN.jpg" alt="Kép 1">----->
             <!------
             <img src="ertesiteszakopane.jpg" alt="Kép 2">
 ------>
@@ -1008,6 +1155,31 @@
             document.body.style.overflow = "auto";
         });
     </script>
+<script>
+function updateCountdown() {
+  const now = new Date();
+  const text = document.querySelector(".text");
+  const year = now.getFullYear();
+  const june1 = new Date(year, 5, 1, 0, 0, 0);
+  const sep1 = new Date(year, 8, 1, 0, 0, 0);
+
+  // Június 1-től augusztus 31-ig nyári felirat.
+  if (now >= june1 && now < sep1) {
+    text.innerHTML = '„NYÁR VAN, ALIG FÜRDŐRUHÁBAN...”';
+    return;
+  }
+
+  // Szeptember 1-től május 31-ig visszaszámlálás a következő június 1-ig.
+  const target = now >= sep1 ? new Date(year + 1, 5, 1, 0, 0, 0) : june1;
+  const days = Math.ceil((target - now) / 86400000);
+
+  text.innerHTML =
+    'MÁR CSAK <span class="days-highlight"><span id="days">' +
+    days + '</span> NAP</span> ÉS ITT A NYÁR!';
+}
+updateCountdown();
+setInterval(updateCountdown, 60000);
+</script>
 
 
 </body>
