@@ -267,55 +267,55 @@
             }
         }
 
-        .modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.65);
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-}
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .65);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
 
-.modal-content{
-    background:#fff;
-    color:#222;
-    width:90%;
-    max-width:420px;
-    padding:25px;
-    border-radius:14px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,.35);
-}
+        .modal-content {
+            background: #fff;
+            color: #222;
+            width: 90%;
+            max-width: 420px;
+            padding: 25px;
+            border-radius: 14px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+        }
 
-.modal-content h3{
-    margin-top:0;
-}
+        .modal-content h3 {
+            margin-top: 0;
+        }
 
-.modal-buttons{
-    margin-top:20px;
-    display:flex;
-    justify-content:center;
-    gap:15px;
-}
+        .modal-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
 
-.modal-buttons button{
-    padding:10px 22px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:15px;
-}
+        .modal-buttons button {
+            padding: 10px 22px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
 
-#cancelBtn{
-    background:#c62828;
-    color:#fff;
-}
+        #cancelBtn {
+            background: #c62828;
+            color: #fff;
+        }
 
-#okBtn{
-    background:#0b2a4a;
-    color:#fff;
-}
+        #okBtn {
+            background: #0b2a4a;
+            color: #fff;
+        }
     </style>
 
 </head>
@@ -356,17 +356,24 @@
                 </a>
             </div>
                         ------>
-            <div class="slide"data-start="2026-08-01T00:00" data-end="2027-06-06T23:59">
+
+            <div class="slide" data-start="2026-08-01T00:00" data-end="2027-06-06T23:59">
+                <a href="https://csaladiprogramok.github.io/nyaralaskereso/" class="vakacio-link">
+                    <img src="nyaralaskereso.jpg" alt="">
+
+                </a>
+            </div>
+            <div class="slide" data-start="2026-08-01T00:00" data-end="2027-06-06T23:59">
                 <a href="https://csaladiprogramok.github.io/vakaciovagyo/" class="vakacio-link">
                     <img src="celegyenesben.jpg" alt="">
                 </a>
             </div>
-            <div class="slide"data-start="2026-08-01T00:00" data-end="2026-08-31T23:59">
+            <div class="slide" data-start="2026-08-01T00:00" data-end="2026-08-31T23:59">
                 <a href="csaladinaptar.html">
                     <img src="augusztusiprogramok.jpg" alt="">
                 </a>
             </div>
-            <div class="slide"data-start="2026-09-01T00:00" data-end="2026-09-30T23:59">
+            <div class="slide" data-start="2026-09-01T00:00" data-end="2026-09-30T23:59">
                 <a href="csaladinaptar.html">
                     <img src="szeptember.jpg" alt="">
                 </a>
@@ -377,8 +384,8 @@
                     <img src="eldujrafejlec.jpg" alt="">
                 </a>
             </div>
-            --->  
-        <!----
+            --->
+            <!----
             <div class="slide">
                 <a href="forroajanlat.html">
                     <img src="kiemeltrepulosajanlat.jpg" alt="">
@@ -390,7 +397,7 @@
                     <img src="marciusiprogramok.jpg" alt="">
                 </a>
             </div>
-   
+
         </div>
 
         <div class="dots">
@@ -423,23 +430,23 @@
 
 
 
-<div id="vakacioModal" class="modal">
-    <div class="modal-content">
-        <h3>Tájékoztatás</h3>
+    <div id="vakacioModal" class="modal">
+        <div class="modal-content">
+            <h3>Tájékoztatás</h3>
 
-        <p>
-            Az oldal megtekintéséhez át kell jelentkeztetnünk
-            a <strong>VakációVágyó</strong> rendszerébe!
-        </p>
+            <p>
+                Az oldal megtekintéséhez át kell jelentkeztetnünk
+                a <strong>VakációVágyó</strong> rendszerébe!
+            </p>
 
-        <div class="modal-buttons">
-            <button id="cancelBtn">Mégse</button>
-            <button id="okBtn">Rendben</button>
+            <div class="modal-buttons">
+                <button id="cancelBtn">Mégse</button>
+                <button id="okBtn">Rendben</button>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
+    <script>
         let index = 0;
         const now = new Date();
 
@@ -499,43 +506,43 @@
         }
         let celLink = "";
 
-const modal = document.getElementById("vakacioModal");
+        const modal = document.getElementById("vakacioModal");
 
-document.querySelectorAll(".vakacio-link").forEach(link => {
+        document.querySelectorAll(".vakacio-link").forEach(link => {
 
-    link.addEventListener("click", function(e){
+            link.addEventListener("click", function (e) {
 
-        e.preventDefault();
+                e.preventDefault();
 
-        celLink = this.href;
+                celLink = this.href;
 
-        modal.style.display = "flex";
+                modal.style.display = "flex";
 
-    });
+            });
 
-});
+        });
 
-document.getElementById("cancelBtn").onclick = function(){
+        document.getElementById("cancelBtn").onclick = function () {
 
-    modal.style.display = "none";
+            modal.style.display = "none";
 
-};
+        };
 
-document.getElementById("okBtn").onclick = function(){
+        document.getElementById("okBtn").onclick = function () {
 
-    window.location.href = celLink;
+            window.location.href = celLink;
 
-};
+        };
 
-window.onclick = function(e){
+        window.onclick = function (e) {
 
-    if(e.target === modal){
+            if (e.target === modal) {
 
-        modal.style.display = "none";
+                modal.style.display = "none";
 
-    }
+            }
 
-};
+        };
     </script>
 
 </body>
