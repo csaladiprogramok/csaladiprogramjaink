@@ -71,6 +71,13 @@
             color: #1db954;
             margin-bottom: 6px;
         }
+                .card-title2 {
+            font-size: 18px;
+            font-weight: bold;
+            color: red;
+            margin-bottom: 6px;
+        }
+
 
         .card-location {
             font-size: 14px;
@@ -188,93 +195,273 @@
         .center {
             text-align: center;
         }
+        .card-slider {
+    position: relative;
+    width: 100%;
+    height: 300px; /* ezt tetszés szerint módosíthatod */
+    overflow: hidden;
+}
+
+.card-slider .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.card-slider .slide.active {
+    opacity: 1;
+}
+    
+        /* ===== KARÁCSONYI EXTRA EFFEKTEK ===== */
+
+        /* Főcím: fehér-ezüst színátmenet + finom fény */
+        .header > h1:first-child {
+            font-size: 30px;
+            letter-spacing: 3px;
+            line-height: 1.25;
+            background: linear-gradient(
+                110deg,
+                #ffffff 0%,
+                #bfc4ca 22%,
+                #ffffff 42%,
+                #8f969e 58%,
+                #ffffff 78%,
+                #c7ccd1 100%
+            );
+            background-size: 250% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            text-shadow: 0 0 18px rgba(255,255,255,0.18);
+            animation: titleShine 5s linear infinite, titleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes titleShine {
+            0%   { background-position: 0% center; }
+            100% { background-position: 250% center; }
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-4px); }
+        }
+
+        /* Kártyák: finom lebegés és elegáns fény */
+        .card {
+            position: relative;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            animation: cardFloat 5s ease-in-out infinite;
+        }
+
+        .card:nth-of-type(even) {
+            animation-delay: 0.7s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px) scale(1.015);
+            box-shadow:
+                0 16px 35px rgba(0,0,0,0.55),
+                0 0 22px rgba(255,255,255,0.20);
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 14px;
+            pointer-events: none;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.35);
+        }
+
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-4px); }
+        }
+
+        /* Hulló hó */
+        .snow-container {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -30px;
+            color: rgba(255,255,255,0.92);
+            user-select: none;
+            text-shadow: 0 0 8px rgba(255,255,255,0.75);
+            animation-name: snowfall, snowSway;
+            animation-timing-function: linear, ease-in-out;
+            animation-iteration-count: infinite, infinite;
+        }
+
+        @keyframes snowfall {
+            from { top: -30px; }
+            to   { top: 105vh; }
+        }
+
+        @keyframes snowSway {
+            0%, 100% { transform: translateX(-12px) rotate(0deg); }
+            50%      { transform: translateX(22px) rotate(180deg); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .header > h1:first-child,
+            .card,
+            .snowflake {
+                animation: none !important;
+            }
+        }
+
     </style>
+    
 </head>
 
 <body>
-<a href="fooldal.html" class="close-btn">✕</a>
+<div class="snow-container" id="snow-container" aria-hidden="true"></div>
+
+<a href="fooldal.html" class="close-btn">✕</a><br><br>
 <div class="container">
 
     <div class="header">
-        <h1>AJÁNLÓK</h1>
-    </div> <div style="text-align: center
-    ;color: white;">-----------------------</div><br>
-    <div style="text-align: center
-    ;color: white;"><h2>HAMAROSAN</h2><br><h4><i>elérhetőek lesznek a téli (évvégi) programajánlók.</i></h4></div>
-<!------
-    <div class="center">
-        <a href="kiemeltajanlat.html"><b>KIEMELT AJÁNLATOK</b></a> <br><span style="color: yellow;">-------------</span><br><a href="nyaralasiajanlatok.html"><b>NYARALÁSI AJÁNLATOK</b></a>
-    <br>
-       <span style="color: white;">------------------------------------------------------</span>
-    </div>
---><!-----
-    <div class="month">2026. NYÁR</div>
+        <h1><b><i>KARÁCSONYI <br>AJÁNLÓK</i></b> </h1> <br><br>
 
-        <div class="card">
-        <img src="lovasajanlo.jpg" alt="">
-        <div class="card-content">
-            <div class="card-title">CAVALLUNA</div>
-                        <div class="card-location"><b>Budapest, MVM DOME</b></div>
-                       <div class="card-location"><b>2026. június 27. 14:00</b></div>
-            <div class="card-location" style="text-align: justify;"> 2025 októberétől a CAVALLUNA egy látványos új előadással várja a közönséget, amely titokzatos világokba repíti a nézőket, és egy igazán fantasztikus történetet mesél el. A nyolc hónapos turné során körülbelül 500 000 nézőre számítanak, akik lenyűgöző speciális effektusokra, kiváló koreográfiára és mindenekelőtt 56 gyönyörű lóra számíthatnak. A csodálatos teremtmények és a szívmelengető kaland egyaránt elvarázsolja a fiatalokat és az időseket.<br><br></div>
-            <a href="https://mvm-dome.hu/en/events/cavalluna" class="card-button">További részletek...</a>            
-<a href="https://www.cavalluna.com/hu/jegyek-es-datumok/budapest" class="card-button">Jegyvásárlás</a>
-        </div>
-    </div>
-          <div class="divider">VAGY</div>
+        <h1><b>MAGYAR SZÍNHÁZ</b> </h1> <br><br>
 <div class="card">
-        <img src="zoran.jpg" alt="">
-        <div class="card-content">
-          
-            <div class="card-title">ZORÁN</div>
-                        <div class="card-location"><b>Tokaj Fesztiválkatlan</b></div>
-                       <div class="card-location"><b>2026. július 12. 20:00</b></div>
-            <div class="card-location" style="text-align: justify;"> Ismét koncertre invitálja Zorán a közönségét a Tokaj Fesztiválkatlanba 2026. július 12-én.
-
-Zorán az ország egyik legismertebb előadóművésze, a magyar zenei élet kiemelkedő alakja, akinek lendülete és energiája töretlen. Az ország bármely területén, ahol koncertet ad, telt házak előtt játszik.
-
-Ezúttal is kiváló zenésztársaival áll színpadra, természetesen a legnagyobb slágerek mellett, különleges zenei csemegékkel is készülnek.
-Zorán koncertjei minden alkalommal elvarázsolják a közönséget, nem lesz ez másképp most sem.<br><br></div>
-            <a href="https://fesztivalkatlan.hu/musorok/zoran-2/" class="card-button">További részletek...</a>            
-<a href="https://broadwayticket.jegy.hu/program/zoran-koncert-144321/1371070?_gl=1*mvv1ij*_ga*MTM3MDU0MTE4MS4xNzY3ODI3MDQw*_ga_CYS3GRWQR6*czE3Njc4MjcwNDAkbzEkZzAkdDE3Njc4MjcwNDIkajYwJGwwJGgxNDQxMjc5NzMy*_fplc*JTJCWmZBeklaRmdSaFlFRGh5QThEUFRHWUI1VUt3cTJ4TTJNRWJIJTJGVm1ZNjlJSGJFNkkxdnBSWiUyRjNEb3RKUGtPcDUxcExQT1owVWttRE42QyUyQkwxJTJCeDk2UTQ5S1hTTFZ0RmxyJTJGdUhuaDZnT2JhdmprZnQlMkJlYyUyRnF5bTEzbnNZdyUzRCUzRA..*_gcl_au*MTM1MTQxOTU2Mi4xNzY3ODI3MDQy*FPAU*MTU2NzM2MDE1Ny4xNzY3ODI3MDAw" class="card-button">Jegyvásárlás</a>
-        </div>
-    </div>
- <div class="divider">VAGY</div>
-    <div class="card">
-        <img src="samfeszt.webp" alt="">
-        <div class="card-content">
-            <div class="card-title">SANREMÓI FESZTIVÁL CSILLAGAI</div>
-                        <div class="card-location"><b>MVM DOME, Budapest</b></div>
-                       <div class="card-location"><b>2026. augusztus 22. 20:00</b></div>
-            <div class="card-location" style="text-align: justify;"> Olaszország ikonikus hangulata egy felejthetetlen estén kel életre, hiszen a legendás Sanremo Zenei Fesztivál – a Festival della canzone italiana – évtizedek óta a mediterrán életstílus és a magas színvonalú zene megtestesítője. 2026. augusztus 22-én ez az összetéveszthetetlen fesztiválhangulat Közép-Európa egyik legmodernebb helyszínére, az MVM Dómba költözik. Az este folyamán Olaszország legnagyobb slágerei csendülnek fel világszínvonalú előadásokban: két kiváló olasz zenekar idézi meg Adriano Celentano és Mina legnépszerűbb dalait, miközben színpadra lép a tehetséges Andrea Moricone és a karizmatikus Erox Martini is. Az est abszolút fénypontjaként pedig a világszerte ismert Ricchi & Poveri érkezése teszi teljessé ezt az emlékezetes zenei élményt.<br><br></div>
-            <a href="https://mvm-dome.hu/en/events/sanremoi-fesztival-csillagai" class="card-button">További részletek...</a>            
-<a href="https://www.jegy.hu/program/sanremoi-fesztival-csillagai-188042?q=sanremoi+fesztiv%c3%a1l+csillagai&sgtype=pfprogram" class="card-button">Jegyvásárlás</a>
-        </div>
-    </div>
-
-     <div class="divider">VAGY</div>
-    <div class="card">
-        <img src="mammamia.webp" alt="">
-        <div class="card-content">
-            <div class="card-title">MAMMA MIA</div>
-                        <div class="card-location"><b>Madách Színház, Budapest</b></div>
-                       
-            <div class="card-location" style="text-align: justify;">Napfényben fürdő görög sziget. Mindent körbeölelő csillogó türkiz tenger. Hangulatos tavernák, ínycsiklandó étkek, mavrodaphne… Egyszerűen idilli - tökéletes felkeresni, ott időzni, visszatérni – s persze élni. Donna Sheridan, a független, céltudatos asszony ezt a nem mindennapi környezetet választotta otthonául, és itt született húsz évvel ezelőtt Sophie is, a lánya. Sophie, aki édesanyja szemléletétől eltérően mindig is szenvedélyes szerelemről, hatalmas fehér esküvőről álmodott, elvágyik e csodálatos mediterrán szigetről. A nagy utazást azonban nem egyedül, hanem választottja, Sky oldalán tervezi elkezdeni. Házasságkötésüket mindössze egy apróság árnyékolja be: Sophie szeretné, ha édesapja vezetné oltárhoz, akit azonban nem ismer...<br><br></div>
-            <div class="card-location"><b>A program időpontja később lesz elérhető!</b></div> <br>
-            <a href="https://madachszinhaz.hu/szindarab/mamma-mia" class="card-button">További részletek...</a>            
-<a href="https://www.jegy.hu/program/mamma-mia-50830" class="card-button">Jegyvásárlás</a>
-        </div>
-    </div>
-
- 
-    <div class="yearly-wrapper">
-        <a href="evesprogramajanlo.html" class="yearly-button">TOVÁBBI PROGRAMAJÁNLÓK</a>
-        <div class="yearly-text">
-            <b><i>Érdemes az egész éves programajánlót átolvasni a hatalmas érdeklődés miatt.</i></b>
-        </div>
-    </div>
-
+                <div class="card-slider">
+    <img src="kepek/v3.webp" alt="Wonderland" class="slide active">
+    <img src="kepek/v1.webp" alt="Wonderland" class="slide">
+    <img src="kepek/v2.webp" alt="Wonderland" class="slide">
 </div>
-------->
+        <div class="card-content">
+              <div class="card-title">VALAHOL EURÓPÁBAN</div><br>
+              <div class="card-title2">2026.12.26. 15:00 (szombat)</div><br>
+            <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+            <div class="card-location" style="text-align: justify;">A háború mindent elvett tőlük – az otthonukat, a családjukat, a gyermekkorukat. Bandába verődve, éhesen és fázva járják az utcákat, hogy valahogy túléljenek. Mégis kapaszkodnak az életbe. Egy idős zenész romos kastélyában menedékre lelnek, ahol nemcsak falak, hanem dallamok és remény öleli körül őket. Itt, a romok között születik meg valami, amit már rég elfelejtettek: bizalom, barátság és emberség.
+
+De a világ odakint továbbra is kegyetlen: üldözőik közelebb járnak, mint gondolnák. Elbújni, vagy kiállni egymásért? A döntés mindannyiuk sorsát megpecsételheti. Barátság, bátorság, összetartás – egy felemelő musical a szeretet erejéről, amely még a háború legsötétebb árnyékában is utat mutat.</div>
+ <br>             
+<a href="https://magyarszinhaz.hu/programok/valahol-europaban/" class="card-button">RÉSZLETEK</a>            
+<a href="https://www.jegy.hu/program/valahol-europaban-178170" class="card-button">JEGYEK</a>
+        </div>
+    </div>
+
+<div class="card">
+        <div class="card-slider">
+    <img src="kepek/w1.jpg" alt="Wonderland" class="slide active">
+    <img src="kepek/w2.jpg" alt="Wonderland" class="slide">
+    <img src="kepek/w3.jpg" alt="Wonderland" class="slide">
+</div>
+        <div class="card-content">
+              <div class="card-title">WONDERLAND - ÚJ MŰSOR
+              </div><br>
+              <div class="card-title2">2026.12.30. 15:00 (csütörtök)</div>
+              <div class="card-title2">2026.12.31. 15:00 (péntek)</div><br>
+            <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+            <div class="card-location" style="text-align: justify;">Ki ne ismerné az Alíz Csodaországban varázslatos történetét? A Wonderland ennek a klasszikus műnek a modern, zenés színpadi változata – a világhírű Frank Wildhorn Broadway-slágereivel, ráadásul hazai ősbemutatóként a Magyar Színházban!
+
+A mai, high-tech New Yorkban élő Alice sikeres, de túlterhelt játékfejlesztő, aki egy kimerítő éjszakán elszundít laptopja fölött… és egy embernagyságú nyúl vezetésével egy különös világba, Wonderlandbe csöppen, ahol bármi megtörténhet – és annak az ellenkezője is. Lewis Caroll képzeletbirodalmában élő kártyalapok, beszélő macska, őrült kalapos és számtalan bizarr figura kíséri útján, míg rá nem ébred: a legnagyobb csoda talán a saját életében rejlik.</div>
+ <br>             
+<a href="https://magyarszinhaz.hu/programok/wonderland/" class="card-button">RÉSZLETEK</a>            
+<a href="https://magyarszinhaz.jegy.hu/program/wonderland-193424/" class="card-button">JEGYEK</a>
+        </div>
+    </div>
+
+    <h1><b>ERKEL SZÍNHÁZ</b> </h1> <br><br>
+    
+    <div class="card">
+<div class="card-slider">
+    <img src="kepek/ap1.webp" alt="Wonderland" class="slide active">
+    <img src="kepek/ap2.webp" alt="Wonderland" class="slide">
+    <img src="kepek/ap3.webp" alt="Wonderland" class="slide">
+</div>
+        <div class="card-content">
+            <div class="card-title">APÁCA SHOW</div><br>
+             <div class="card-title2">2026.12.26. 15:00 (szombat)</div><br>
+                        <div class="card-location"><b>Erkel Színház, Budapest</b></div>
+            <div class="card-location" style="text-align: justify;">Fergeteges humor, érzelmes sztori, mely a mozivászonról is ismerős, szemkápráztató látvány, fülbemászó disco- és gospel-dallamok röpítik mennyekbe a nézőt, aki jegyet vált az Apáca Show musicalváltozatára. A történetben Deloris Van Cartier bárénekesnő véletlenül szemtanúja lesz egy gyilkosságnak, így menekülni kényszerül. A rendőrség segítségével egy zárdában rejtőzik el, ahol fenekestül felforgatja a szentéletű nővérek életét, cserébe felvirágoztatja a zárda kórusát. A Touchstone Pictures „Apáca show” című, Joseph Howard által írt mozifilmje alapján.</b></div> <br>            
+<br> 
+            <a href="https://erkelszinhaz.hu/eloadas/apaca-show/" class="card-button">RÉSZLETEK</a>            
+<a href="https://www.jegy.hu/program/apaca-show-176308?q=ap%c3%a1ca+show&sgtype=pfprogram" class="card-button">JEGYEK</a>
+        </div>
+    </div>  
+
+    <div class="card">
+                        <div class="card-slider">
+    <img src="kepek/wic1.webp" alt="Wonderland" class="slide active">
+    <img src="kepek/wic2.webp" alt="Wonderland" class="slide">
+    <img src="kepek/wic3.webp" alt="Wonderland" class="slide">
+</div>
+        <div class="card-content">
+              <div class="card-title">WICKED - ÚJ MŰSOR
+              </div><br>
+              <div class="card-title2">2026.12.20. 15:00 (vasárnap)</div><br>
+            <div class="card-location"><b>Erkel Színház, Budapest</b></div>
+            <div class="card-location" style="text-align: justify;">A musical az Óz, a csodák csodája előzménytörténeteként a gonosznak hitt zöld boszorkány, Elphaba életét állítja a középpontba. A Wicked egészen különleges történetet mesél el egy váratlan, ám annál mélyebb barátságról két fiatal nő között: a gyönyörű és népszerű Glindáról és a félreértett, zöld bőrű Elphabáról.
+ </div>
+ <br>             
+<a href="https://erkelszinhaz.hu/eloadas/wicked/" class="card-button">RÉSZLETEK</a>            
+<a href="https://erkelszinhaz.jegy.hu/program/wicked-195269" class="card-button">JEGYEK</a>
+        </div>
+    </div>
+<script>
+document.querySelectorAll('.card-slider').forEach(function(slider) {
+
+    const slides = slider.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    setInterval(function() {
+
+        slides[currentSlide].classList.remove('active');
+
+        currentSlide++;
+
+        if (currentSlide >= slides.length) {
+            currentSlide = 0;
+        }
+
+        slides[currentSlide].classList.add('active');
+
+    }, 3000);
+
+});
+</script>
+
+<script>
+(function () {
+    const snowContainer = document.getElementById('snow-container');
+    if (!snowContainer) return;
+
+    const flakes = ['❄', '❅', '❆'];
+
+    for (let i = 0; i < 42; i++) {
+        const flake = document.createElement('span');
+        flake.className = 'snowflake';
+        flake.textContent = flakes[Math.floor(Math.random() * flakes.length)];
+        flake.style.left = Math.random() * 100 + 'vw';
+        flake.style.fontSize = (8 + Math.random() * 16) + 'px';
+        flake.style.opacity = (0.35 + Math.random() * 0.65).toFixed(2);
+        flake.style.animationDuration =
+            (7 + Math.random() * 9) + 's, ' +
+            (2.5 + Math.random() * 4) + 's';
+        flake.style.animationDelay =
+            (-Math.random() * 16) + 's, ' +
+            (-Math.random() * 5) + 's';
+        snowContainer.appendChild(flake);
+    }
+})();
+</script>
+
 </body>
 </html>
