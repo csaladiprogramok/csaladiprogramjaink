@@ -390,6 +390,9 @@
 
 /* A jegyes modalablak szövegének végső sorkizárt igazítása. */
 .performance-modal, .performance-modal h2, .performance-modal h3, .performance-modal .modal-subtitle { text-align:justify; }
+
+.performance-modal .date-note { display:inline-block; width:max-content; max-width:100%; margin-top:5px; padding:3px 7px; border-radius:7px; background:#fff0b8; color:#624400; font-size:10px; font-weight:800; letter-spacing:.25px; line-height:1.3; }
+@media(max-width:420px) { .performance-modal .date-note { font-size:9px; padding:2px 5px; } }
     </style>
     
 </head>
@@ -573,6 +576,21 @@ A mai, high-tech New Yorkban élő Alice sikeres, de túlterhelt játékfejleszt
   </div>
 </div>
 
+<!-- APÁCA SHOW – 16:9 képhelyek, a képeket később lehet feltölteni -->
+<div class="card">
+  <div class="card-slider" style="background:#0b2a4a;" aria-label="APÁCA SHOW – három 16:9-es képhely">
+    <img src="kepek_ajanlok1026/AS001.webp" alt="Apáca Show – 1. kép" class="slide active"> 
+    <img src="kepek_ajanlok1026/AS002.webp" alt="Apáca Show – 2. kép" class="slide">
+    <img src="kepek_ajanlok1026/AS003.webp" alt="Apáca Show – 3. kép" class="slide"> 
+  </div>
+  <div class="card-content">
+    <div class="card-title">APÁCA SHOW</div>
+    <div class="card-location" style="margin-top:2px;"><b>ERKEL SZÍNHÁZ, BUDAPEST</b></div>
+    <div class="premiere-line">Bemutató: 2025. szeptember 19.</div>
+    <div class="card-location" style="text-align:justify;">A kilencvenes évek népszerű filmvígjátékából született musical középpontjában Deloris Van Cartier bárénekesnő áll. Miután véletlenül szemtanúja lesz egy gyilkosságnak, a rendőrség egy zárdában rejti el. Deloris eleinte nehezen találja a helyét az apácák között, ám lendülete, humora és zenei tehetsége hamar felforgatja a közösség mindennapjait. A zárda kórusából fergeteges énekegyüttest formál, miközben barátságok szövődnek, és egyre fontosabbá válik az összetartás. A látványos, szívmelengető előadást Alan Menken zenéje, Glenn Slater dalszövegei, valamint disco- és gospelhangulat teszik emlékezetessé.</div><br>
+    <div class="card-actions"><a href="https://erkelszinhaz.hu/eloadas/apaca-show/" class="card-button">RÉSZLETEK</a><button type="button" class="card-button2 calendar-open" data-show="apaca-show">ELŐADÁS NAPTÁR</button></div>
+  </div>
+</div>
 <!-- WICKED: három üres képhely, később tölthető fel -->
 <div class="card">
   <div class="card-slider" style="background:#0b2a4a;" aria-label="WICKED – üres képhelyek">
@@ -673,14 +691,15 @@ Az előadások ismertetői és bemutatódátumai a színházak hivatalos műsoro
  
  const elisabethDates='<div class="date-row"><div>2027.01.30. – 15:00<small>szombat · Budapest</small></div><a href="https://erkelszinhaz.jegy.hu/program/elisabeth-176307/1479032">MEGNÉZEM</a></div><div class="date-row"><div>2027.01.31. – 15:00<small>vasárnap · Budapest</small></div><a href="https://erkelszinhaz.jegy.hu/program/elisabeth-176307/1479038">MEGNÉZEM</a></div>';
  
- const testorDates='<div class="date-row"><div>2027.03.14. – 15:00<small>vasárnap · Budapest</small></div><a href="https://erkelszinhaz.jegy.hu/program/a-3-testor-198356/1516437">MEGNÉZEM</a></div>';
+ const apacaDates='<div class="date-row"><div>2027.03.27. – 15:00<small>szombat · Budapest</small><small class="date-note">TAVASZI SZÜNET</small></div><a href="https://erkelszinhaz.jegy.hu/program/apaca-show-176308/1516250">MEGNÉZEM</a></div><div class="date-row"><div>2027.03.28. – 11:00<small>vasárnap · Budapest</small><small class="date-note">TAVASZI SZÜNET</small></div><a href="https://erkelszinhaz.jegy.hu/program/apaca-show-176308/1516253">MEGNÉZEM</a></div><div class="date-row"><div>2027.03.28. – 15:00<small>vasárnap · Budapest</small><small class="date-note">TAVASZI SZÜNET</small></div><a href="https://erkelszinhaz.jegy.hu/program/apaca-show-176308/1516256">MEGNÉZEM</a></div>';
+ const testorDates='<div class="date-row"><div>2027.03.14. – 15:00<small>vasárnap · Budapest</small><small class="date-note">HOSSZÚ HÉTVÉGE</small></div><a href="https://erkelszinhaz.jegy.hu/program/a-3-testor-198356/1516437">MEGNÉZEM</a></div>';
 
  
- const wickedErkelDates='<div class="date-row"><div>2027.05.16. – 15:30<small>vasárnap · Budapest</small></div><a href="https://erkelszinhaz.jegy.hu/program/wicked-195269/1516328">MEGNÉZEM</a></div>';
+ const wickedErkelDates='<div class="date-row"><div>2027.05.16. – 15:30<small>vasárnap · Budapest</small><small class="date-note">HOSSZÚ HÉTVÉGE</small></div><a href="https://erkelszinhaz.jegy.hu/program/wicked-195269/1516328">MEGNÉZEM</a></div>';
  
- const showData={rebecca:{code:'R001',title:'REBECCA – ERKEL SZÍNHÁZ',dates:rebeccaDates},'a-tron':{code:'T003',title:'A TRÓN – ERKEL SZÍNHÁZ',dates:tronDates},elisabeth:{code:'E005',title:'ELISABETH – ERKEL SZÍNHÁZ',dates:elisabethDates},'a-3-testor':{code:'A006',title:'A 3 TESTŐR – ERKEL SZÍNHÁZ',dates:testorDates},'wicked-erkel':{code:'W007',title:'WICKED – ERKEL SZÍNHÁZ',dates:wickedErkelDates}};
+ const showData={rebecca:{code:'R001',title:'REBECCA – ERKEL SZÍNHÁZ',dates:rebeccaDates},'a-tron':{code:'T003',title:'A TRÓN – ERKEL SZÍNHÁZ',dates:tronDates},elisabeth:{code:'E005',title:'ELISABETH – ERKEL SZÍNHÁZ',dates:elisabethDates},'a-3-testor':{code:'Ő007',title:'A 3 TESTŐR – ERKEL SZÍNHÁZ',dates:testorDates},'apaca-show':{code:'A008',title:'APÁCA SHOW – ERKEL SZÍNHÁZ',dates:apacaDates},'wicked-erkel':{code:'W011',title:'WICKED – ERKEL SZÍNHÁZ',dates:wickedErkelDates}};
  // Minden előadási időpont saját kódot kap, az eredeti előadáskód megtartásával.
- const dateCodes={valahol:['000'],rebecca:['R001','R002'],'a-tron':['T003','T004'],elisabeth:['E005','E006'],'a-3-testor':['A007'],'wicked-erkel':['W008']};
+ const dateCodes={valahol:['000'],rebecca:['R001','R002'],'a-tron':['T003','T004'],elisabeth:['E005','E006'],'a-3-testor':['Ő007'],'apaca-show':['A008','A009','A010'],'wicked-erkel':['W011']};
  function addDateCodes(key){
    const codes=dateCodes[key]||dateCodes.valahol;
    dates.querySelectorAll('.date-row').forEach((row,index)=>{
