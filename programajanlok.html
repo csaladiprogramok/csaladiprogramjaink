@@ -372,7 +372,7 @@
 .card-heading-row { position:relative; display:flex; align-items:center; justify-content:center; margin-bottom:5px; min-height:26px; }
 .card-heading-row .card-title { margin-bottom:0; width:100%; text-align:center; }
 .card-heading-row .new-show-label { position:absolute; right:0; top:50%; transform:translateY(-50%); white-space:nowrap; }
-@media(max-width:520px) { .card-heading-row { padding-top:29px; } .card-heading-row .new-show-label { top:0; transform:none; } }
+@media(max-width:520px) { .card-heading-row { padding-top:0; } .card-heading-row .card-title { font-size:clamp(14px,4vw,18px); white-space:nowrap; } .card-heading-row .new-show-label { top:50%; transform:translateY(-50%); font-size:9px; padding:3px 5px; margin-left:0; } }
 .premiere-line { color:#000 !important; }
 .program-sources { position:relative; z-index:2; max-width:940px; margin:38px auto 24px; padding:18px 22px; border-top:1px solid rgba(255,255,255,.4); color:#e7eaf3; font-size:12px; line-height:1.7; text-align:center; }
 .program-sources a { color:#ffe477; text-decoration:underline; }
@@ -391,21 +391,32 @@
 @keyframes comingColors { from {background-position:0 center} to {background-position:300% center} }
 @keyframes comingFloat { 0%,100% {transform:translateY(0)} 50% {transform:translateY(-5px)} }
 @media(max-width:620px) { .program-coming-soon {gap:7px} .program-coming-soon h2 {font-size:clamp(22px,7vw,34px)} }
+
+/* A Hamarosan felirat külön, minden tartalom fölött megjelenő modalablaka. */
+.coming-modal-overlay { position:fixed; inset:0; z-index:5000; display:flex; align-items:center; justify-content:center; padding:18px; background:rgba(0,0,0,.84); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); }
+.coming-modal-panel { width:min(100%,520px); padding:34px 18px 30px; border-radius:18px; border:1px solid rgba(255,255,255,.35); background:linear-gradient(145deg,#20242a,#080a0e); box-shadow:0 22px 70px rgba(0,0,0,.7); text-align:center; }
+.coming-modal-panel .program-coming-soon { margin:0 auto 30px; }
+.coming-home-button { display:inline-flex; align-items:center; justify-content:center; max-width:100%; min-height:46px; padding:12px 22px; border-radius:12px; background:linear-gradient(120deg,#f5f5f5,#a9a9a9); color:#111 !important; font-size:14px; font-weight:800; text-decoration:none; }
+.coming-home-button:hover { background:linear-gradient(120deg,#fff,#d5d5d5); }
     </style>
     
 </head>
 
 <body>
 <div class="snow-container" id="snow-container" aria-hidden="true"></div>
+<div class="coming-modal-overlay" role="dialog" aria-modal="true" aria-label="Hamarosan">
+  <div class="coming-modal-panel">
+    <section class="program-coming-soon" aria-label="Hamarosan"><div class="coming-line"></div><h2>Hamarosan...</h2><div class="coming-line"></div></section>
+    <a class="coming-home-button" href="fooldal.html">VISSZA A FŐOLDALRA</a>
+  </div>
+</div>
 
 <a href="fooldal.html" class="close-btn">✕</a><br><br>
-<div class="container"> 
+<div class="container">
 
 
     <div class="header">
         <h1><b><i>PROGRAMAJÁNLÓK</i></b> </h1> <br><br>
-
-        <section class="program-coming-soon" aria-label="Hamarosan"><div class="coming-line"></div><h2>Hamarosan...</h2><div class="coming-line"></div></section>
 <h4 style="color: yellow;"><b><i>Jegyfoglalási határidő: <br> <span style="font-size: 12px;">Minnél előbb, annál jobb! :)</span></i></b></h4><br><h4 style="font-size: 12px;"><b><i>A jegyek gyorsan fogynak, ne maradj le! :)</i></b></h4><h4 style="font-size: 12px;color: yellow;"><i>Összegszétosztás <b>2027.12.31.-ig</b> fejenként <b>csak kb. 8.000 - Ft</b> értékben! Havi szintre lebontva <b>kb. 3000 - Ft - al számolva!</b></i></h4>
        
   <!------
