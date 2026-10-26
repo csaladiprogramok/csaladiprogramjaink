@@ -85,6 +85,10 @@
             margin-bottom: 12px;
         }
 
+
+        .premiere-line { font-size: 13px; font-style: normal; font-weight: 500; margin: -5px 0 12px; color: #000; }
+        .new-show-label { display: inline-block; margin-left: 8px; color: #101b37; background: #ffdf62; padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: 800; letter-spacing: .4px; vertical-align: middle; }
+
         .card-button {
             display: inline-block;
             background: #1db954;
@@ -296,36 +300,22 @@
             50%      { transform: translateY(-4px); }
         }
 
-        /* Hulló hó */
+        /* Fix, reszponzív színházi álarcok a háttérben, a kártyák mögött */
+        body { min-height:100vh; background-attachment:fixed; }
         .snow-container {
-            position: fixed;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 999;
+            position:fixed; inset:0; overflow:hidden; pointer-events:none;
+            z-index:0;
         }
-
+        .container { position:relative; z-index:1; }
         .snowflake {
-            position: absolute;
-            top: -30px;
-            color: rgba(255,255,255,0.92);
-            user-select: none;
-            text-shadow: 0 0 8px rgba(255,255,255,0.75);
-            animation-name: snowfall, snowSway;
-            animation-timing-function: linear, ease-in-out;
-            animation-iteration-count: infinite, infinite;
+            position:absolute; transform:translate(-50%,-50%);
+            opacity:.43; user-select:none; line-height:1;
+            font-size:clamp(23px,3.2vw,43px);
+            filter:drop-shadow(0 2px 5px rgba(0,0,0,.5));
         }
-
-        @keyframes snowfall {
-            from { top: -30px; }
-            to   { top: 105vh; }
+        @media (max-width:600px) {
+            .snowflake { font-size:clamp(19px,5vw,27px); opacity:.55; }
         }
-
-        @keyframes snowSway {
-            0%, 100% { transform: translateX(-12px) rotate(0deg); }
-            50%      { transform: translateX(22px) rotate(180deg); }
-        }
-
         @media (prefers-reduced-motion: reduce) {
             .header > h1:first-child,
             .card,
@@ -334,6 +324,73 @@
             }
         }
 
+
+/* Kizárólag az új kártyagombok és az előadásnaptár megjelenése */
+.card-actions { display:flex; gap:8px; align-items:stretch; }
+.card-actions .card-button, .card-actions .card-button2 { flex:1; display:flex; align-items:center; justify-content:center; text-align:center; font-size:12px; padding:11px 7px; border:0; cursor:pointer; font-family:inherit; }
+.performance-overlay { position:fixed; inset:0; z-index:2000; background:rgba(0,0,0,.72); display:none; align-items:center; justify-content:center; padding:14px; }
+.performance-overlay.is-open { display:flex; }
+.performance-modal { position:relative; width:min(100%,610px); max-height:92vh; overflow:auto; background:linear-gradient(180deg,#fffaf0,#fff2d6); color:#102c44; border-radius:15px; padding:22px 15px 16px; box-shadow:0 18px 65px rgba(0,0,0,.6); }
+.performance-modal .modal-x { position:absolute; top:9px; right:12px; border:0; background:none; color:#304559; font-size:26px; cursor:pointer; }
+.performance-modal .modal-icons { font-size:23px; margin-bottom:12px; }
+.performance-modal h2 { color:#008c9c; font-size:27px; margin-bottom:8px; }
+.performance-modal .modal-subtitle { color:#71818c; font-size:13px; font-style:italic; margin-bottom:14px; line-height:1.5; }
+.performance-modal h3 { color:#007f8e; font-size:18px; margin-bottom:14px; }
+.performance-modal .date-row { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) auto; gap:8px; align-items:center; padding:14px 9px; border-bottom:1px solid #e7dac1; font-size:13px; font-weight:bold; }
+.performance-modal .date-row:nth-of-type(even) { background:rgba(255,255,255,.55); border-radius:10px; }
+.performance-modal .date-row small { display:block; color:#70808a; font-size:11px; font-weight:normal; margin-top:4px; }
+.performance-modal .date-row a { color:#0076bc; font-size:13px; font-weight:bold; text-decoration:none; }
+.performance-modal .modal-close { display:block; margin:22px auto 0; background:#ff624d; color:white; border:0; border-radius:12px; padding:14px 32px; font-size:15px; font-weight:bold; cursor:pointer; }
+/* A modal szövegei balra igazítottak; az időpont és a link két oszlopban. */
+.performance-modal { text-align:left; }
+.performance-modal .modal-icons, .performance-modal h2,
+.performance-modal .modal-subtitle, .performance-modal h3 { text-align:left; }
+.performance-modal h2 {
+    background:linear-gradient(110deg,#061b35 0%,#125b9b 24%,#083764 49%,#1977bd 75%,#061b35 100%);
+    background-size:220% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:#0b2a4a;
+    animation:modalTitleShine 6s linear infinite;
+}
+@keyframes modalTitleShine { from {background-position:0% center;} to {background-position:220% center;} }
+.performance-modal .date-row { grid-template-columns:minmax(0,1fr) auto; }
+.performance-modal h3 {
+    background:linear-gradient(110deg,#061b35 0%,#125b9b 24%,#083764 49%,#1977bd 75%,#061b35 100%);
+    background-size:220% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:#0b2a4a;
+    animation:modalTitleShine 6s linear infinite;
+}
+@media (prefers-reduced-motion:reduce) { .performance-modal h2, .performance-modal h3 {animation:none;} }
+
+    
+/* Az új műsor jelzés a főcím jobb oldalán, mobilon is törés nélkül. */
+.card-heading-row { position:relative; display:flex; align-items:center; justify-content:center; margin-bottom:5px; min-height:26px; }
+.card-heading-row .card-title { margin-bottom:0; width:100%; text-align:center; }
+.card-heading-row .new-show-label { position:absolute; right:0; top:50%; transform:translateY(-50%); white-space:nowrap; }
+@media(max-width:520px) { .card-heading-row { padding-top:29px; } .card-heading-row .new-show-label { top:0; transform:none; } }
+.premiere-line { color:#000 !important; }
+.program-sources { position:relative; z-index:2; max-width:940px; margin:38px auto 24px; padding:18px 22px; border-top:1px solid rgba(255,255,255,.4); color:#e7eaf3; font-size:12px; line-height:1.7; text-align:center; }
+.program-sources a { color:#ffe477; text-decoration:underline; }
+
+        /* A főcím mobilon is egy sorban, olvasható méretben marad. */
+        .header > h1:first-child {
+            white-space: nowrap;
+            font-size: clamp(15px, 5.1vw, 30px);
+            letter-spacing: clamp(0px, .45vw, 3px);
+        }
+
+/* Hamarosan felirat a referenciaoldal alapján, fehér–szürke árnyalatban */
+.program-coming-soon { display:flex; align-items:center; justify-content:center; gap:12px; width:100%; margin:0 auto 22px; text-align:center; }
+.program-coming-soon .coming-line { flex:1 1 0; min-width:0; max-width:95px; height:3px; border-radius:99px; background:linear-gradient(90deg,transparent,#fff,#999,transparent); }
+.program-coming-soon h2 { flex:0 0 auto; font-family:Arial,Helvetica,sans-serif; font-size:clamp(23px,6vw,42px); font-weight:900; letter-spacing:-1px; line-height:1.2; white-space:nowrap; background:linear-gradient(90deg,#fff,#a0a0a0,#f7f7f7,#777,#fff); background-size:300% auto; -webkit-background-clip:text; background-clip:text; color:transparent; filter:drop-shadow(0 4px 8px rgba(0,0,0,.18)); animation:comingColors 5s linear infinite,comingFloat 2.8s ease-in-out infinite; }
+@keyframes comingColors { from {background-position:0 center} to {background-position:300% center} }
+@keyframes comingFloat { 0%,100% {transform:translateY(0)} 50% {transform:translateY(-5px)} }
+@media(max-width:620px) { .program-coming-soon {gap:7px} .program-coming-soon h2 {font-size:clamp(22px,7vw,34px)} }
     </style>
     
 </head>
@@ -342,13 +399,40 @@
 <div class="snow-container" id="snow-container" aria-hidden="true"></div>
 
 <a href="fooldal.html" class="close-btn">✕</a><br><br>
-<div class="container">
+<div class="container"> 
+
 
     <div class="header">
-        <h1><b><i>KARÁCSONYI <br>AJÁNLÓK</i></b> </h1> <br><br>
-<h4 style="color: yellow;"><b><i>Jegyfoglalási határidő: <br> <span style="font-size: 12px;">Minnél előbb, annál jobb! :)</span></i></b></h4><br><h4 style="font-size: 12px;"><b><i>A jegyek gyorsan fogynak, ne maradj le! :)</i></b></h4><h4 style="font-size: 12px;color: yellow;"><i>Összegszétosztás <b>2027.02.28.-ig</b> fejenként <b>csak kb. 15.000 - Ft</b> értékben!</i></h4>
-        <br><br><h1 style="color: yellow;"font-size: 18px><b>MAGYAR SZÍNHÁZ</b> </h1> <br><br>
+        <h1><b><i>PROGRAMAJÁNLÓK</i></b> </h1> <br><br>
+
+        <section class="program-coming-soon" aria-label="Hamarosan"><div class="coming-line"></div><h2>Hamarosan...</h2><div class="coming-line"></div></section>
+<h4 style="color: yellow;"><b><i>Jegyfoglalási határidő: <br> <span style="font-size: 12px;">Minnél előbb, annál jobb! :)</span></i></b></h4><br><h4 style="font-size: 12px;"><b><i>A jegyek gyorsan fogynak, ne maradj le! :)</i></b></h4><h4 style="font-size: 12px;color: yellow;"><i>Összegszétosztás <b>2027.12.31.-ig</b> fejenként <b>csak kb. 8.000 - Ft</b> értékben! Havi szintre lebontva <b>kb. 3000 - Ft - al számolva!</b></i></h4>
+       
+  <!------
+<br><br><h1 style="color: yellow;"font-size: 18px><b>MAGYAR SZÍNHÁZ</b> </h1> <br><br>
+
 <div class="card">
+                <div class="card-slider">
+    <img src="kepek/v3.webp" alt="Wonderland" class="slide active">
+    <img src="kepek/v1.webp" alt="Wonderland" class="slide">
+    <img src="kepek/v2.webp" alt="Wonderland" class="slide">
+</div>
+        <div class="card-content">
+              <div class="card-title">VALAHOL EURÓPÁBAN</div><br>
+              <div class="card-title2">2026.12.26. 15:00 (szombat)</div><br>
+            <div class="card-location"><b>Magyar Színház, Budapest</b></div>
+    <div class="premiere-line">Bemutató: 2016. december 2.</div>
+            <div class="card-location" style="text-align: justify;">A háború mindent elvett tőlük – az otthonukat, a családjukat, a gyermekkorukat. Bandába verődve, éhesen és fázva járják az utcákat, hogy valahogy túléljenek. Mégis kapaszkodnak az életbe. Egy idős zenész romos kastélyában menedékre lelnek, ahol nemcsak falak, hanem dallamok és remény öleli körül őket. Itt, a romok között születik meg valami, amit már rég elfelejtettek: bizalom, barátság és emberség.
+
+De a világ odakint továbbra is kegyetlen: üldözőik közelebb járnak, mint gondolnák. Elbújni, vagy kiállni egymásért? A döntés mindannyiuk sorsát megpecsételheti. Barátság, bátorság, összetartás – egy felemelő musical a szeretet erejéről, amely még a háború legsötétebb árnyékában is utat mutat.</div>
+ <br>             
+<div class="card-actions"><a href="https://magyarszinhaz.hu/programok/valahol-europaban/" class="card-button">RÉSZLETEK</a><button type="button" class="card-button2 calendar-open" data-show="valahol">ELŐADÁS NAPTÁR</button></div>
+        </div>
+    </div>
+    ---->
+    <!-------
+
+        <div class="card">
                 <div class="card-slider">
     <img src="kepek/v3.webp" alt="Wonderland" class="slide active">
     <img src="kepek/v1.webp" alt="Wonderland" class="slide">
@@ -362,8 +446,7 @@
 
 De a világ odakint továbbra is kegyetlen: üldözőik közelebb járnak, mint gondolnák. Elbújni, vagy kiállni egymásért? A döntés mindannyiuk sorsát megpecsételheti. Barátság, bátorság, összetartás – egy felemelő musical a szeretet erejéről, amely még a háború legsötétebb árnyékában is utat mutat.</div>
  <br>             
-<a href="https://magyarszinhaz.hu/programok/valahol-europaban/" class="card-button">RÉSZLETEK</a> <br><br>           
-<a href="https://www.jegy.hu/program/valahol-europaban-178170/1497936" class="card-button2">JEGYEK - 12.26. 15:00</a>
+<div class="card-actions"><a href="https://magyarszinhaz.hu/programok/valahol-europaban/" class="card-button">RÉSZLETEK</a><button type="button" class="card-button2 calendar-open" data-show="valahol">ELŐADÁS NAPTÁR</button></div>
         </div>
     </div>
 
@@ -426,12 +509,97 @@ A mai, high-tech New Yorkban élő Alice sikeres, de túlterhelt játékfejleszt
 <a href="https://erkelszinhaz.jegy.hu/program/wicked-195269/1482173" class="card-button2">JEGYEK - 12.20. 11:00</a>
         </div>
     </div>
+
+    ----->
+
+<!-- REBECCA – új Erkel Színház kártya; a képeket később lehet beilleszteni -->
+<br><br><h1 style="color: yellow;"font-size: 18px><b>ERKEL SZÍNHÁZ</b> </h1> <br><br>
+<div class="card">
+  <div class="card-slider" style="background:#0b2a4a;" aria-label="Rebecca – ide illeszthetők be az előadás képei">
+    <!-- KÉPEK HELYE: később ide illeszthető 3 kép. -->
+    <!-- <img src="" alt="Rebecca – 1. kép" class="slide active"> -->
+    <!-- <img src="" alt="Rebecca – 2. kép" class="slide"> -->
+    <!-- <img src="" alt="Rebecca – 3. kép" class="slide"> -->
+  </div>
+  <div class="card-content">
+    <div class="card-heading-row"><div class="card-title">REBECCA</div><span class="new-show-label">ÚJ MŰSOR</span></div>
+    <div class="card-location" style="margin-top: 2px;"><b>ERKEL SZÍNHÁZ, BUDAPEST</b></div>
+    <div class="premiere-line">Bemutató: 2026. április 2.</div>
+    <div class="card-location" style="text-align:justify;">A fiatal, tapasztalatlan második Mrs. de Winter egy váratlan szerelem után férjével, Maxim de Winterrel a titokzatos Manderley birtokra költözik. A pompás kastélyban azonban Rebecca, Maxim elhunyt első feleségének emléke mindenütt jelen van. A ház komor légköre, Mrs. Danvers nyugtalanító viselkedése és a múltból előbukkanó titkok egyre nagyobb nyomást gyakorolnak az új feleségre. Ahogy Rebecca halálának körülményei lassan feltárulnak, a szerelem, a féltékenység és a bizalom drámai próbára kerül. A Daphne du Maurier regénye és Alfred Hitchcock híres filmje nyomán született musical Michael Kunze és Lévay Szilveszter alkotása. Az Erkel Színház előadásában a történetet látványos díszletek, szenvedélyes dallamok és izgalmas fordulatok teszik különleges színházi élménnyé.</div><br>
+    <div class="card-actions"><a href="https://erkelszinhaz.hu/eloadas/rebecca/" class="card-button">RÉSZLETEK</a><button type="button" class="card-button2 calendar-open" data-show="rebecca">ELŐADÁS NAPTÁR</button></div>
+  </div>
+</div>
+<!-- A TRÓN: hivatalos Erkel Színház-képek, internetkapcsolat szükséges -->
+<div class="card">
+  <div class="card-slider" aria-label="A TRÓN képgaléria">
+    <!-- KÉPEK HELYE: később ide illeszthető 3 kép. -->
+    <!-- <img src="" alt="A TRÓN – 1. kép" class="slide active"> -->
+    <!-- <img src="" alt="A TRÓN – 2. kép" class="slide"> -->
+    <!-- <img src="" alt="A TRÓN – 3. kép" class="slide"> -->
+  </div>
+  <div class="card-content">
+    <div class="card-title">A TRÓN</div>
+    <div class="card-location" style="margin-top:2px;"><b>ERKEL SZÍNHÁZ, BUDAPEST</b></div>
+    <div class="premiere-line">Bemutató: 2025. szeptember 19.</div>
+    <div class="card-location" style="text-align:justify;">A Hunyadi Mátyás felemelkedését bemutató musical egyszerre történelmi dráma, politikai krimi és szerelmi történet. A 15. század közepének feszült világában a Hunyadi család tagjai és ellenfeleik sorsfordító döntések elé kerülnek. Miközben a fiatal Mátyás útja a magyar trónig vezet, a hatalomért vívott küzdelem mögött személyes vágyak, családi kötelékek, szerelmek és árulások rajzolódnak ki. A történet arra is rákérdez, mennyiben irányíthatjuk saját életünket: vajon sorsunk előre elrendelt, vagy a döntéseinkkel alakítjuk? A Szente Vajk rendezésében színpadra állított musical a történelmi eseményeket mai kérdésekkel kapcsolja össze.</div><br>
+    <div class="card-actions"><a href="https://erkelszinhaz.hu/eloadas/a-tron/" class="card-button">RÉSZLETEK</a><button type="button" class="card-button2 calendar-open" data-show="a-tron">ELŐADÁS NAPTÁR</button></div>
+  </div>
+</div>
+<!-- ELISABETH: hivatalos Erkel Színház-képek, internetkapcsolat szükséges -->
+<div class="card">
+  <div class="card-slider" aria-label="ELISABETH képgaléria">
+    <!-- KÉPEK HELYE: később ide illeszthető 3 kép. -->
+    <!-- <img src="" alt="ELISABETH – 1. kép" class="slide active"> -->
+    <!-- <img src="" alt="ELISABETH – 2. kép" class="slide"> -->
+    <!-- <img src="" alt="ELISABETH – 3. kép" class="slide"> -->
+  </div>
+  <div class="card-content">
+    <div class="card-title">ELISABETH</div>
+    <div class="card-location" style="margin-top:2px;"><b>ERKEL SZÍNHÁZ, BUDAPEST</b></div>
+    <div class="premiere-line">Bemutató: 2025. október 3.</div>
+    <div class="card-location" style="text-align:justify;">A világsikerű musical Elisabeth, azaz Sisi osztrák császárné sorsát meséli el, miközben különös, mindvégig jelen lévő szereplőként a Halál is részt vesz a történetben. A szabadságra vágyó fiatal lány Ferenc József szerelmével és házasságával az udvari élet szigorú szabályai közé kerül. A császári pompa mögött egyre erősebben érzi a magányt és az elvárások szorítását, miközben saját útját keresi. A Halál már első találkozásukkor magához akarja kötni, és az asszony életének későbbi tragédiái során újra meg újra felbukkan. A szerelem, a hatalom, a családi veszteségek és a függetlenségért folytatott küzdelem drámai, nagyszabású musicalben bontakozik ki. Lévay Szilveszter zenéje és Michael Kunze szövegei különösen erőteljessé teszik Sisi történetét.</div><br>
+    <div class="card-actions"><a href="https://erkelszinhaz.hu/eloadas/elisabeth/" class="card-button">RÉSZLETEK</a><button type="button" class="card-button2 calendar-open" data-show="elisabeth">ELŐADÁS NAPTÁR</button></div>
+  </div>
+</div>
+
+<!-- A 3 TESTŐR: három üres képhely, később tölthető fel -->
+<div class="card">
+  <div class="card-slider" style="background:#0b2a4a;" aria-label="A 3 TESTŐR – üres képhelyek">
+    <!-- <img src="" alt="A 3 TESTŐR – 1. kép" class="slide active"> -->
+    <!-- <img src="" alt="A 3 TESTŐR – 2. kép" class="slide"> -->
+    <!-- <img src="" alt="A 3 TESTŐR – 3. kép" class="slide"> -->
+  </div>
+  <div class="card-content">
+    <div class="card-heading-row"><div class="card-title">A 3 TESTŐR</div><span class="new-show-label">ÚJ MŰSOR</span></div>
+    <div class="card-location" style="margin-top:2px;"><b>ERKEL SZÍNHÁZ, BUDAPEST</b></div>
+    <div class="premiere-line">Bemutató: 2027. március 12.</div>
+    <div class="card-location" style="text-align:justify;">A három testőr története a francia királyi udvar intrikákkal teli világába vezet, ahol a barátság, a becsület és a szerelem újra meg újra próbára kerül. Athos, Porthos és Aramis oldalán a fiatal D’Artagnan karddal és bátorsággal száll szembe a hatalmi játszmákkal és az összeesküvésekkel. A lendületes musicalben szellemes szócsaták, látványos párbajok, humor, romantika és szenvedélyes érzelmek váltják egymást. Ferdi és Rob Bolland, valamint André Breedland műve a jól ismert kalandtörténetet zenével kelti új életre. A középpontban mindvégig az összetartás ereje áll: egy mindenkiért, mindenki egyért!</div><br>
+    <div class="card-actions"><a href="https://erkelszinhaz.hu/eloadas/a-3-testor/" class="card-button">RÉSZLETEK</a><button type="button" class="card-button2 calendar-open" data-show="a-3-testor">ELŐADÁS NAPTÁR</button></div>
+  </div>
+</div>
+
+<!-- WICKED: három üres képhely, később tölthető fel -->
+<div class="card">
+  <div class="card-slider" style="background:#0b2a4a;" aria-label="WICKED – üres képhelyek">
+    <!-- <img src="" alt="WICKED – 1. kép" class="slide active"> -->
+    <!-- <img src="" alt="WICKED – 2. kép" class="slide"> -->
+    <!-- <img src="" alt="WICKED – 3. kép" class="slide"> -->
+  </div>
+  <div class="card-content">
+    <div class="card-heading-row"><div class="card-title">WICKED</div><span class="new-show-label">ÚJ MŰSOR</span></div>
+    <div class="card-location" style="margin-top:2px;"><b>ERKEL SZÍNHÁZ, BUDAPEST</b></div>
+    <div class="premiere-line">Bemutató: 2026. december 4.</div>
+    <div class="card-location" style="text-align:justify;">A Wicked az Óz, a csodák csodája története előtti időszakba kalauzol, és megmutatja, hogyan válhat valaki mások szemében gonosszá. A zöld bőrű, különc Elphaba és a népszerű, ragyogó Glinda első pillantásra aligha lehetnének különbözőbbek, mégis váratlan és mély barátság szövődik közöttük. Kapcsolatukat a környezetük előítéletei, a hatalom működése és saját döntéseik teszik próbára. A musical egyszerre szól elfogadásról, bátorságról, hűségről és arról, hogy a látszat gyakran megtévesztő. Stephen Schwartz és Winnie Holzman világsikerű zenés története Gregory Maguire regénye alapján született; az Erkel Színház előadásában Óz ismert világa új nézőpontból tárul fel.</div><br>
+    <div class="card-actions"><a href="https://erkelszinhaz.hu/eloadas/wicked/" class="card-button">RÉSZLETEK</a><button type="button" class="card-button2 calendar-open" data-show="wicked-erkel">ELŐADÁS NAPTÁR</button></div>
+  </div>
+</div>
 <script>
 document.querySelectorAll('.card-slider').forEach(function(slider) {
 
     const slides = slider.querySelectorAll('.slide');
     let currentSlide = 0;
 
+    if (slides.length < 2) return;
     setInterval(function() {
 
         slides[currentSlide].classList.remove('active');
@@ -454,25 +622,81 @@ document.querySelectorAll('.card-slider').forEach(function(slider) {
     const snowContainer = document.getElementById('snow-container');
     if (!snowContainer) return;
 
-    const flakes = ['❄', '❅', '❆'];
-
-    for (let i = 0; i < 42; i++) {
-        const flake = document.createElement('span');
-        flake.className = 'snowflake';
-        flake.textContent = flakes[Math.floor(Math.random() * flakes.length)];
-        flake.style.left = Math.random() * 100 + 'vw';
-        flake.style.fontSize = (8 + Math.random() * 16) + 'px';
-        flake.style.opacity = (0.35 + Math.random() * 0.65).toFixed(2);
-        flake.style.animationDuration =
-            (7 + Math.random() * 9) + 's, ' +
-            (2.5 + Math.random() * 4) + 's';
-        flake.style.animationDelay =
-            (-Math.random() * 16) + 's, ' +
-            (-Math.random() * 5) + 's';
-        snowContainer.appendChild(flake);
-    }
+    // Állandó helyek a képernyő két szélén: mobilon és laptopon is láthatók.
+    // A középső sáv szabad marad, így az álarcok nem takarják a kártyákat.
+    const positions = [
+        [5,7],[95,12],[10,24],[91,30],[5,43],[96,49],
+        [11,62],[90,67],[5,81],[96,87],[17,95],[83,4]
+    ];
+    positions.forEach(([x,y]) => {
+        const mask = document.createElement('span');
+        mask.className = 'snowflake';
+        mask.textContent = '🎭';
+        mask.style.left = x + '%';
+        mask.style.top = y + '%';
+        snowContainer.appendChild(mask);
+    });
 })();
 </script>
 
+
+<footer class="program-sources" aria-label="Adatok forrásai">
+Az előadások ismertetői és bemutatódátumai a színházak hivatalos műsoroldalai alapján készültek, az előadás-időpontok és jegylinkek a jegyértékesítési felületekre mutatnak. <br> A műsor és a jegyelérhetőség változhat.<br><br>
+  
+  <a href="https://erkelszinhaz.hu/" target="_blank" rel="noopener noreferrer">Erkel Színház – hivatalos weboldal.</a> <br>
+
+  <!------
+  <a href="https://magyarszinhaz.hu/" target="_blank" rel="noopener noreferrer">Magyar Színház – hivatalos weboldal.</a> <br>
+  ---->
+  <a href="https://www.jegy.hu/" target="_blank" rel="noopener noreferrer">Jegy.hu – Jegyinformációk.</a>
+</footer>
+
+<div class="performance-overlay" id="performance-overlay" aria-hidden="true">
+  <section class="performance-modal" role="dialog" aria-modal="true" aria-labelledby="performance-heading">
+    <button type="button" class="modal-x" aria-label="Bezárás">×</button>
+    <div class="modal-icons">🎭 🎟️ 🎭</div>
+    <h2 id="performance-heading">IDŐPONTOK</h2>
+    <p class="modal-subtitle">Válassz előadási időpontot a jegyek megtekintéséhez.</p>
+    <h3 id="performance-show-title">VALAHOL EURÓPÁBAN – MAGYAR SZÍNHÁZ</h3>
+    <div id="performance-dates"><div class="date-row"><div>2026.12.26. – 15:00<small>szombat · Budapest</small></div><a href="https://www.jegy.hu/program/valahol-europaban-178170/1497936">MEGNÉZEM</a></div></div>
+    <button type="button" class="modal-close">BEZÁRÁS</button>
+  </section>
+</div>
+<style>
+</style>
+<script>
+(function(){
+ const overlay=document.getElementById('performance-overlay');
+ const openers=document.querySelectorAll('.calendar-open');
+ const showTitle=document.getElementById('performance-show-title');
+ const dates=document.getElementById('performance-dates');
+ const showCode=document.getElementById('performance-show-code');
+ const originalDates=dates.innerHTML;
+ const rebeccaDates='<div class="date-row"><div>2027.01.16. – 15:00<small>szombat · Budapest</small></div><a href="https://online.jegy.hu/program/rebecca-183464/1479022">MEGNÉZEM</a></div><div class="date-row"><div>2027.01.17. – 15:00<small>vasárnap · Budapest</small></div><a href="https://neticket.jegy.hu/program/rebecca-183464/1479024">MEGNÉZEM</a></div>';
+ const tronDates='<div class="date-row"><div>2027.01.23. – 15:00<small>szombat · Budapest</small></div><a href="https://www.jegy.hu/program/a-tron-176305/1479026">MEGNÉZEM</a></div><div class="date-row"><div>2027.01.24. – 15:00<small>vasárnap · Budapest</small></div><a href="https://www.jegy.hu/program/a-tron-176305/1479028">MEGNÉZEM</a></div>';
+ const elisabethDates='<div class="date-row"><div>2027.01.30. – 15:00<small>szombat · Budapest</small></div><a href="https://www.jegy.hu/program/elisabeth-176307/1479032">MEGNÉZEM</a></div><div class="date-row"><div>2027.01.31. – 15:00<small>vasárnap · Budapest</small></div><a href="https://www.jegy.hu/program/elisabeth-176307">MEGNÉZEM</a></div>';
+ const testorDates='<div class="date-row"><div>2027.03.14. – 15:00<small>vasárnap · Budapest</small></div><a href="https://neticket.jegy.hu/program/a-3-testor-198356/1516437">MEGNÉZEM</a></div>';
+ const wickedErkelDates='<div class="date-row"><div>2027.05.16. – 15:30<small>vasárnap · Budapest</small></div><a href="https://programticket.jegy.hu/program/wicked-195269/1516328">MEGNÉZEM</a></div>';
+ const showData={rebecca:{code:'R002',title:'REBECCA – ERKEL SZÍNHÁZ',dates:rebeccaDates},'a-tron':{code:'T003',title:'A TRÓN – ERKEL SZÍNHÁZ',dates:tronDates},elisabeth:{code:'E004',title:'ELISABETH – ERKEL SZÍNHÁZ',dates:elisabethDates},'a-3-testor':{code:'A005',title:'A 3 TESTŐR – ERKEL SZÍNHÁZ',dates:testorDates},'wicked-erkel':{code:'W006',title:'WICKED – ERKEL SZÍNHÁZ',dates:wickedErkelDates}};
+ // Minden előadási időpont saját kódot kap, az eredeti előadáskód megtartásával.
+ const dateCodes={valahol:['V001'],rebecca:['R002','R003'],'a-tron':['T003','T004'],elisabeth:['E004','E005'],'a-3-testor':['A005'],'wicked-erkel':['W006']};
+ function addDateCodes(key){
+   const codes=dateCodes[key]||dateCodes.valahol;
+   dates.querySelectorAll('.date-row').forEach((row,index)=>{
+     if(!codes[index])return;
+     const code=document.createElement('small');
+     code.textContent='ELŐADÁSKÓD: '+codes[index];
+     row.firstElementChild.appendChild(code);
+   });
+ }
+ const closeButtons=overlay.querySelectorAll('.modal-x,.modal-close');
+ let previousFocus;
+ function close(){overlay.classList.remove('is-open');overlay.setAttribute('aria-hidden','true');document.body.style.overflow='';if(previousFocus)previousFocus.focus();}
+ openers.forEach(opener=>opener.addEventListener('click',function(){const show=showData[opener.dataset.show];showTitle.textContent=show?show.title:'VALAHOL EURÓPÁBAN – MAGYAR SZÍNHÁZ';dates.innerHTML=show?show.dates:originalDates;addDateCodes(opener.dataset.show);previousFocus=document.activeElement;overlay.classList.add('is-open');overlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';overlay.querySelector('.modal-x').focus();}));
+ closeButtons.forEach(b=>b.addEventListener('click',close));
+ overlay.addEventListener('click',e=>{if(e.target===overlay)close();});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('is-open'))close();});
+})();
+</script>
 </body>
 </html>
