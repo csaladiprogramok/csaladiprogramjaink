@@ -339,6 +339,27 @@
                 right: 14px;
             }
         }
+
+        /* Arany színházi megjelenés kizárólag a visszaszámlálóhoz */
+        .countdown {
+            background: linear-gradient(145deg, #21180b, #100e0b 65%, #291d0c);
+            border: 1px solid #b99143;
+            box-shadow: inset 0 0 16px rgba(218, 173, 78, .14), 0 4px 15px rgba(0, 0, 0, .35);
+            justify-content: center;
+            align-items: center;
+        }
+        .countdown .time-box { border-right: 1px solid rgba(218, 173, 78, .5); }
+        .countdown .time-box:last-child { border-right: none; }
+        .countdown .number {
+            color: #f5d68a;
+            font-family: Georgia, 'Times New Roman', serif;
+            text-shadow: 0 0 8px rgba(245, 214, 138, .4);
+        }
+        .countdown .label {
+            color: #d9b568;
+            font-family: Georgia, 'Times New Roman', serif;
+            letter-spacing: 1.5px;
+        }
     </style>
 </head>
 
@@ -375,6 +396,9 @@
         <p id="noResults" class="no-results">
             Ebben a hónapban jelenleg nincs előre tervezett családi programunk!
         </p>
+        <p id="noUpcomingPrograms" class="no-results">
+            Jelenleg nincs előre tervezett családi programunk a közeljövőben!
+        </p>
         <!------
 <div style="text-align: center;">
 <p><b><i>Jelenleg nincsenek elérhető, előre lefoglalt családi programjaink!<br>Térj vissza később!</i></b></p>
@@ -404,10 +428,6 @@
                         <div class="time-box">
                             <span class="number minutes">00</span>
                             <span class="label">PERC</span>
-                        </div>
-                        <div class="time-box">
-                            <span class="number seconds">00</span>
-                            <span class="label">MÁSODPERC</span>
                         </div>
                     </div>
                     <br>
@@ -451,10 +471,6 @@
                     <span class="number minutes">00</span>
                     <span class="label">PERC</span>
                 </div>
-                <div class="time-box">
-                    <span class="number seconds">00</span>
-                    <span class="label">MÁSODPERC</span>
-                </div>
             </div>
           <br>
                     <div class="event-soon"><b>2026. MÁRCIUS 14. <br> 15:00</b></div>
@@ -497,10 +513,6 @@
                         <div class="time-box">
                             <span class="number minutes">00</span>
                             <span class="label">PERC</span>
-                        </div>
-                        <div class="time-box">
-                            <span class="number seconds">00</span>
-                            <span class="label">MÁSODPERC</span>
                         </div>
                     </div>
                     <br>
@@ -550,10 +562,6 @@
                             <span class="number minutes">00</span>
                             <span class="label">PERC</span>
                         </div>
-                        <div class="time-box">
-                            <span class="number seconds">00</span>
-                            <span class="label">MÁSODPERC</span>
-                        </div>
                     </div>
                     <br>
                     <div class="event-soon">
@@ -600,10 +608,6 @@
                         <span class="number minutes">00</span>
                         <span class="label">PERC</span>
                     </div>
-                    <div class="time-box">
-                        <span class="number seconds">00</span>
-                        <span class="label">MÁSODPERC</span>
-                    </div>
                 </div>
              <br>
                     <div class="event-soon">
@@ -647,10 +651,6 @@
                         <span class="number minutes">00</span>
                         <span class="label">PERC</span>
                     </div>
-                    <div class="time-box">
-                        <span class="number seconds">00</span>
-                        <span class="label">MÁSODPERC</span>
-                    </div>
                 </div>
                 <br>
                     <div class="event-soon">
@@ -691,10 +691,6 @@
                         <div class="time-box">
                             <span class="number minutes">00</span>
                             <span class="label">PERC</span>
-                        </div>
-                        <div class="time-box">
-                            <span class="number seconds">00</span>
-                            <span class="label">MÁSODPERC</span>
                         </div>
                     </div>
                     <br>
@@ -740,10 +736,6 @@
                     <div class="time-box">
                         <span class="number minutes">00</span>
                         <span class="label">PERC</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="number seconds">00</span>
-                        <span class="label">MÁSODPERC</span>
                     </div>
                 </div>
                  <br>
@@ -791,10 +783,6 @@
                             <span class="number minutes">00</span>
                             <span class="label">PERC</span>
                         </div>
-                        <div class="time-box">
-                            <span class="number seconds">00</span>
-                            <span class="label">MÁSODPERC</span>
-                        </div>
                     </div>
                     <div style="text-align: center;"></div>
                     <div class="event-soon">
@@ -827,10 +815,6 @@
                     <div class="time-box">
                         <span class="number minutes">00</span>
                         <span class="label">PERC</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="number seconds">00</span>
-                        <span class="label">MÁSODPERC</span>
                     </div>
                 </div>
                 <br>
@@ -898,10 +882,6 @@ A látogatók ingyenes koncertek, családi programok, kiállítások, gasztronó
                             <span class="number minutes">00</span>
                             <span class="label">PERC</span>
                         </div>
-                        <div class="time-box">
-                            <span class="number seconds">00</span>
-                            <span class="label">MÁSODPERC</span>
-                        </div>
                     </div>
                     <br>
                     <div class="event-soon">
@@ -924,13 +904,13 @@ A látogatók ingyenes koncertek, családi programok, kiállítások, gasztronó
   <div class="month-group" data-month="2026-10">
             <h2 class="month-title">2026. OKTÓBER</h2> <br>
 
-            <div class="card" id="hogyanerkel" data-month="2026-10" data-hide-date="2026-10-25T15:00:00">
+            <div class="card" id="hogyanerkel" data-month="2026-10" data-hide-date="2026-10-28T13:40:00">
 
                 <img src="hogyan.jpg" alt="">
 
                 <div class="card-content">
 
-                    <div class="countdown" data-date="2026-10-25T11:00:00">
+                    <div class="countdown" data-date="2026-10-28T13:36:00">
                         <div class="time-box">
                             <span class="number days">00</span>
                             <span class="label">NAP</span>
@@ -942,10 +922,6 @@ A látogatók ingyenes koncertek, családi programok, kiállítások, gasztronó
                         <div class="time-box">
                             <span class="number minutes">00</span>
                             <span class="label">PERC</span>
-                        </div>
-                        <div class="time-box">
-                            <span class="number seconds">00</span>
-                            <span class="label">MÁSODPERC</span>
                         </div>
                     </div>
                     <br>
@@ -978,19 +954,17 @@ A látogatók ingyenes koncertek, családi programok, kiállítások, gasztronó
                             const diff = targetDate - now;
 
                             if (diff <= 0) {
-                                cd.innerHTML = "<b style='color:#ff3b3b'>ELKEZDŐDÖTT</b>";
+                                cd.innerHTML = "<span style='display:block;width:100%;text-align:center;color:#f5d68a;font-family:Georgia,serif;font-size:18px;font-weight:bold;letter-spacing:2px;text-shadow:0 0 8px rgba(245,214,138,.45)'>✦ ELKEZDŐDÖTT ✦</span>";
                                 return;
                             }
 
                             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
                             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
                             const minutes = Math.floor((diff / (1000 * 60)) % 60);
-                            const seconds = Math.floor((diff / 1000) % 60);
 
                             cd.querySelector(".days").textContent = days.toString().padStart(2, "0");
                             cd.querySelector(".hours").textContent = hours.toString().padStart(2, "0");
                             cd.querySelector(".minutes").textContent = minutes.toString().padStart(2, "0");
-                            cd.querySelector(".seconds").textContent = seconds.toString().padStart(2, "0");
                         }, 1000);
                     });
                 }
@@ -1149,6 +1123,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const message = document.getElementById("noUpcomingPrograms");
+    const cards = Array.from(document.querySelectorAll(".month-group .card"));
+    function checkUpcomingPrograms() {
+        const now = new Date();
+        const hasUpcoming = cards.some(card => {
+            const date = card.dataset.hideDate;
+            return !date || now < new Date(date);
+        });
+        message.style.display = hasUpcoming ? "none" : "block";
+        if (!hasUpcoming) document.getElementById("noResults").style.display = "none";
+    }
+    checkUpcomingPrograms();
+    setInterval(checkUpcomingPrograms, 60000);
+    document.getElementById("monthFilter").addEventListener("change", checkUpcomingPrograms);
+});
+</script>
 </body>
 
 </html>
