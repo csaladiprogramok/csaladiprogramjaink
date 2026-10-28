@@ -426,11 +426,33 @@
     transform: none;
     white-space: normal;
 }
-    </style>
+    
+/* HAMAROSAN – az eredeti tartalom változatlanul megőrizve lent, inaktív sablonban. */
+body { min-height:100vh; min-height:100dvh; padding:20px; display:flex; flex-direction:column; }
+.soon-top { position:relative; z-index:1; width:100%; max-width:420px; margin:0 auto; }
+.soon-top .header { margin-bottom:0; }
+.soon-center { --soon-heading-size:clamp(28px,7vw,52px); flex:1; min-height:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; width:100%; max-width:800px; margin:0 auto; padding:36px 12px; gap:22px; }
+.soon-center h2 { font-size:var(--soon-heading-size); line-height:1.2; }
+.soon-center p { font-size:calc(var(--soon-heading-size) / 2); line-height:1.55; }
+.soon-center h2,.soon-center p { font-weight:700; background:linear-gradient(110deg,#d6a53c 0%,#fff 38%,#f1ca70 65%,#fff 85%,#c9952e 100%); background-size:220% auto; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:#f4dfb2; animation:soonShine 6s linear infinite; }
+@keyframes soonShine { to { background-position:220% center; } }
+@media (prefers-reduced-motion:reduce) { .soon-center h2,.soon-center p { animation:none; } }
+
+</style>
     
 </head>
 
 <body>
+<a href="fooldal.html" class="close-btn" aria-label="Bezárás">✕</a>
+<div class="soon-top"><div class="header"><h1>AJÁNLÓK</h1></div></div>
+<main class="soon-center">
+<h2>Hamarosan visszatérünk!</h2>
+<p>Addig is állj készen mert ha jönnek az ajánlatok le kell rájuk csapni! :)</p>
+<p>Ha van bármi jó programötleted, akkor ne hagyd magadban, oszd meg velünk. :)</p>
+</main>
+<!-- AZ EREDETI OLDAL TELJES TARTALMA INAKTÍVAN MEGŐRIZVE: kártyák, álarcok, szavazás, szkriptek, linkek. -->
+<template id="eredeti-tartalom-kikommentelve">
+
 <div class="snow-container" id="snow-container" aria-hidden="true"></div>
 
 <a href="fooldal.html" class="close-btn">✕</a>
@@ -775,5 +797,7 @@ Az előadások ismertetői és bemutatódátumai a színházak hivatalos műsoro
   dismiss.focus();
 })();
 </script>
+
+</template>
 </body>
 </html>
