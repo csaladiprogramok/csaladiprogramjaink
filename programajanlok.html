@@ -440,18 +440,51 @@ body { min-height:100vh; min-height:100dvh; padding:20px; display:flex; flex-dir
 
 </style>
     
+<style>
+/* ÚJ, SÁRGA KÉPES BELÉPŐ MODÁL – kizárólag ennek az ablaknak a stílusa */
+#sunny-image-overlay{position:fixed;inset:0;z-index:2000001;display:flex;align-items:center;justify-content:center;padding:12px;background:repeating-linear-gradient(135deg,#102b4d 0 24px,#c5a05b 24px 27px,#071a32 27px 52px);backdrop-filter:none;-webkit-backdrop-filter:none}
+#sunny-image-overlay[hidden]{display:none}
+#sunny-image-dialog{box-sizing:border-box;display:flex;flex-direction:column;align-items:stretch;gap:12px;width:min(680px,calc(100vw - 24px),calc((100dvh - 105px)*16/9));min-width:0;max-height:calc(100dvh - 24px);overflow:hidden;padding:12px;border:3px solid #dcb35b;border-radius:20px;background:repeating-linear-gradient(145deg,#102b4d 0 30px,#061831 30px 60px);box-shadow:0 25px 75px rgba(128,88,0,.28),0 0 0 7px rgba(255,255,255,.45);animation:sunnyImageEnter .65s cubic-bezier(.18,.85,.22,1.08) both}
+#sunny-image-dialog.is-leaving{animation:sunnyImageExit .48s ease-in both}
+#sunny-image-frame{position:relative;flex:0 0 auto;width:100%;aspect-ratio:16 / 9;overflow:hidden;border-radius:12px;background:#061831;box-shadow:0 8px 22px rgba(128,88,0,.14)}
+#sunny-image-frame img{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;max-height:none;object-fit:contain;object-position:center}
+#sunny-image-close{appearance:none;display:block;visibility:visible;opacity:1;position:relative;flex:0 0 auto;align-self:stretch;width:100%;margin:0;min-width:0;min-height:44px;padding:10px 20px;border:0;border-radius:12px;background:linear-gradient(135deg,#f9d678,#b87916);color:#09152a;font:900 16px Arial,Helvetica,sans-serif;line-height:1.2;text-align:center;cursor:pointer;box-shadow:0 7px 18px rgba(173,112,0,.25);transition:transform .2s,box-shadow .2s}
+#sunny-image-close:hover{transform:translateY(-2px);box-shadow:0 12px 22px rgba(173,112,0,.35)}
+#sunny-image-close:focus-visible{outline:3px solid #087f8c;outline-offset:3px}
+@keyframes sunnyImageEnter{from{opacity:0;transform:translateX(-110vw) rotate(-5deg)}to{opacity:1;transform:translateX(0) rotate(0)}}
+@keyframes sunnyImageExit{to{opacity:0;transform:translateX(110vw) rotate(5deg)}}
+@media(prefers-reduced-motion:reduce){#sunny-image-dialog,#sunny-image-dialog.is-leaving{animation-duration:.01ms}#sunny-image-close{transition:none}}
+
+body{display:block;min-height:100vh} #sunny-image-overlay{z-index:2000001} #sunny-image-frame img{object-fit:contain} 
+
+</style>
+<script>
+/* LEGFELSŐ MODAL: true = azonnal látható, false = teljesen kikapcsolva */
+const FELSO_MODAL_BEKAPCSOLVA = true;
+/* BEZÁRÁS UTÁN MEGNYITANDÓ HTML */
+const FELSO_MODAL_CEL_HTML = 'fooldal.html';
+if (FELSO_MODAL_BEKAPCSOLVA) document.documentElement.classList.add('felso-modal-aktiv');
+</script>
+<style>
+/* A megjelenés már az első kirajzolás előtt eldől: nincs késői felvillanás. */
+#sunny-image-overlay { display: none !important; }
+html.felso-modal-aktiv #sunny-image-overlay:not([hidden]) { display: flex !important; background: repeating-linear-gradient(135deg,#102b4d 0 24px,#c5a05b 24px 27px,#071a32 27px 52px) !important; opacity:1 !important; }
+html.felso-modal-aktiv #vote-overlay { visibility: hidden; }
+</style>
 </head>
 
 <body>
-<a href="fooldal.html" class="close-btn" aria-label="Bezárás">✕</a>
-<div class="soon-top"><div class="header"><h1>AJÁNLÓK</h1></div></div>
-<main class="soon-center">
-<h2>Hamarosan visszatérünk!</h2>
-<p>Addig is állj készen kérlek, mert ha jönnek az ajánlatok le kell rájuk csapni! :)</p>
-<p>Ha van bármi jó programötleted, akkor ne hagyd magadban, oszd meg velünk. :)</p>
-</main>
-<!-- AZ EREDETI OLDAL TELJES TARTALMA INAKTÍVAN MEGŐRIZVE: kártyák, álarcok, szavazás, szkriptek, linkek. -->
-<template id="eredeti-tartalom-kikommentelve">
+<!-- LEGFELSŐ KÉPES MODAL: true / false kapcsolóval -->
+<!-- A kép cseréjéhez csak az img src útvonalát írd át (JPG, PNG, WEBP). -->
+<div id="sunny-image-overlay" role="dialog" aria-modal="true" aria-label="Programajánló tájékoztató">
+  <div id="sunny-image-dialog">
+    <div id="sunny-image-frame"><img src="hamarosanvisszaterunk.jpg" alt="Szavazz a kedvencedre még ma!"></div>
+    <button id="sunny-image-close" type="button">BEZÁRÁS</button>
+  </div>
+</div>
+
+
+
 
 <div class="snow-container" id="snow-container" aria-hidden="true"></div>
 
@@ -798,6 +831,29 @@ Az előadások ismertetői és bemutatódátumai a színházak hivatalos műsoro
 })();
 </script>
 
-</template>
+
+<script>
+(function () {
+  const overlay = document.getElementById('sunny-image-overlay');
+  const dialog = document.getElementById('sunny-image-dialog');
+  const closeButton = document.getElementById('sunny-image-close');
+  if (!FELSO_MODAL_BEKAPCSOLVA) return;
+  // A háttér végig takarásban marad: a modal nem tűnik el navigáció előtt.
+  document.body.style.overflow = 'hidden';
+  closeButton.focus({preventScroll:true});
+  let navigating = false;
+  function closeModal() {
+    if (navigating) return;
+    navigating = true;
+    // Azonnali navigáció; nem rejtjük el a modalt és nem indítunk kilépő animációt.
+    // Így a mögötte lévő programajánlók egy képkockára sem láthatók.
+    window.location.replace(FELSO_MODAL_CEL_HTML);
+  }
+  closeButton.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !overlay.hidden) closeModal();
+  });
+})();
+</script>
 </body>
 </html>
